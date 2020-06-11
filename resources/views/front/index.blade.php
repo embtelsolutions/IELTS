@@ -22,7 +22,7 @@
   <!--   hero area end    -->
 
     <!-- Hero Slider start -->
-    <div class="hero-slider hero-slider-1">
+    <div class="hero-slider hero-slider-1 border-bottom-radius">
       <div class="single-slide" style="background-image: url({{'ielts-assets/images/slider/slide-bg-1.png'}})">
           <div class="home-decor">
               <div class="home-overlay-img-1">
@@ -111,41 +111,42 @@
   <!--    introduction area end   --> --}}
 
    <!-- About Us Area Start -->
-   <div class="about-us-area section-ptb">
+   <div class="about-us-area bg-primary border-bottom-radius section-ptb">
       <div class="container">
           <div class="row align-items-center">
-              <div class="col-lg-6 order-lg-1 order-2">
+            <div class="col-lg-6">
+               <!-- about-us-image Start -->
+               <div class="about-us-image wow fadeInBottom" data-wow-duration="1s">
+                   <img src="{{'ielts-assets/images/slider/slide-inner-1.png'}}" alt="">
+               </div><!--// about-us-image End -->
+           </div>
+              <div class="col-lg-6 ">
                   <div class="about-us-wrap">
                       <!-- section-title Start -->
-                      <div class="section-title text-left">
-                          <h4>ABOUT US</h4>
-                          <h3>What We <span>Are</span></h3>
+                      <div class=" text-left">
+                          <h1>Our Strength</h1>
                       </div>
                       <!--// section-title End -->
 
                       <!-- About us content Start -->
                       <div class="about-us-content">
                           <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,page when looking at its layout.
-                            The point of using
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                           printer took a galley of type and scrambled it to make a type
+                           specimen book
                           </p>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                          <ul>
-                              <li>Content of a page when looking at its layout. </li>
-                              <li>Content of a page when looking at its layout azer duskam. </li>
-                              <li>Content of a page when looking at its layout azer</li>
-                          </ul>  
+                          <br>
+                          <p>
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                           popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                           desktop publishing software like Aldus PageMaker including
+                           versions of Lorem Ipsum.
+                          </p>
                       </div>
                       <!--// About us content End -->
                   </div>
               </div>
-              <div class="col-lg-5 offset-lg-1 order-lg-2 order-1">
-                  <!-- about-us-image Start -->
-                  <div class="about-us-image wow fadeInBottom" data-wow-duration="1s">
-                      <img src="assets/images/about/about-02.png" alt="">
-                  </div><!--// about-us-image End -->
-              </div>
+              
           </div>
       </div>
   </div>

@@ -246,7 +246,8 @@
                   <div class="col-lg-4">
                       <!-- logo Start -->
                       <div class="logo">
-                          <a href="index.html"><img src="{{asset('ielts-assets/images/logo/logo.png')}}" alt=""></a>
+                          {{-- <a href="index.html"><img src="{{asset('ielts-assets/images/logo/logo.png')}}" alt=""></a> --}}
+                          <a href="index.html"><img src="https://via.placeholder.com/155x32?text=logo" alt=""></a>
                       </div><!--// logo End -->
                   </div>
                   <div class="col-lg-8">
@@ -254,35 +255,27 @@
                       <div class="main-menu">
                           <nav class="main-navigation">
                               <ul>
-                                  <li class="active"><a href="index.html">HOME</a>
-                                      <ul class="sub-menu">
+                                  <li class="active"><a href="#">HOME</a>
+                                      {{-- <ul class="sub-menu">
                                           <li><a href="index.html">Home Page 1</a></li>
                                           <li><a href="index-2.html">Home Page 2</a></li>
-                                      </ul>
+                                      </ul> --}}
                                   </li>
-                                  <li><a href="about.html">ABOUT</a></li>
-                                  <li><a href="service.html">SERVICE</a>
-                                      <ul class="sub-menu">
+                                  <li><a href="#">ABOUT</a></li>
+                                  <li><a href="#">COURSES</a>
+                                      {{-- <ul class="sub-menu">
                                           <li><a href="service-2.html">Service 2</a></li>
                                           <li><a href="service-3.html">Service 3</a></li>
-                                      </ul>
+                                      </ul> --}}
                                   </li>
-                                  <li><a href="index.html">PAGES</a>
-                                      <ul class="sub-menu">
+                                  <li><a href="#">TEACHER</a>
+                                      {{-- <ul class="sub-menu">
                                           <li><a href="errer-404.html">Error 404</a></li>
                                           <li><a href="case-studie.html">Case Study</a></li>
                                           <li><a href="project-details.html">Project Details</a></li>
-                                      </ul>
+                                      </ul> --}}
                                   </li>
-                                  <li><a href="blog.html">BLOG</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="blog-sidebar-left.html">Blog Left Sidebar</a></li>
-                                          <li><a href="blog-sidebar-right.html">Blog Right Sidebar</a></li>
-                                          <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                          <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                                      </ul>
-                                  </li>
-                                  <li><a href="contact.html">CONTACT</a></li>
+                                  <li><a href="#">CONTACT</a></li>
                               </ul>
                           </nav>
                       </div><!--// main-menu-area End -->

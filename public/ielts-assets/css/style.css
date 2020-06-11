@@ -108,7 +108,7 @@ p:last-child {
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 a, button {
@@ -1557,10 +1557,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .hero-slider-1 .single-slide .slider-text-info h1 {
-  color: #333;
-  font-size: 52px;
-  font-family: "Lato", sans-serif;
-  font-weight: bold;
+  font-size: 50px;
+  line-height: 60px;
+  color: #3f435b;
+  font-family: "Poppins";
+  font-weight: 600;
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -3190,3 +3191,29 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 /*# sourceMappingURL=style.css.map */
+/*troy Custom CSs*/
+ h1{
+  font-size: 50px;
+  line-height: 60px;
+  color: #3f435b;
+  font-family: "Poppins";
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.about-us-content p {
+  color: black;
+  font-size: 20px;
+  line-height: 30px;
+}
+@media (min-width: 1200px){
+  .container{
+    max-width: 1366px;
+  }
+}
+.bg-primary{
+  background: #D9E6FF!important;
+}
+.border-bottom-radius{
+  border-bottom-left-radius: 5%!important;
+  border-bottom-right-radius: 5%!important;
+}
