@@ -1,0 +1,188 @@
+.team-page {
+    padding: 180px 0px 0px;
+}
+.team-page .title-section h3{
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.team-page .title-section p{
+    line-height: 1.5;
+    padding: 10px 0px;
+    font-size: 15px;
+}
+
+.all-teachers{
+    padding: 50px 0px;
+}
+
+.all-teachers .single-teacher{
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+.all-teachers .single-teacher .t-social-accounts .t-social-account-lists{
+    display: flex;
+    justify-content: space-evenly;
+}
+.all-teachers .single-teacher .teacher-info{
+    margin: 20px 0px;
+}
+.all-teachers .single-teacher .t-social-accounts .t-social-account-lists{
+    display: flex;
+    justify-content: space-evenly;
+}
+.all-teachers .single-teacher .t-social-accounts .t-social-account-lists .single-social-account{
+    width: 35px;
+    height: 35px;
+    border: 1px solid #232323;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.all-teachers .single-teacher .t-social-accounts .t-social-account-lists .single-social-account i{
+    color: #232323;
+}
+.all-teachers .single-teacher .t-social-accounts{
+    margin-top: 20px;
+}
+.all-teachers .single-teacher .teacher-info h4{
+    margin: 10px 0px;
+}
+.all-teachers .single-teacher .teacher-info p{
+    font-size: 15px;
+}
+.all-teachers .single-teacher .teacher-img-wrapper img{
+    width: 85%;
+    border-radius: 100%;
+    border: 2px solid;
+}
+
+.header-navbar{
+    border-bottom: none;
+}
+
+
+.signup-section{
+    padding: 50px 0px;
+    margin-top: 50px;
+}
+.signup-section .single-signup h4{
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 32px;
+
+}
+.signup-section .single-signup p{
+    line-height: 30px;
+    color: #fff;
+    margin: 20px 0px;
+    font-size: 18px;
+
+
+}
+.signup-section .single-signup a{
+    padding: 10px 30px;
+    background: #fff;
+    border-radius: 50px;
+    color: #232323;
+}
+
+
+
+
+.footer-section{
+    background-color: #393939;
+    color: white;
+}
+
+
+/* Menu */
+.header-navbar{
+    padding: 10px 0px;
+}
+.main-menu li a{
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.main-menu li a.menu-login::before{
+    content: none;
+}
+.main-menu li.active a, .main-menu li a:hover{
+    font-weight: bold;
+    color: #000 !important;
+}
+.main-menu li a, .mega-dropdown .dropbtn{
+    color: #232323;
+    text-transform: capitalize;
+}
+.main-menu li a::after, .mega-dropdown .dropbtn::after{
+    content: none;
+}
+.main-menu li a::before, .mega-dropdown .dropbtn::before{
+    background-color: #232323 !important;
+}
+.menu-login{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #232323;
+    border-radius: 100%;
+}
+.menu-login i{
+    color: #fff;
+    font-size: 18px;
+}
+
+/*Footer*/
+.footer-section{
+    padding-top: 50px;
+}
+.footer-logo-wrapper {
+    text-align: center;
+    max-width: none;
+}
+.copyright-section {
+    padding: 40px 0px 27px;
+    font-size: 18px;
+    line-height: 30px;
+}
+.footer-section .footer-txt{
+    font-size: 18px;
+    line-height: 30px;
+}
+.footer-social-links{
+    margin-top: 30px;
+}
+.footer-social-links .social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-social-links .social-links li{
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin: 0px 10px;
+}
+.footer-social-links .social-links li i{
+    color: #232323;
+}
+.bg-color-blue{
+    background: #0080E2!important;
+}
+.bg-dark{
+    background-color: white;
+}

@@ -229,6 +229,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::get('/introsection', 'Admin\IntrosectionController@index')->name('admin.introsection.index');
     Route::post('/introsection/{langid}/upload', 'Admin\IntrosectionController@upload')->name('admin.introsection.upload');
     Route::post('/introsection/{langid}/update', 'Admin\IntrosectionController@update')->name('admin.introsection.update');
+    
+    //Admin Slider Section Routes
+    Route::get('/slider-section', 'Admin\slidersectionController@index')->name('admin.slider-section.index');
+    Route::post('/slider-section/{id}/upload', 'Admin\slidersectionController@upload')->name('admin.slider-section.upload');
+    Route::post('/slider-section/{id}/update', 'Admin\slidersectionController@update')->name('admin.slider-section.update');
 
     // Admin Service Section Routes
     Route::get('/servicesection', 'Admin\ServicesectionController@index')->name('admin.servicesection.index');
