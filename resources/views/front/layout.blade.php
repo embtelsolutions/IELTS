@@ -257,7 +257,7 @@
                       <div class="main-menu">
                           <nav class="main-navigation">
                               <ul>
-                                  <li class="active"><a href="#">HOME</a>
+                                  <li class=""><a href="{{route('front.index')}}">HOME</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="index.html">Home Page 1</a></li>
                                           <li><a href="index-2.html">Home Page 2</a></li>
@@ -497,7 +497,7 @@
       @endif
 
       <!--Start of subscribe functionality-->
-      <script>
+      <script type="text/javascript">
         $(document).ready(function() {
           $("#subscribeForm, #footerSubscribeForm").on('submit', function(e) {
             // console.log($(this).attr('id'));
@@ -526,7 +526,10 @@
               }
             });
           });
-
+          $('.main-navigation ul li a').click(function() {
+            $('.main-navigation ul li a').removeClass('active');
+            $(this).addClass('active');
+         });
          
         });
         

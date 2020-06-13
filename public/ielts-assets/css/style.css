@@ -1331,6 +1331,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   top: 0;
   width: 100%;
   z-index: 9;
+  background-color: #D9E6FF;
 }
 
 .logo {
@@ -3305,7 +3306,79 @@ a.pricing-btn {
   padding: 35px;
   border-radius: 25px;
   margin: 0px 15px;
+  margin-bottom: 20px;
 }
+@media (min-width: 1170px){
 .col-lg-4.col-xl-4.pricing-box {
   max-width: 31%;
+}
+}
+ul.teacher-filter {
+  display: inline-flex;
+  left: 13%;
+  position:relative;
+  
+}
+ul.teacher-filter li {
+  padding: 15px;
+}
+.filter-div {
+  margin: auto;
+  background: #d9e6ff;
+  width: 50%;
+  border-radius: 12px
+}
+.p-70{
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+ul.teacher-filter li {
+  font-size: 18px;
+  color: black;
+  font-weight: 500;
+}
+ul.teacher-filter li.active {
+  /* color: red; */
+  border-bottom: 5px solid;
+  margin: 0px 15px;
+}
+span.name {
+  position: relative;
+  bottom: 29px;
+  left: 26px;
+  display: inline-flex;
+  color: #3F435B;
+  font-size:18px;
+  font-weight: 500;
+}
+.client-desc p{
+  color: #3F435B;
+  font-size: 18px;
+}
+p.star {
+  position: relative;
+  display: flex;
+  bottom: 16px;
+  left: 18%;
+}
+p.star i{
+  margin: 0px 5px;
+  color: #ffc107;
+}
+.single-testimonial {
+  padding: 40px 40px 40px;
+  background-color: white;
+  position: relative;
+  margin: 4px;
+  box-shadow: 0 0 6px 3px #00000017;
+  border-radius: 25px;
+}
+/* .single-testimonial:hover{
+  display: none;
+} */
+.single-testimonial::after{
+  display: none;
+}
+.single-testimonial::before{
+  display: none;
 }

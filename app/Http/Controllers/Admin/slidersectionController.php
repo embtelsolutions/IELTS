@@ -14,15 +14,15 @@ class slidersectionController extends Controller
 {
     public function index(Request $request)
     {
-
-        $data = SliderSection::firstOrFail();
-        // $data['lang_id'] = $lang->id;
-        // $data['abs'] = $lang->basic_setting;
+    
+        $lang = Language::where('code', $request->language)->firstOrFail();
+        $data['lang_id'] = $lang->id;
+        $data['abs'] = $lang->basic_setting;
 
         return view('admin.home.slider-section', $data);
     }
 
-    public function upload(Request $request)
+    public function upload(Request $request, $langid)
     {
         $img = $request->file('file');
         $allowedExts = array('jpg', 'png', 'jpeg');
@@ -48,21 +48,50 @@ class slidersectionController extends Controller
 
 
         if ($request->hasFile('file')) {
-            $bs = SliderSection::where('id', $id)->firstOrFail();
+            $bs = BS::where('language_id', $langid)->firstOrFail();
             @unlink('assets/front/img/' . $bs->intro_bg);
             $filename = uniqid() .'.'. $img->getClientOriginalExtension();
             $img->move('assets/front/img/', $filename);
 
-            $bs->image = $filename;
+            $bs->intro_bg = $filename;
             $bs->save();
 
         }
 
-        return response()->json(['status' => "success", 'image' => 'Slider section image']);
+        return response()->json(['status' => "success", 'image' => 'Intro section image']);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $langid)
     {
+        $rules = [
+            'intro_section_title' => 'required|max:25',
+            'intro_section_text' => 'required|max:80',
+            'intro_section_button_text' => 'nullable|max:15',
+            'intro_section_button_url' => 'nullable|max:255',
+            'intro_section_video_link' => 'nullable'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            $errmsgs = $validator->getMessageBag()->add('error', 'true');
+            return response()->json($validator->errors());
+        }
+
+        $bs = BS::where('language_id', $langid)->firstOrFail();
+        $bs->intro_section_title = $request->intro_section_title;
+        $bs->intro_section_text = $request->intro_section_text;
+        $bs->intro_section_button_text = $request->intro_section_button_text;
+        $bs->intro_section_button_url = $request->intro_section_button_url;
+        $videoLink = $request->intro_section_video_link;
+        if (strpos($videoLink, "&") != false) {
+            $videoLink = substr($videoLink, 0, strpos($videoLink, "&"));
+        }
+        $bs->intro_section_video_link = $videoLink;
+        $bs->save();
+
+        Session::flash('success', 'Informations updated successfully!');
+        return "success";
+
         $rules = [
             'slider_section_title' => 'required|max:25',
             'slider_section_text' => 'required|max:80',

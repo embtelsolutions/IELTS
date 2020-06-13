@@ -48,7 +48,7 @@
                 <div class="col-lg-10">
                     <div class="card-title">Update Slider Section</div>
                 </div>
-                {{-- <div class="col-lg-2">
+                <div class="col-lg-2">
                     @if (!empty($langs))
                         <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                             <option value="" selected disabled>Select a Language</option>
@@ -57,7 +57,7 @@
                             @endforeach
                         </select>
                     @endif
-                </div> --}}
+                </div>
             </div>
         </div>
         <div class="card-body pt-5 pb-4">
@@ -104,7 +104,7 @@
               </form>
 
 
-              <form id="ajaxForm" action="{{route('admin.introsection.update', $id)}}" method="post">
+              <form id="ajaxForm" action="{{route('admin.introsection.update', $lang_id)}}" method="post">
                 @csrf
                 <div class="form-group">
                   <label for="">Title **</label>

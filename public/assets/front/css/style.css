@@ -2213,11 +2213,11 @@ a.contact-btn:hover::after {
 }
 
 .single-testimonial .img-wrapper {
-    float: left;
+    /* float: left; */
 }
 
 .client-desc {
-    margin-left: 100px;
+    /* margin-left: 100px; */
 }
 
 .single-testimonial {

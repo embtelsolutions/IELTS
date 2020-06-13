@@ -37,7 +37,7 @@ Route::group(['middleware' => 'setlang'], function() {
   Route::post('/sendquote', 'Front\FrontendController@sendquote')->name('front.sendquote');
   Route::get('/package-order/{id}', 'Front\FrontendController@packageorder')->name('front.packageorder.index');
   Route::post('/package-order', 'Front\FrontendController@submitorder')->name('front.packageorder.submit');
-  Route::get('/team', 'Front\FrontendController@team')->name('front.team');
+  Route::get('/teachers', 'Front\FrontendController@team')->name('front.team');
   Route::get('/career', 'Front\FrontendController@career')->name('front.career');
   Route::get('/career-details/{slug}/{id}', 'Front\FrontendController@careerdetails')->name('front.careerdetails');
   Route::get('/calendar', 'Front\FrontendController@calendar')->name('front.calendar');

@@ -367,11 +367,20 @@
               <div class="testimonial-carousel owl-carousel owl-theme">
                  @foreach ($testimonials as $key => $testimonial)
                    <div class="single-testimonial">
-                      <div class="img-wrapper"><img src="{{asset('assets/front/img/testimonials/'.$testimonial->image)}}" alt=""></div>
+                      
                       <div class="client-desc">
                          <p class="comment">{{convertUtf8($testimonial->comment)}}</p>
-                         <h6 class="name">{{convertUtf8($testimonial->name)}}</h6>
-                         <p class="rank">{{convertUtf8($testimonial->rank)}}</p>
+                         <div class="img-wrapper"><img src="{{asset('assets/front/img/testimonials/'.$testimonial->image)}}" alt="">
+                           <span class="name">{{convertUtf8($testimonial->name)}}</span>
+                        </div>
+                         
+                         <p class="star">
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                           <i class="fa fa-star"></i>
+                        </p>
+                         {{-- <p class="rank">{{convertUtf8($testimonial->rank)}}</p> --}}
                       </div>
                    </div>
                  @endforeach
