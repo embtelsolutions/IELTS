@@ -270,7 +270,7 @@
                                           <li><a href="service-3.html">Service 3</a></li>
                                       </ul> --}}
                                   </li>
-                                  <li><a href="#">TEACHER</a>
+                                  <li><a href="{{route('front.team')}}">TEACHER</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="errer-404.html">Error 404</a></li>
                                           <li><a href="case-studie.html">Case Study</a></li>
