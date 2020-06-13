@@ -22,8 +22,8 @@
   <!--   hero area end    -->
 
     <!-- Hero Slider start -->
-    <div class="hero-slider hero-slider-1">
-      <div class="single-slide" style="background-image: url({{'ielts-assets/images/slider/slide-bg-1.png'}})">
+    <div class="hero-slider bg-primary hero-slider-1 border-bottom-radius">
+      <div class="single-slide" style="background-image: none">
           <div class="home-decor">
               <div class="home-overlay-img-1">
                   {{-- <img src="{{'ielts-assets/images/slider/seomar02.png'}}" alt=""> --}}
@@ -38,15 +38,15 @@
                           <h1>We Take Learning to New Heights</h1>
                           <p>We believe everyone has the capacity to be creative. Turitor is
                            a place where people develop their own potential</p>
-                          {{-- <div class="slider-button">
-                              <a href="about.html" class="slider-btn">ABOUT MORE</a>
-                          </div> --}}
+                          <div class="get-started col-lg-4">
+                              <a href="" class="slider-btn">Get Started</a>
+                          </div>
                       </div><!--// slider-text-info End -->
                   </div>
                   <div class="col-xl-6 col-lg-5 col-md-5 order-md-2 order-1"> 
                       <!-- slider-inner-image Start -->
                       <div class="slider-inner-image">
-                          <img src="{{'ielts-assets/images/slider/slide-inner-1.png'}}" alt="">
+                          <img src="{{'ielts-assets/images/slider/slider_inner.png'}}" alt="">
                       </div><!--// slider-inner-image End -->
                   </div>
               </div>
@@ -110,48 +110,65 @@
   </div>
   <!--    introduction area end   --> --}}
 
-   <!-- About Us Area Start -->
-   <div class="about-us-area section-ptb">
-      <div class="container">
-          <div class="row align-items-center">
-              <div class="col-lg-6 order-lg-1 order-2">
-                  <div class="about-us-wrap">
-                      <!-- section-title Start -->
-                      <div class="section-title text-left">
-                          <h4>ABOUT US</h4>
-                          <h3>What We <span>Are</span></h3>
-                      </div>
-                      <!--// section-title End -->
-
-                      <!-- About us content Start -->
-                      <div class="about-us-content">
-                          <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,page when looking at its layout.
-                            The point of using
-                          </p>
-                          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                          <ul>
-                              <li>Content of a page when looking at its layout. </li>
-                              <li>Content of a page when looking at its layout azer duskam. </li>
-                              <li>Content of a page when looking at its layout azer</li>
-                          </ul>  
-                      </div>
-                      <!--// About us content End -->
-                  </div>
+  <div class="service-categories">
+   <div class="container">
+     <div class="row">
+         <div class="col-xl-3 col-lg-4 col-sm-6">
+           <div class="single-category">
+                             <div class="img-wrapper">
+                             <img src="{{asset('ielts-assets/images/Trending_courses.png')}}" alt="">
+               </div>
+                           <div class="text">
+               <h4>Trending Courses</h4>
+               <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
+             </div>
+           </div>
+         </div>
+         <div class="col-xl-3 col-lg-4 col-sm-6">
+           <div class="single-category">
+                             <div class="img-wrapper">
+                   <img src="{{asset('ielts-assets/images/book_library.png')}}" alt="">
+               </div>
+                           <div class="text">
+               <h4>Books & Liberary</h4>
+               <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
+               
+             </div>
+           </div>
+         </div>
+         <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="single-category">
+                              <div class="img-wrapper">
+                    <img src="{{asset('ielts-assets/images/certifed_teacher.png')}}" alt="">
+                </div>
+                            <div class="text">
+                <h4>Certified Teachers</h4>
+                <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
+                
               </div>
-              <div class="col-lg-5 offset-lg-1 order-lg-2 order-1">
-                  <!-- about-us-image Start -->
-                  <div class="about-us-image wow fadeInBottom" data-wow-duration="1s">
-                      <img src="assets/images/about/about-02.png" alt="">
-                  </div><!--// about-us-image End -->
-              </div>
+            </div>
           </div>
-      </div>
-  </div>
-  <!-- About Us Area End -->
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="single-category">
+                              <div class="img-wrapper">
+                    <img src="{{asset('ielts-assets/images/certificate.png')}}" alt="">
+                </div>
+                            <div class="text">
+                <h4>Certification</h4>
+                <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
+                
+              </div>
+            </div>
+          </div>
+                 
+            
+                 
+             
+             </div>
+   </div>
+ </div>
 
-  @if ($bs->service_section == 1)
+  {{-- @if ($bs->service_section == 1)
   <!--   service section start   -->
   <div class="service-categories">
     <div class="container">
@@ -184,10 +201,54 @@
     </div>
   </div>
   <!--   service section end   -->
-  @endif
+  @endif --}}
 
 
-  @if ($bs->approach_section == 1)
+   <!-- About Us Area Start -->
+   <div class="about-us-area bg-primary border-top-radius section-ptb">
+      <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+               <!-- about-us-image Start -->
+               <div class="about-us-image">
+                   <img src="{{'ielts-assets/images/our_strenth.png'}}" alt="">
+               </div><!--// about-us-image End -->
+           </div>
+              <div class="col-lg-6 ">
+                  <div class="about-us-wrap">
+                      <!-- section-title Start -->
+                      <div class=" text-left">
+                          <h1>Our Strength</h1>
+                      </div>
+                      <!--// section-title End -->
+
+                      <!-- About us content Start -->
+                      <div class="about-us-content">
+                          <p>
+                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                           printer took a galley of type and scrambled it to make a type
+                           specimen book
+                          </p>
+                          <br>
+                          <p>
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                           popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                           desktop publishing software like Aldus PageMaker including
+                           versions of Lorem Ipsum.
+                          </p>
+                      </div>
+                      <!--// About us content End -->
+                  </div>
+              </div>
+              
+          </div>
+      </div>
+  </div>
+  <!-- About Us Area End -->
+
+
+
+  {{-- @if ($bs->approach_section == 1)
   <!--   how we do section start   -->
   <div class="approach-section">
      <div class="container">
@@ -218,10 +279,10 @@
      </div>
   </div>
   <!--   how we do section end   -->
-  @endif
+  @endif --}}
 
 
-  @if ($bs->statistics_section == 1)
+  {{-- @if ($bs->statistics_section == 1)
   <!--    statistics section start    -->
   <div class="statistics-section @if($bs->home_version != 'parallax') statistics-bg @endif" id="statisticsSection" @if($bs->home_version == 'parallax') data-parallax="scroll" data-speed="0.2" data-image-src="{{asset('assets/front/img/statistic_bg.jpg')}}" @endif>
      <div class="statistics-container">
@@ -248,10 +309,10 @@
      <div class="statistic-overlay"></div>
   </div>
   <!--    statistics section end    -->
-  @endif
+  @endif --}}
 
 
-  @if ($bs->portfolio_section == 1)
+  {{-- @if ($bs->portfolio_section == 1)
   <!--    case section start   -->
   <div class="case-section">
      <div class="container">
@@ -287,17 +348,18 @@
      </div>
   </div>
   <!--    case section end   -->
-  @endif
+  @endif --}}
 
 
   @if ($bs->testimonial_section == 1)
   <!--   Testimonial section start    -->
-  <div class="testimonial-section pb-115">
+  <div class="testimonial-section pb-115 pt-120">
      <div class="container">
         <div class="row text-center">
            <div class="col-lg-6 offset-lg-3">
-              <span class="section-title">{{convertUtf8($bs->testimonial_title)}}</span>
-              <h2 class="section-summary">{{convertUtf8($bs->testimonial_subtitle)}}</h2>
+              {{-- <span class="section-title">{{convertUtf8($bs->testimonial_title)}}</span> --}}
+              {{-- <h2 class="section-summary">{{convertUtf8($bs->testimonial_subtitle)}}</h2> --}}
+              <h2 class="section-summary">What Students Says</h2>
            </div>
         </div>
         <div class="row">
@@ -322,7 +384,7 @@
   @endif
 
 
-  @if ($bs->team_section == 1)
+  {{-- @if ($bs->team_section == 1)
   <!--    team section start   -->
   <div class="team-section section-padding" @if($bs->home_version != 'parallax') style="background-image: url('{{asset('assets/front/img/'.$bs->team_bg)}}'); background-size:cover;" @endif @if($bs->home_version == 'parallax') data-parallax="scroll" data-speed="0.2" data-image-src="{{asset('assets/front/img/'.$bs->team_bg)}}" @endif>
      <div class="team-content">
@@ -369,7 +431,7 @@
      <div class="team-overlay"></div>
   </div>
   <!--    team section end   -->
-  @endif
+  @endif --}}
 
 
   @if ($be->pricing_section == 1)
@@ -378,10 +440,68 @@
      <div class="container">
        <div class="row text-center">
           <div class="col-lg-6 offset-lg-3">
-             <span class="section-title">{{convertUtf8($be->pricing_title)}}</span>
-             <h2 class="section-summary">{{convertUtf8($be->pricing_subtitle)}}</h2>
+             {{-- <span class="section-title">{{convertUtf8($be->pricing_title)}}</span> --}}
+             {{-- <h2 class="section-summary">{{convertUtf8($be->pricing_subtitle)}}</h2> --}}
+             <h2 class="section-summary">Pricing</h2>
+             
           </div>
        </div>
+       <div class="row">
+            <div class="col-lg-4 col-xl-4 pricing-box">
+                <div class="pricing-title">
+                   <h2>Starter Plan</h2>
+                </div>
+                <div class="pricing">
+                   <h1> <span class="currency">$</span> 500</h1>
+                </div>
+                <div class="features">
+                  <ul>
+                     <li>Lorem Ipsum is simply dummy.</li>
+                     <li>Lorem Ipsum is simply dummy.</li>
+                     <li>Lorem Ipsum is simply dummy.</li>
+                     <li>Lorem Ipsum is simply dummy.</li>
+                  </ul>
+                </div>
+                <a href="" class="pricing-btn">Get Started</a>
+            </div>
+            <div class="col-lg-4 col-xl-4 pricing-box">
+               <div class="pricing-title">
+                  <h2>Teams</h2>
+               </div>
+               <div class="pricing">
+                  <h1> <span class="currency">$</span> 650</h1>
+               </div>
+               <div class="features">
+                 <ul>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                 </ul>
+               </div>
+               <a href="" class="pricing-btn">Get Started</a>
+           </div>
+            <div class="col-lg-4 col-xl-4 pricing-box">
+               <div class="pricing-title">
+                  <h2>Enterprise</h2>
+               </div>
+               <div class="pricing">
+                  <h1> <span class="currency">$</span> 900</h1>
+               </div>
+               <div class="features">
+                 <ul>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem Ipsum is simply dummy.</li>
+                 </ul>
+               </div>
+               <a href="" class="pricing-btn">Get Started</a>
+           </div>
+           
+       </div>
+
+       {{-- <!--packages-->
         <div class="pricing-carousel common-carousel owl-carousel owl-theme">
           @foreach ($packages as $key => $package)
             <div class="single-pricing-table">
@@ -398,6 +518,8 @@
             </div>
           @endforeach
         </div>
+        <!---package--> --}}
+
      </div>
   </div>
   <!-- pricing end -->
@@ -405,7 +527,7 @@
 
 
 
-  @if ($bs->news_section == 1)
+  {{-- @if ($bs->news_section == 1)
   <!--    blog section start   -->
   <div class="blog-section section-padding">
      <div class="container">
@@ -444,10 +566,10 @@
      </div>
   </div>
   <!--    blog section end   -->
-  @endif
+  @endif --}}
 
 
-  @if ($bs->call_to_action_section == 1)
+  {{-- @if ($bs->call_to_action_section == 1)
   <!--    call to action section start    -->
   <div class="cta-section" style="background-image: url('{{asset('assets/front/img/'.$bs->cta_bg)}}')">
      <div class="container">
@@ -465,10 +587,10 @@
      <div class="cta-overlay"></div>
   </div>
   <!--    call to action section end    -->
-  @endif
+  @endif --}}
 
 
-  @if ($bs->partner_section == 1)
+  {{-- @if ($bs->partner_section == 1)
   <!--   partner section start    -->
   <div class="partner-section">
      <div class="container top-border">
@@ -490,6 +612,6 @@
      </div>
   </div>
   <!--   partner section end    -->
-  @endif
+  @endif --}}
 
 @endsection

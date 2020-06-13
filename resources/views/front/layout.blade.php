@@ -37,6 +37,8 @@
       
       <!-- Main Style CSS -->
       <link rel="stylesheet" href="{{asset('ielts-assets/css/style.css')}}">
+
+      <link rel="stylesheet" href="{{asset('ielts-assets/css/customs.css')}}">
         
       <!---css style linkg--->
 
@@ -246,7 +248,8 @@
                   <div class="col-lg-4">
                       <!-- logo Start -->
                       <div class="logo">
-                          <a href="index.html"><img src="{{asset('ielts-assets/images/logo/logo.png')}}" alt=""></a>
+                          {{-- <a href="index.html"><img src="{{asset('ielts-assets/images/logo/logo.png')}}" alt=""></a> --}}
+                          <a href="index.html"><img src="https://via.placeholder.com/155x32?text=logo" alt=""></a>
                       </div><!--// logo End -->
                   </div>
                   <div class="col-lg-8">
@@ -254,35 +257,28 @@
                       <div class="main-menu">
                           <nav class="main-navigation">
                               <ul>
-                                  <li class="active"><a href="index.html">HOME</a>
-                                      <ul class="sub-menu">
+                                  <li class="active"><a href="#">HOME</a>
+                                      {{-- <ul class="sub-menu">
                                           <li><a href="index.html">Home Page 1</a></li>
                                           <li><a href="index-2.html">Home Page 2</a></li>
-                                      </ul>
+                                      </ul> --}}
                                   </li>
-                                  <li><a href="about.html">ABOUT</a></li>
-                                  <li><a href="service.html">SERVICE</a>
-                                      <ul class="sub-menu">
+                                  <li><a href="#">ABOUT</a></li>
+                                  <li><a href="#">COURSES</a>
+                                      {{-- <ul class="sub-menu">
                                           <li><a href="service-2.html">Service 2</a></li>
                                           <li><a href="service-3.html">Service 3</a></li>
-                                      </ul>
+                                      </ul> --}}
                                   </li>
-                                  <li><a href="index.html">PAGES</a>
-                                      <ul class="sub-menu">
+                                  <li><a href="{{route('front.team')}}">TEACHER</a>
+                                      {{-- <ul class="sub-menu">
                                           <li><a href="errer-404.html">Error 404</a></li>
                                           <li><a href="case-studie.html">Case Study</a></li>
                                           <li><a href="project-details.html">Project Details</a></li>
-                                      </ul>
+                                      </ul> --}}
                                   </li>
-                                  <li><a href="blog.html">BLOG</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="blog-sidebar-left.html">Blog Left Sidebar</a></li>
-                                          <li><a href="blog-sidebar-right.html">Blog Right Sidebar</a></li>
-                                          <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                          <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                                      </ul>
-                                  </li>
-                                  <li><a href="contact.html">CONTACT</a></li>
+                                  <li><a href="#">CONTACT</a></li>
+                                  <li><a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                               </ul>
                           </nav>
                       </div><!--// main-menu-area End -->
@@ -296,6 +292,7 @@
           </div>
       </div>
   </header>
+  
   <!-- Header-area end -->
 
       @yield('content')
@@ -304,65 +301,121 @@
       <!--    announcement banner section start   -->
       <a class="announcement-banner" href="{{asset('assets/front/img/'.$bs->announcement)}}"></a>
       <!--    announcement banner section end   -->
-
+<!----Signup Content--->
+      <div class="signup-section bg-color-blue">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="single-signup">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <img src="{{asset('ielts-assets/images/signup_teacher.png')}}" alt="">
+                        </div>
+                        <div class="col-md-6">
+                           <h4>Sign Up As a Teacher</h4>
+                           <p>There’s a new elite forming in higher education: universities that have millions of enrollments.</p>
+                           <div class="mt-5">
+                              <a href="#">Apply Now</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="single-signup">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <img src="{{asset('ielts-assets/images/signup_student.png')}}" alt="">
+                        </div>
+                        <div class="col-md-6">
+                           <h4>Sign Up As a Student</h4>
+                           <p>Join millions of people from around the world learning together. Online learning is as easy and natural as chatting.</p>
+                           <div class="mt-5">
+                              <a href="#">Apply Now</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+<!----Signup Content--->
 
       <!--    footer section start   -->
       <footer class="footer-section">
-         <div class="container">
-            @if ($bs->top_footer_section == 1)
-            <div class="top-footer-section @if ($bs->copyright_section == 0) border-bottom-0 @endif">
-               <div class="row">
-                  <div class="col-lg-4 col-md-12">
+            <div class="container">
+               <div class="row justify-content-center">
+                  <div class="col-md-8 text-center">
                      <div class="footer-logo-wrapper">
                         <a href="{{route('front.index')}}">
-                        <img src="{{asset('assets/front/img/'.$bs->footer_logo)}}" alt="">
+                           <img src="{{asset('assets/front/img/'.$bs->footer_logo)}}" alt="">
                         </a>
                      </div>
                      <p class="footer-txt">{{convertUtf8($bs->footer_text)}}</p>
-                  </div>
-                  <div class="col-lg-2 col-md-3">
-                     <h4>{{__('Useful Links')}}</h4>
-                     <ul class="footer-links">
-                        @foreach ($ulinks as $key => $ulink)
-                          <li><a href="{{$ulink->url}}">{{convertUtf8($ulink->name)}}</a></li>
-                        @endforeach
-                     </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-4">
-                     <h4>{{__('Newsletter')}}</h4>
-                     <form class="footer-newsletter" id="footerSubscribeForm" action="{{route('front.subscribe')}}" method="post">
-                       @csrf
-                       <p>{{convertUtf8($bs->newsletter_text)}}</p>
-                       <input type="email" name="email" value="" placeholder="{{__('Enter Email Address')}}" />
-                       <p id="erremail" class="text-danger mb-0 err-email"></p>
-                       <button type="submit">{{__('Subscribe')}}</button>
-                     </form>
-                  </div>
-                  <div class="col-lg-3 col-md-5">
-                     <h4>{{__('Contact Us')}}</h4 >
-                     <div class="footer-contact-info">
-                        <ul>
-                           <li><i class="fa fa-home"></i><span>{{convertUtf8($bs->contact_address)}}</span>
-                           </li>
-                           <li><i class="fa fa-phone"></i><span>{{convertUtf8($bs->contact_number)}}</span></li>
-                           <li><i class="far fa-envelope"></i><span>{{convertUtf8($bs->contact_mail)}}</span></li>
+                     <div class="footer-social-links">
+                        <ul class="social-links">
+                          @foreach ($socials as $key => $social)
+                            <li><a target="_blank" href="{{$social->url}}"><i class="{{$social->icon}}"></i></a></li>
+                          @endforeach
                         </ul>
                      </div>
                   </div>
                </div>
-            </div>
-            @endif
-            @if ($bs->copyright_section == 1)
-            <div class="copyright-section">
-               <div class="row">
-                  <div class="col-sm-12 text-center">
-                     {!! convertUtf8($bs->copyright_text) !!}
+               <!-- @if ($bs->top_footer_section == 1)
+               <div class="top-footer-section @if ($bs->copyright_section == 0) border-bottom-0 @endif">
+                  <div class="row">
+                     <div class="col-lg-4 col-md-12">
+                        <div class="footer-logo-wrapper">
+                           <a href="{{route('front.index')}}">
+                           <img src="{{asset('assets/front/img/'.$bs->footer_logo)}}" alt="">
+                           </a>
+                        </div>
+                        <p class="footer-txt">{{convertUtf8($bs->footer_text)}}</p>
+                     </div>
+                     <div class="col-lg-2 col-md-3">
+                        <h4>{{__('Useful Links')}}</h4>
+                        <ul class="footer-links">
+                           @foreach ($ulinks as $key => $ulink)
+                             <li><a href="{{$ulink->url}}">{{convertUtf8($ulink->name)}}</a></li>
+                           @endforeach
+                        </ul>
+                     </div>
+                     <div class="col-lg-3 col-md-4">
+                        <h4>{{__('Newsletter')}}</h4>
+                        <form class="footer-newsletter" id="footerSubscribeForm" action="{{route('front.subscribe')}}" method="post">
+                          @csrf
+                          <p>{{convertUtf8($bs->newsletter_text)}}</p>
+                          <input type="email" name="email" value="" placeholder="{{__('Enter Email Address')}}" />
+                          <p id="erremail" class="text-danger mb-0 err-email"></p>
+                          <button type="submit">{{__('Subscribe')}}</button>
+                        </form>
+                     </div>
+                     <div class="col-lg-3 col-md-5">
+                        <h4>{{__('Contact Us')}}</h4 >
+                        <div class="footer-contact-info">
+                           <ul>
+                              <li><i class="fa fa-home"></i><span>{{convertUtf8($bs->contact_address)}}</span>
+                              </li>
+                              <li><i class="fa fa-phone"></i><span>{{convertUtf8($bs->contact_number)}}</span></li>
+                              <li><i class="far fa-envelope"></i><span>{{convertUtf8($bs->contact_mail)}}</span></li>
+                           </ul>
+                        </div>
+                     </div>
                   </div>
                </div>
+               @endif -->
+               @if ($bs->copyright_section == 1)
+               <div class="copyright-section">
+                  <div class="row">
+                     <div class="col-sm-12 text-center">
+                        {!! convertUtf8($bs->copyright_text) !!}
+                     </div>
+                  </div>
+               </div>
+               @endif
             </div>
-            @endif
-         </div>
-      </footer>
+         </footer>
       <!--    footer section end   -->
 
 
@@ -473,7 +526,10 @@
               }
             });
           });
+
+         
         });
+        
       </script>
       <!--End of subscribe functionality-->
 

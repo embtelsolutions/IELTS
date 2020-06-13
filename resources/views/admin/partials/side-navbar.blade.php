@@ -394,6 +394,7 @@
             <div class="collapse
             @if(request()->path() == 'admin/features') show
             @elseif(request()->path() == 'admin/introsection') show
+            @elseif(request()->path() == 'admin/slider-section') show
             @elseif(request()->path() == 'admin/servicesection') show
             @elseif(request()->path() == 'admin/herosection/static') show
             @elseif(request()->path() == 'admin/herosection/video') show
@@ -456,7 +457,11 @@
                     </ul>
                   </div>
                 </li>
-
+                <li class="@if(request()->path() == 'admin/slider-section') active @endif">
+                  <a href="{{route('admin.slider-section.index') . '?language=' . $default->code}}">
+                    <span class="sub-item">Slider Section</span>
+                  </a>
+                </li>
                 <li class="
                 @if(request()->path() == 'admin/features') active
                 @elseif(request()->is('admin/feature/*/edit')) active
