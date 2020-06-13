@@ -276,6 +276,7 @@
                                       </ul> --}}
                                   </li>
                                   <li><a href="#">CONTACT</a></li>
+                                  <li><a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                               </ul>
                           </nav>
                       </div><!--// main-menu-area End -->
@@ -300,9 +301,18 @@
 
 
       <!--    footer section start   -->
-      <footer class="footer-section">
+      <footer class="footer-section pb-115 pt-120">
          <div class="container">
-            @if ($bs->top_footer_section == 1)
+            <div class="row text-center">
+               <div class="col-lg-6 offset-lg-3">
+                  <h2 class="footer-logo"><a href="index.html"><img src="https://via.placeholder.com/155x32?text=logo" alt=""></a></h2>
+               </div>
+               <div class="company-info">
+                  <p>The ship set ground on the shore of this uncharted desert isle with Gilligan the Skipper too the millionaire and his wife. These days are all Happy and Free. These days are all share them with me.</p>
+               </div>
+            </div>
+            
+            {{-- @if ($bs->top_footer_section == 1)
             <div class="top-footer-section @if ($bs->copyright_section == 0) border-bottom-0 @endif">
                <div class="row">
                   <div class="col-lg-4 col-md-12">
@@ -353,7 +363,8 @@
                   </div>
                </div>
             </div>
-            @endif
+            @endif --}}
+
          </div>
       </footer>
       <!--    footer section end   -->
