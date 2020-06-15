@@ -26,7 +26,6 @@
       <div class="single-slide" style="background-image: none">
           <div class="home-decor">
               <div class="home-overlay-img-1">
-                  {{-- <img src="{{'ielts-assets/images/slider/seomar02.png'}}" alt=""> --}}
               </div> 
           </div>
           <!-- Hero Content One Start -->
@@ -35,11 +34,10 @@
                   <div class="col-xl-6 col-lg-7 col-md-7 order-md-1 order-2"> 
                       <!-- slider-text-info Start -->
                       <div class="slider-text-info">
-                          <h1>We Take Learning to New Heights</h1>
-                          <p>We believe everyone has the capacity to be creative. Turitor is
-                           a place where people develop their own potential</p>
+                          <h1>{{convertUtf8($slidersection->title)}}</h1>
+                          <p>{{convertUtf8($slidersection->text)}}</p>
                           <div class="get-started col-lg-4">
-                              <a href="" class="slider-btn">Get Started</a>
+                          <a href="{{convertUtf8($slidersection->button_url)}}" class="slider-btn">{{convertUtf8($slidersection->button_text)}}</a>
                           </div>
                       </div><!--// slider-text-info End -->
                   </div>
@@ -113,58 +111,22 @@
   <div class="service-categories">
    <div class="container">
      <div class="row">
-         <div class="col-xl-3 col-lg-4 col-sm-6">
-           <div class="single-category">
-                             <div class="img-wrapper">
-                             <img src="{{asset('ielts-assets/images/Trending_courses.png')}}" alt="">
-               </div>
-                           <div class="text">
-               <h4>Trending Courses</h4>
-               <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
-             </div>
-           </div>
-         </div>
-         <div class="col-xl-3 col-lg-4 col-sm-6">
-           <div class="single-category">
-                             <div class="img-wrapper">
-                   <img src="{{asset('ielts-assets/images/book_library.png')}}" alt="">
-               </div>
-                           <div class="text">
-               <h4>Books & Liberary</h4>
-               <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
-               
-             </div>
-           </div>
-         </div>
-         <div class="col-xl-3 col-lg-4 col-sm-6">
+         @foreach ($scats as $key => $scat)
+            <div class="col-xl-3 col-lg-4 col-sm-6">
             <div class="single-category">
+                        @if (!empty($scat->image))
                               <div class="img-wrapper">
-                    <img src="{{asset('ielts-assets/images/certifed_teacher.png')}}" alt="">
-                </div>
-                            <div class="text">
-                <h4>Certified Teachers</h4>
-                <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
-                
-              </div>
+                              <img src="{{asset('assets/front/img/service_category_icons/'.$scat->image)}}" alt="">
+                        @endif
+                  </div>
+                  <div class="text">
+                     <h4>{{convertUtf8($scat->name)}}</h4>
+                     <p>{{convertUtf8($scat->short_text)}}</p>
+               </div>
             </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-sm-6">
-            <div class="single-category">
-                              <div class="img-wrapper">
-                    <img src="{{asset('ielts-assets/images/certificate.png')}}" alt="">
-                </div>
-                            <div class="text">
-                <h4>Certification</h4>
-                <p>Lorem ipsum dolor sit amet Sed nec molestie justo</p>
-                
-              </div>
             </div>
-          </div>
-                 
-            
-                 
-             
-             </div>
+         @endforeach
+      </div>
    </div>
  </div>
 
@@ -203,7 +165,7 @@
   <!--   service section end   -->
   @endif --}}
 
-
+  @if(!empty($aboutsection))
    <!-- About Us Area Start -->
    <div class="about-us-area bg-primary border-top-radius section-ptb">
       <div class="container">
@@ -218,24 +180,15 @@
                   <div class="about-us-wrap">
                       <!-- section-title Start -->
                       <div class=" text-left">
-                          <h1>Our Strength</h1>
+                          <h1>{{convertUtf8($aboutsection->title)}}</h1>
                       </div>
                       <!--// section-title End -->
 
                       <!-- About us content Start -->
                       <div class="about-us-content">
-                          <p>
-                           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                           printer took a galley of type and scrambled it to make a type
-                           specimen book
-                          </p>
+                          <p>{{convertUtf8($aboutsection->text)}}</p>
                           <br>
-                          <p>
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                           popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                           desktop publishing software like Aldus PageMaker including
-                           versions of Lorem Ipsum.
-                          </p>
+                          <p>{{convertUtf8($aboutsection->text_two)}}</p>
                       </div>
                       <!--// About us content End -->
                   </div>
@@ -245,6 +198,7 @@
       </div>
   </div>
   <!-- About Us Area End -->
+  @endif
 
 
 
@@ -357,9 +311,8 @@
      <div class="container">
         <div class="row text-center">
            <div class="col-lg-6 offset-lg-3">
-              {{-- <span class="section-title">{{convertUtf8($bs->testimonial_title)}}</span> --}}
               {{-- <h2 class="section-summary">{{convertUtf8($bs->testimonial_subtitle)}}</h2> --}}
-              <h2 class="section-summary">What Students Says</h2>
+              <h2 class="section-summary">{{convertUtf8($bs->testimonial_title)}}</h2>
            </div>
         </div>
         <div class="row">
@@ -456,24 +409,28 @@
           </div>
        </div>
        <div class="row">
+         @foreach ($packages as $key => $package)
             <div class="col-lg-4 col-xl-4 pricing-box">
                 <div class="pricing-title">
-                   <h2>Starter Plan</h2>
+                   <h2>{{convertUtf8($package->title)}}</h2>
                 </div>
                 <div class="pricing">
-                   <h1> <span class="currency">$</span> 500</h1>
+                   <h1> <span class="currency">{{$package->currency}}</span>{{$package->price}}</h1>
                 </div>
                 <div class="features">
-                  <ul>
+                  {!! convertUtf8($package->description) !!}
+                  {{-- <ul>
                      <li>Lorem Ipsum is simply dummy.</li>
                      <li>Lorem Ipsum is simply dummy.</li>
                      <li>Lorem Ipsum is simply dummy.</li>
                      <li>Lorem Ipsum is simply dummy.</li>
-                  </ul>
+                  </ul> --}}
                 </div>
-                <a href="" class="pricing-btn">Get Started</a>
+                {{-- <a href="" class="pricing-btn">Get Started</a> --}}
+                <a href="{{route('front.packageorder.index', $package->id)}}" class="pricing-btn">Get Started</a>
             </div>
-            <div class="col-lg-4 col-xl-4 pricing-box">
+
+            {{-- <div class="col-lg-4 col-xl-4 pricing-box">
                <div class="pricing-title">
                   <h2>Teams</h2>
                </div>
@@ -506,8 +463,8 @@
                  </ul>
                </div>
                <a href="" class="pricing-btn">Get Started</a>
-           </div>
-           
+           </div> --}}
+         @endforeach
        </div>
 
        {{-- <!--packages-->

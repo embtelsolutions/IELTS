@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BasicSetting as BS;
 use App\BasicExtended as BE;
+use App\SliderSection;
+use App\HomepageAbout;
+use App\FooterSignup;
 use App\Slider;
 use App\Scategory;
 use App\Jcategory;
@@ -76,7 +79,15 @@ class FrontendController extends Controller
         $data['blogs'] = Blog::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->limit(6)->get();
         $data['partners'] = Partner::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
         $data['packages'] = Package::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
-        return view('front.index', $data);
+        //slidersection from database
+        $slidersection = SliderSection::where('language_id', $lang_id)->firstOrFail();
+        //aboutsection from database
+        $aboutsection = HomepageAbout::where('language_id', $lang_id)->firstOrFail();
+        //footersigup from database
+        $footersignup = FooterSignup::where('language_id', $lang_id)->firstOrFail();
+
+        
+        return view('front.index', $data)->with(compact('slidersection','aboutsection','footersignup'));
     }
 
     public function services(Request $request)
@@ -530,6 +541,9 @@ class FrontendController extends Controller
         $data['members'] = Member::when($currentLang, function ($query, $currentLang) {
             return $query->where('language_id', $currentLang->id);
         })->get();
+
+        $data['footersignup'] = FooterSignup::where('language_id', $currentLang->id)->firstOrFail();
+
         return view('front.team', $data);
     }
 

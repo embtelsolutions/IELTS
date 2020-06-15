@@ -116,8 +116,8 @@ $selLang = \App\Language::where('code', request()->input('language'))->first();
                   <p id="errfooter_text" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Newsletter Text **</label>
-                  <input type="text" class="form-control" name="newsletter_text" value="{{$abs->newsletter_text}}">
+                  {{-- <label for="">Newsletter Text **</label> --}}
+                  <input type="hidden" class="form-control" name="newsletter_text" value="{{$abs->newsletter_text}}">
                   <p id="errnewsletter_text" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">

@@ -235,6 +235,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/slider-section/{id}/upload', 'Admin\slidersectionController@upload')->name('admin.slider-section.upload');
     Route::post('/slider-section/{id}/update', 'Admin\slidersectionController@update')->name('admin.slider-section.update');
 
+    //Admin About home Routes
+    Route::get('/about-section', 'Admin\homepageaboutController@index')->name('admin.about-section.index');
+    Route::post('/about-section/{id}/upload', 'Admin\homepageaboutController@upload')->name('admin.about-section.upload');
+    Route::post('/about-section/{id}/update', 'Admin\homepageaboutController@update')->name('admin.about-section.update');
+
     // Admin Service Section Routes
     Route::get('/servicesection', 'Admin\ServicesectionController@index')->name('admin.servicesection.index');
     Route::post('/servicesection/{langid}/update', 'Admin\ServicesectionController@update')->name('admin.servicesection.update');
@@ -336,7 +341,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/footer/{langid}/upload', 'Admin\FooterController@upload')->name('admin.footer.upload');
     Route::post('/footer/{langid}/update', 'Admin\FooterController@update')->name('admin.footer.update');
 
-
+    //footer Signup content route
+    Route::get('/footersigup', 'Admin\footerSignupController@index')->name('admin.footersigup.index');
+    Route::post('/footersigup/{langid}/update', 'Admin\footerSignupController@update')->name('admin.footersigup.update');
 
     // Admin Ulink Routes
     Route::get('/ulinks', 'Admin\UlinkController@index')->name('admin.ulink.index');

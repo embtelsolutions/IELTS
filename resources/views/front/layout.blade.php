@@ -301,46 +301,48 @@
       <!--    announcement banner section start   -->
       <a class="announcement-banner" href="{{asset('assets/front/img/'.$bs->announcement)}}"></a>
       <!--    announcement banner section end   -->
-<!----Signup Content--->
-      <div class="signup-section bg-color-blue">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="single-signup">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <img src="{{asset('ielts-assets/images/signup_teacher.png')}}" alt="">
-                        </div>
-                        <div class="col-md-6">
-                           <h4>Sign Up As a Teacher</h4>
-                           <p>There’s a new elite forming in higher education: universities that have millions of enrollments.</p>
-                           <div class="mt-5">
-                              <a href="#">Apply Now</a>
+   @if(!empty($footersignup))
+      <!----Signup Content--->
+            <div class="signup-section bg-color-blue">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="single-signup">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <img src="{{asset('ielts-assets/images/signup_teacher.png')}}" alt="">
+                              </div>
+                              <div class="col-md-6">
+                                 <h4>{{convertUtf8($footersignup->title_one)}}</h4>
+                                 <p>{{convertUtf8($footersignup->description_one)}}</p>
+                                 <div class="mt-5">
+                                    <a href="{{convertUtf8($footersignup->button_url_one)}}">{{convertUtf8($footersignup->button_text_one)}}</a>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="single-signup">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <img src="{{asset('ielts-assets/images/signup_student.png')}}" alt="">
-                        </div>
-                        <div class="col-md-6">
-                           <h4>Sign Up As a Student</h4>
-                           <p>Join millions of people from around the world learning together. Online learning is as easy and natural as chatting.</p>
-                           <div class="mt-5">
-                              <a href="#">Apply Now</a>
+                     <div class="col-md-6">
+                        <div class="single-signup">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <img src="{{asset('ielts-assets/images/signup_student.png')}}" alt="">
+                              </div>
+                              <div class="col-md-6">
+                                 <h4>{{convertUtf8($footersignup->title_two)}}</h4>
+                                 <p>{{convertUtf8($footersignup->description_two)}}</p>
+                                 <div class="mt-5">
+                                    <a href="{{convertUtf8($footersignup->button_url_two)}}">{{convertUtf8($footersignup->button_text_two)}}</a>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
-      </div>
-<!----Signup Content--->
+      <!----Signup Content--->
+   @endif
 
       <!--    footer section start   -->
       <footer class="footer-section">

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SliderSection extends Model
+class HomepageAbout extends Model
 {
     //
     public function language() {

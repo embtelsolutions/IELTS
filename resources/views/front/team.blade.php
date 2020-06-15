@@ -16,8 +16,8 @@
                <div class="col-md-6">
                   <div class="text-center">
                      {{-- <h3>{{convertUtf8($bs->team_title)}}</h3> --}}
-                     <h3>A leadership team with vision</h3>
-                     <p>Our executives lead by example and guide us to accomplish great things everyday. Online learning offers a new way to explore</p>
+                     <h3>{{convertUtf8($bs->team_section_title)}}</h3>
+                     <p>{{convertUtf8($bs->team_section_subtitle)}}</p>
                   </div>
                </div>
             </div>

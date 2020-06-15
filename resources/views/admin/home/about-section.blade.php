@@ -19,7 +19,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Slider Section</h4>
+    <h4 class="page-title">About Section</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -36,7 +36,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Slider Section</a>
+        <a href="#">About Section</a>
       </li>
     </ul>
   </div>
@@ -46,7 +46,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-10">
-                    <div class="card-title">Update Slider Section</div>
+                    <div class="card-title">Update About Section</div>
                 </div>
                 <div class="col-lg-2">
                     @if (!empty($langs))
@@ -104,29 +104,25 @@
               </form> --}}
 
 
-              <form id="ajaxForm" action="{{route('admin.slider-section.update', $lang_id)}}" method="post">
+              <form id="ajaxForm" action="{{route('admin.about-section.update', $lang_id)}}" method="post">
                 @csrf
                 <div class="form-group">
                   <label for="">Title **</label>
-                  <input type="text" class="form-control" name="slider_section_title" value="{{$abs->title}}">
-                  <p id="errslider_section_title" class="em text-danger mb-0"></p>
+                  <input type="text" class="form-control" name="title" value="{{$abs->title}}">
+                  <p id="errabout_section_title" class="em text-danger mb-0"></p>
                 </div>
                 
                 <div class="form-group">
-                  <label for="">Text **</label>
-                  <input name="slider_section_text" class="form-control" value="{{$abs->text}}">
-                  <p id="errslider_section_text" class="em text-danger mb-0"></p>
+                  <label for="">Paragraph One</label>
+                  <input name="paragraph_one" class="form-control" value="{{$abs->text}}">
+                  <p id="errabout_section_text" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Button Text</label>
-                  <input type="text" class="form-control" name="slider_section_button_text" value="{{$abs->button_text}}">
-                  <p id="errslider_section_button_text" class="em text-danger mb-0"></p>
+                  <label for="">Paragraph Two</label>
+                  <input type="text" class="form-control" name="paragraph_two" value="{{$abs->text_two}}">
+                  <p id="errabout_section_button_text" class="em text-danger mb-0"></p>
                 </div>
-                <div class="form-group">
-                  <label for="">Button URL</label>
-                  <input type="text" class="form-control ltr" name="slider_section_button_url" value="{{$abs->button_url}}">
-                  <p id="errslider_section_button_url" class="em text-danger mb-0"></p>
-                </div>
+              
               </form>
 
             </div>

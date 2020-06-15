@@ -19,7 +19,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Team Section</h4>
+    <h4 class="page-title">Teacher Section</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -36,13 +36,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Team Section</a>
+        <a href="#">Teacher Section</a>
       </li>
     </ul>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
+      {{-- <div class="card">
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-10">
@@ -105,7 +105,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> --}}
       <div class="card">
         <div class="card-header">
           <div class="card-title">Title & Subtitle</div>
