@@ -2,10 +2,25 @@
 
 @section('content')
   <div class="mt-2 mb-4">
-    <h2 class="text-white pb-2">Welcome back, {{Auth::guard('admin')->user()->first_name}} {{Auth::guard('admin')->user()->last_name}}!</h2>
+    {{-- <h2 class="text-white pb-2">Welcome back, {{Auth::guard('admin')->user()->first_name}} {{Auth::guard('admin')->user()->last_name}}!</h2> --}}
   </div>
   <div class="row">
-		<div class="col-sm-6 col-md-4">
+		<div class="col-md-12">
+			<div class="card">
+			<div class="card-header">
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="card-title">
+							<h2 class="text-white text-center pb-2">
+								Welcome back, {{Auth::guard('admin')->user()->first_name}} {{Auth::guard('admin')->user()->last_name}}!
+							</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		{{-- <div class="col-sm-6 col-md-4">
 			<div class="card card-stats card-primary card-round">
 				<div class="card-body">
 					<div class="row">
@@ -118,11 +133,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 
 
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-lg-6">
       <div class="row row-card-no-pd">
     		<div class="col-md-12">
@@ -232,13 +247,13 @@
     		</div>
     	</div>
     </div>
-  </div>
+  </div> --}}
 
 
 
 
   <!-- Send Mail Modal -->
-  <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  {{-- <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -273,5 +288,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

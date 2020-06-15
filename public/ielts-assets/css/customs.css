@@ -184,6 +184,13 @@
     border-radius: 100%;
     margin: 0px 10px;
 }
+@media(min-width:320px) and (max-width:420px){
+    .footer-social-links .social-links li{
+        border-radius: 21px;
+        padding: 16px;
+    }
+}
+
 .footer-social-links .social-links li i{
     color: #232323;
 }
@@ -192,4 +199,34 @@
 }
 .bg-dark{
     background-color: white;
+}
+
+/*team page filter responsive*/
+@media(min-width:320px) and (max-width:420px){
+    ul.teacher-filter{
+        display: block;
+        left: 0px;
+        text-align: center;
+    }
+}
+@media(width:1024px){
+    ul.teacher-filter{
+        left: 4%;
+    }
+    .filter-div{
+        width: 60%;
+    }
+}
+@media(width:768px){
+    ul.teacher-filter{
+        left: 3%;
+    }
+    .filter-div{
+        width: 75%;
+    }
+}
+@media (min-width: 1280px){
+    .col-lg-4.col-xl-4.pricing-box{
+        max-width: 30%;
+    }
 }

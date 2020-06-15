@@ -39,6 +39,8 @@
       <link rel="stylesheet" href="{{asset('ielts-assets/css/style.css')}}">
 
       <link rel="stylesheet" href="{{asset('ielts-assets/css/customs.css')}}">
+   
+
         
       <!---css style linkg--->
 
@@ -279,6 +281,9 @@
                                   </li>
                                   <li><a href="#">CONTACT</a></li>
                                   <li><a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                  @if(auth()->check())
+                                    <li>{{Auth::guard('admin')->user()->first_name}}</li>
+                                  @endif
                               </ul>
                           </nav>
                       </div><!--// main-menu-area End -->
@@ -312,7 +317,7 @@
                               <div class="col-md-6">
                                  <img src="{{asset('ielts-assets/images/signup_teacher.png')}}" alt="">
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-lg-6 signup-teacher">
                                  <h4>{{convertUtf8($footersignup->title_one)}}</h4>
                                  <p>{{convertUtf8($footersignup->description_one)}}</p>
                                  <div class="mt-5">
@@ -328,7 +333,7 @@
                               <div class="col-md-6">
                                  <img src="{{asset('ielts-assets/images/signup_student.png')}}" alt="">
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-lg-6 signup-student">
                                  <h4>{{convertUtf8($footersignup->title_two)}}</h4>
                                  <p>{{convertUtf8($footersignup->description_two)}}</p>
                                  <div class="mt-5">
@@ -497,7 +502,7 @@
          toastr["error"]("{{__(session('error'))}}");
       </script>
       @endif
-
+      @stack('before-scripts')
       <!--Start of subscribe functionality-->
       <script type="text/javascript">
         $(document).ready(function() {

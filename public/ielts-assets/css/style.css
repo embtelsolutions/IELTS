@@ -3224,6 +3224,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-top-left-radius: 5%!important;
   border-top-right-radius: 5%!important;
 }
+
+@media(min-width:320px) and (max-width:420px){
+  .border-top-radius{
+    border-top-left-radius: 24px!important;
+    border-top-right-radius: 24px!important;
+  }
+  .border-bottom-radius{
+    border-bottom-left-radius: 24px!important;
+    border-bottom-right-radius:24px!important;
+  }
+
+}
 .main-menu li a:hover:before ,.main-menu li a:hover:after,.main-menu li a:before,.main-menu li a:after {
   display: none;
 }
@@ -3340,7 +3352,7 @@ ul.teacher-filter li {
 ul.teacher-filter li.active {
   /* color: red; */
   border-bottom: 5px solid;
-  margin: 0px 15px;
+  /* margin: 0px 15px; */
 }
 span.name {
   position: relative;
@@ -3365,6 +3377,14 @@ p.star i{
   margin: 0px 5px;
   color: #ffc107;
 }
+
+/*responsive css p star*/
+  @media (min-width:320px) and(max-width:420px){
+    p.star{
+      left: 49%;
+    }
+  }
+/*end*/
 .single-testimonial {
   padding: 40px 40px 40px;
   background-color: white;
@@ -3381,4 +3401,24 @@ p.star i{
 }
 .single-testimonial::before{
   display: none;
+}
+.mobile-menu .mean-bar .mean-nav{
+  background-color: #0080e2;
+}
+.mobile-menu .mean-bar .meanmenu-reveal span.menu-close::before, .mobile-menu .mean-bar .meanmenu-reveal span.menu-close::after{
+  background-color: #0080e2;
+}
+.mobile-menu .mean-bar .meanmenu-reveal span.menu-bar, .mobile-menu .mean-bar .meanmenu-reveal span.menu-bar::after{
+  background-color: #0080e2;
+  
+}
+
+/*responsive css*/
+@media (width:1024px){
+  .col-lg-4.col-md-3.col-xl-4.pricing-box{
+    max-width: 29.333333%;
+  }
+  .service-categories .single-category{
+    margin-bottom: 20px;
+  }
 }

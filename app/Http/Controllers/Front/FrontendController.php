@@ -543,6 +543,18 @@ class FrontendController extends Controller
         })->get();
 
         $data['footersignup'] = FooterSignup::where('language_id', $currentLang->id)->firstOrFail();
+        $data['reading'] = Member::when($currentLang, function ($query, $currentLang) {
+            return $query->where('language_id', $currentLang->id);
+        })->where('rank','=','reading')->get();
+        $data['Writing'] = Member::when($currentLang, function ($query, $currentLang) {
+            return $query->where('language_id', $currentLang->id);
+        })->where('rank','=','Writing')->get();
+        $data['listning'] = Member::when($currentLang, function ($query, $currentLang) {
+            return $query->where('language_id', $currentLang->id);
+        })->where('rank','=','listning')->get();
+        $data['speaking'] = Member::when($currentLang, function ($query, $currentLang) {
+            return $query->where('language_id', $currentLang->id);
+        })->where('rank','=','speaking')->get();
 
         return view('front.team', $data);
     }
@@ -798,4 +810,6 @@ class FrontendController extends Controller
         Session::flash('success', 'Order placed successfully!');
         return back();
     }
+
+
 }

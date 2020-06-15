@@ -212,6 +212,21 @@ $(document).ready(function() {
             }
         })
     });
+
+    //menu
+    
 });
 </script>
 @endsection
+
+@push('before-scripts')
+<script>
+   $(document).ready(function(){
+
+      $('.main-navigation ul li a').click(function() {
+            $('.main-navigation ul li a').removeClass('active');
+            $(this).addClass('active');
+         });
+   })
+</script>
+@endpush

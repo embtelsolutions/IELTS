@@ -410,7 +410,7 @@
        </div>
        <div class="row">
          @foreach ($packages as $key => $package)
-            <div class="col-lg-4 col-xl-4 pricing-box">
+            <div class="col-lg-4 col-md-3 col-xl-4 pricing-box">
                 <div class="pricing-title">
                    <h2>{{convertUtf8($package->title)}}</h2>
                 </div>
