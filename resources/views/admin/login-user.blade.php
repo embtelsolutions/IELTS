@@ -14,42 +14,26 @@
         <img class="login-logo" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="">
       </div>
       <div class="form">
-        @if($message = session('message'))
-          <div class="alert alert-success">{!! $message !!}</div>
-      @endif
-        @if (session()->has('errors'))
+        @if (session()->has('alert'))
           <div class="alert alert-danger fade show" role="alert" style="font-size: 14px;">
             <strong>Oops!</strong> {{session('alert')}}
           </div>
         @endif
-        <form action="{{route('admin.register.post')}}" method="POST">
+        @if($message = session('message'))
+          <div class="alert alert-success">{!! $message !!}</div>
+        @endif
+        <form class="login-form" action="{{route('admin.login-user.post')}}" method="POST">
           @csrf
-          {{-- usernam --}}
-          <input type="text" name="name" placeholder="Name"/>
-          @if ($errors->has('name'))
-            <p class="text-danger text-left">{{$errors->first('name')}}</p>
-          @endif
-          {{-- email --}}
-          <input type="email" name="email" placeholder="example@email.com"/>
+          <input type="email" name="email" placeholder="email"/>
           @if ($errors->has('email'))
             <p class="text-danger text-left">{{$errors->first('email')}}</p>
           @endif
-          {{-- user type --}}
-          <select class="form-control mg-10" id="type" name="role">
-            <option>Teacher</option>
-            <option>Student</option>
-            <option>Institution</option>
-          </select>
-
-          {{-- password --}}
           <input type="password" name="password" placeholder="password"/>
           @if ($errors->has('password'))
             <p class="text-danger text-left">{{$errors->first('password')}}</p>
           @endif
-
-          <button type="submit">Register</button>
+          <button type="submit">login</button>
         </form>
-
         {{-- <a class="forget-link" href="{{route('admin.forget.form')}}">Forgot Password / Username ?</a> --}}
       </div>
     </div>
@@ -82,17 +66,7 @@
         time: 1000,
         delay: 4000,
       });
-
-     
     </script>
     @endif
-    <script>
-
-         $(document).ready(function(){
-          setTimeout(function(){
-              $(".alert-success").fadeIn(400);
-          }, 5000)
-      });
-    </script>
   </body>
 </html>

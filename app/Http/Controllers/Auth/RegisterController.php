@@ -72,8 +72,6 @@ class RegisterController extends Controller
             // return response(['success' => true]);
             session()->flash('message', "You've Successfully registered");
             return redirect()->back();
-           
-           
         }
         // session()->flash('errors', $validator->errors());
         return redirect()->back()->with('errors',$validator->errors());

@@ -267,7 +267,8 @@
                                   </li>
                                   <li><a href="#">COURSES</a>
                                     <li><a href="#">ABOUT</a></li>
-                                    <li><a href="#">REGISTRATION</a></li>
+                                  <li><a href="{{route('admin.register')}}">REGISTRATION</a></li>
+                                    {{-- <li><a href="{{route('admin.login-user.logout')}}">Logout</a></li> --}}
                                       {{-- <ul class="sub-menu">
                                           <li><a href="service-2.html">Service 2</a></li>
                                           <li><a href="service-3.html">Service 3</a></li>
@@ -281,10 +282,11 @@
                                       </ul> --}}
                                   </li>
                                   <li><a href="#">CONTACT</a></li>
-                                  <li><a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                                  @if(auth()->check())
-                                    <li>{{Auth::guard('admin')->user()->first_name}}</li>
-                                  @endif
+                                 @if(auth()->check())
+                                       <li><a>Hi {{Auth::guard('user')->user()->name}}</a></li>
+                                 @else
+                                    <li><a href="{{route('admin.login-user')}}" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                 @endif
                               </ul>
                           </nav>
                       </div><!--// main-menu-area End -->
