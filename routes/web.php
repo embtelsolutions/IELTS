@@ -69,11 +69,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
 Route::post('/register-post', 'Auth\RegisterController@register')->name('admin.register.post');
 
-//login routes
-Route::get('/login-user', 'Auth\LoginController@index')->name('admin.login-user');
-Route::post('/login-user-post', 'Auth\LoginController@authenticate')->name('admin.login-user.post');
-Route::get('logout', 'Auth\LoginController@logout')->name('admin.login-user.logout');
 
+//login routes
+Route::group([ 'middleware' => 'guest'], function () {
+  Route::get('/login-user', 'Auth\LoginController@index')->name('admin.login-user');
+  Route::post('/login-user-post', 'Auth\LoginController@authenticate')->name('admin.login-user.post');
+  Route::get('logout', 'Auth\LoginController@logout')->name('admin.login-user.logout');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {
 

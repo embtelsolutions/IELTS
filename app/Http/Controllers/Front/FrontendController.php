@@ -39,6 +39,7 @@ use App\Mail\OrderPackage;
 use App\Mail\OrderQuote;
 use App\PackageInput;
 use App\QuoteInput;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Validator;
 use Config;

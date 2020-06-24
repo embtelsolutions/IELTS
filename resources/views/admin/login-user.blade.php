@@ -34,7 +34,7 @@
           @endif
           <button type="submit">login</button>
         </form>
-        {{-- <a class="forget-link" href="{{route('admin.forget.form')}}">Forgot Password / Username ?</a> --}}
+        <a class="forget-link" href="{{route('front.index')}}">Back to Website</a>
       </div>
     </div>
 

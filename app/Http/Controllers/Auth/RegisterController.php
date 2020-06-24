@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Input;
-
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -49,8 +49,12 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         //abort_unless(config('access.registration'), 404);
-
+        if(Auth::guard('user')->check())
+        {
+            return redirect()->route('front.index');
+        }
         return view('admin.registration');
+        
         // ->withSocialiteLinks((new Socialite)->getSocialLinks());
     }
      /**

@@ -267,13 +267,14 @@
                                   </li>
                                   <li><a href="#">COURSES</a>
                                     <li><a href="#">ABOUT</a></li>
-                                  <li><a href="{{route('admin.register')}}">REGISTRATION</a></li>
-                                    {{-- <li><a href="{{route('admin.login-user.logout')}}">Logout</a></li> --}}
-                                      {{-- <ul class="sub-menu">
-                                          <li><a href="service-2.html">Service 2</a></li>
-                                          <li><a href="service-3.html">Service 3</a></li>
-                                      </ul> --}}
-                                  </li>
+                                    @if(!Auth::guard('user')->check())
+                                       <li><a href="{{route('admin.register')}}">REGISTRATION</a></li>
+                                          {{-- <ul class="sub-menu">
+                                                <li><a href="service-2.html">Service 2</a></li>
+                                                <li><a href="service-3.html">Service 3</a></li>
+                                          </ul> --}}
+                                       </li>
+                                    @endauth
                                   <li class="@if(request()->path() == 'teachers') active  @endif"><a href="{{route('front.team')}}">TEACHER</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="errer-404.html">Error 404</a></li>
@@ -282,9 +283,14 @@
                                       </ul> --}}
                                   </li>
                                   <li><a href="#">CONTACT</a></li>
-                                 @if(auth()->check())
-                                       <li><a>Hi {{Auth::guard('user')->user()->name}}</a></li>
-                                 @else
+                               
+                                  @if(Auth::guard('user')->check())
+                                       <li><a>Hi {{Auth::guard('user')->user()->name}}</a>
+                                          <ul class="sub-menu">
+                                             <li><a href="{{route('admin.login-user.logout')}}">Logout</a></li>
+                                          </ul>
+                                       </li>
+                                  @else
                                     <li><a href="{{route('admin.login-user')}}" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                                  @endif
                               </ul>

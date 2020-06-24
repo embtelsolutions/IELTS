@@ -41,4 +41,8 @@ class User extends Authenticatable
     // {
     //     $this->attributes['password'] = bcrypt($password);
     // }
+
+    public function role($role){
+        $this->attributes['role'] = $role;
+    }
 }

@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -42,8 +42,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        // $this->middleware('auth');
+
     }
     public function index(){
+
+      
+        if(Auth::guard('user')->check())
+        {
+            return redirect()->route('front.index');
+        }
         return view('admin.login-user');
     }
 
@@ -62,7 +70,12 @@ class LoginController extends Controller
     
         if (Auth::guard('user')->attempt($userdata))
         {
+            if(Auth::guard('user')->user()->role == "Teacher")
+            {
+                return redirect()->route('front.team');
+            }
             return redirect()->route('front.index');
+      
         }
         return redirect()->back()->with('alert','Username and Password Not Matched');
       }
@@ -71,5 +84,9 @@ class LoginController extends Controller
             Auth::guard('user')->logout();
             session()->flash('message','Logout Successfully');
             return redirect()->route('admin.login-user');
+      }
+
+      public function redirectAsRole($request){
+
       }
 }
