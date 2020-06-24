@@ -247,32 +247,33 @@
       <div class="header-area inner-header">
           <div class="container">
               <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-2">
                       <!-- logo Start -->
                       <div class="logo">
                           {{-- <a href="index.html"><img src="{{asset('ielts-assets/images/logo/logo.png')}}" alt=""></a> --}}
-                          <a href="index.html"><img src="https://via.placeholder.com/155x32?text=logo" alt=""></a>
+                          <a href="{{route('front.index')}}"><img src="{{asset('assets/front/img/'.$bs->logo)}}" alt=""></a>
                       </div><!--// logo End -->
                   </div>
-                  <div class="col-lg-8">
+                  <div class="col-lg-10">
                       <!-- main-menu-area Start -->
                       <div class="main-menu">
                           <nav class="main-navigation">
                               <ul>
-                                  <li class=""><a href="{{route('front.index')}}">HOME</a>
+                                  <li class="@if(request()->path() == '/') active  @endif"><a href="{{route('front.index')}}">HOME</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="index.html">Home Page 1</a></li>
                                           <li><a href="index-2.html">Home Page 2</a></li>
                                       </ul> --}}
                                   </li>
-                                  <li><a href="#">ABOUT</a></li>
                                   <li><a href="#">COURSES</a>
+                                    <li><a href="#">ABOUT</a></li>
+                                    <li><a href="#">REGISTRATION</a></li>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="service-2.html">Service 2</a></li>
                                           <li><a href="service-3.html">Service 3</a></li>
                                       </ul> --}}
                                   </li>
-                                  <li><a href="{{route('front.team')}}">TEACHER</a>
+                                  <li class="@if(request()->path() == 'teachers') active  @endif"><a href="{{route('front.team')}}">TEACHER</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="errer-404.html">Error 404</a></li>
                                           <li><a href="case-studie.html">Case Study</a></li>

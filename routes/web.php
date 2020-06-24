@@ -64,6 +64,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
   Route::post('/sendmail', 'Admin\ForgetController@sendmail')->name('admin.forget.mail');
 });
 
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
+Route::post('/register-post', 'Auth\RegisterController@register')->name('admin.register.post');
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {
 
