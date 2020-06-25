@@ -73,8 +73,18 @@ Route::post('/register-post', 'Auth\RegisterController@register')->name('admin.r
 //login routes
 Route::group([ 'middleware' => 'guest'], function () {
   Route::get('/login-user', 'Auth\LoginController@index')->name('admin.login-user');
-  Route::post('/login-user-post', 'Auth\LoginController@authenticate')->name('admin.login-user.post');
+  Route::any('/login-user-post', 'Auth\LoginController@authenticate')->name('admin.login-user.post');
   Route::get('logout', 'Auth\LoginController@logout')->name('admin.login-user.logout');
+});
+
+//teacher admin
+Route::group([ 'middleware' => 'teacher'], function () {
+  Route::get('/teacher/admin', 'Auth\TeacherController@index')->name('teacher.index');
+});
+
+//student
+Route::group([ 'middleware' => 'student'], function () {
+  Route::get('/student', 'Auth\StudentController@index')->name('student.index');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {

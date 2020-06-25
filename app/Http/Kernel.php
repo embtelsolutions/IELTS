@@ -70,6 +70,8 @@ class Kernel extends HttpKernel
         'checkpermission' => \App\Http\Middleware\CheckPermission::class,
         'setlang' => \App\Http\Middleware\SetLangMiddleware::class,
         'checkstatus' => \App\Http\Middleware\CheckStatus::class,
+        'teacher' => \App\Http\Middleware\TeacherMiddleware::class,
+        'student' => \App\Http\Middleware\StudentMiddleware::class,
     ];
 
     /**

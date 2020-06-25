@@ -287,6 +287,11 @@
                                   @if(Auth::guard('user')->check())
                                        <li><a>Hi {{Auth::guard('user')->user()->name}}</a>
                                           <ul class="sub-menu">
+                                             @if(Auth::guard('user')->user()->role == 'Teacher')
+                                             <li><a href="{{route('teacher.index')}}">Dashboard</a></li>
+                                             @elseif(Auth::guard('user')->user()->role == 'Student')
+                                             <li><a href="{{route('student.index')}}">Dashboard</a></li>
+                                             @endif
                                              <li><a href="{{route('admin.login-user.logout')}}">Logout</a></li>
                                           </ul>
                                        </li>

@@ -7,8 +7,12 @@
   	<link rel="icon" href="{{asset('assets/front/img/'.$bs->favicon)}}">
     <link rel="stylesheet" href="{{asset('assets/admin/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/css/login.css')}}">
+    <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    
   </head>
   <body>
+    <a class="home-link text-right" href="{{route('front.index')}}">Back to Website</a>
     <div class="login-page">
       <div class="text-center mb-4">
         <img class="login-logo" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="">
@@ -49,7 +53,7 @@
 
           <button type="submit">Register</button>
         </form>
-
+        <a class="forget-link" href="{{route('admin.login-user')}}">or Sigin Now</a>
         {{-- <a class="forget-link" href="{{route('admin.forget.form')}}">Forgot Password / Username ?</a> --}}
       </div>
     </div>

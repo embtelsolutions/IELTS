@@ -117,3 +117,15 @@ a.forget-link {
   margin-bottom:15px;
 
 }
+a.home-link {
+  display: block;
+  position: relative;
+  right: 10%;
+  margin-top: 20px;
+}
+a.home-link:before {
+  content: '\f060';
+  font-family: 'FontAwesome';
+  padding: 13px;
+  /* font-size: 27px; */
+}

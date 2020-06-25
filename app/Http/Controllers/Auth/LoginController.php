@@ -72,9 +72,12 @@ class LoginController extends Controller
         {
             if(Auth::guard('user')->user()->role == "Teacher")
             {
-                return redirect()->route('front.team');
+                return redirect()->route('teacher.index');
             }
-            return redirect()->route('front.index');
+            else if (Auth::guard('user')->user()->role == "Student"){
+                return redirect()->route('student.index');
+            }
+                return redirect()->route('front.index');
       
         }
         return redirect()->back()->with('alert','Username and Password Not Matched');
