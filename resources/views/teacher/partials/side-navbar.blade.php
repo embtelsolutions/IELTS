@@ -1,3 +1,4 @@
+
 @php
   $default = \App\Language::where('is_default', 1)->first();
   $admin = Auth::guard('user')->user();
@@ -67,7 +68,7 @@
 
 
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Basic Settings', $permissions)))
+        
           {{-- Basic Settings --}}
           <li class="nav-item
           @if(request()->path() == 'admin/favicon') active
@@ -88,7 +89,7 @@
           @endif">
             <a data-toggle="collapse" href="#basic">
               <i class="la flaticon-settings"></i>
-              <p>Basic Settings</p>
+              <p>Test</p>
               <span class="caret"></span>
             </a>
             <div class="collapse
@@ -110,21 +111,21 @@
             @endif" id="basic">
               <ul class="nav nav-collapse">
                 <li class="@if(request()->path() == 'admin/favicon') active @endif">
-                  <a href="{{route('admin.favicon') . '?language=' . $default->code}}">
-                    <span class="sub-item">Favicon</span>
+                  <a href=" {{route('teacher.test.index')}}">
+                    <span class="sub-item">All Test</span>
                   </a>
                 </li>
-                <li class="@if(request()->path() == 'admin/logo') active @endif">
-                  <a href="{{route('admin.logo') . '?language=' . $default->code}}">
-                    <span class="sub-item">Logo</span>
+                {{-- <li class="@if(request()->path() == 'admin/logo') active @endif">
+                  <a href=". '?language=' . $default->code}}">
+                    <span class="sub-item">Create Test</span>
                   </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/social') active
+                </li> --}}
+                {{-- <li class="@if(request()->path() == 'admin/social') active
                   @elseif(request()->is('admin/social/*')) active @endif">
-                    <a href="{{route('admin.social.index')}}">
+                    <a href="">
                       <span class="sub-item">Social Links</span>
                     </a>
-                  </li>
+                  </li> --}}
                 {{-- <li class="@if(request()->path() == 'admin/homeversion') active @endif">
                   <a href="{{route('admin.homeversion') . '?language=' . $default->code}}">
                     <span class="sub-item">Home Versions</span>
@@ -183,7 +184,7 @@
               </ul>
             </div>
           </li>
-        @endif
+        
 
 
 
@@ -219,7 +220,7 @@
         @endif --}}
 
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Packages', $permissions)))
+        
           <!-- Package Management -->
           <li class="nav-item
           @if(request()->path() == 'admin/packages') active
@@ -288,7 +289,7 @@
               </ul>
             </div>
           </li>
-        @endif
+        
 
 
         {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Quote Management', $permissions)))

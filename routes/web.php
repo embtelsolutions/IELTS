@@ -80,6 +80,13 @@ Route::group([ 'middleware' => 'guest'], function () {
 //teacher admin
 Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/teacher/admin', 'Auth\TeacherController@index')->name('teacher.index');
+  
+  //test routes
+  Route::get('/test', 'Admin\test\TestController@index')->name('teacher.test.index');
+  Route::post('/test/store', 'Admin\test\TestController@store')->name('teacher.test.store');
+  Route::post('/test/update', 'Admin\test\TestController@update')->name('teacher.test.update');
+  // Route::get('/test/{id}/inputEdit', 'Admin\TestController@inputEdit')->name('teacher.test.inputEdit');
+  Route::post('/test/delete', 'Admin\test\TestController@delete')->name('teacher.test.delete');
 });
 
 //student
