@@ -64,7 +64,7 @@
                                  {{-- <th scope="col">Currency</th>
                                  <th scope="col">Price</th> --}}
                                  <th scope="col">Details</th>
-                                 <th scope="col">Serial Number</th>
+                                 <th scope="col">Type</th>
                                  <th scope="col">Actions</th>
                               </tr>
                            </thead>
@@ -142,7 +142,7 @@
    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Add Package</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Test</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -223,7 +223,7 @@
    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit Package</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit Test</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
