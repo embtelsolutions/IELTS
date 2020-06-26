@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\test;
 
 use Illuminate\Http\Request;
 use App\Test;
+use App\TestUser;
+use App\user;
 use App\BasicSetting;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -13,6 +15,7 @@ use App\Language;
 use App\Mail\ContactMail;
 use App\PackageInput;
 use App\PackageInputOption;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Validator;
 use Session;
@@ -106,5 +109,43 @@ class TestController extends Controller
         Session::flash('success', 'Test updated successfully!');
         return "success";
         
+    }
+
+    public function assign(Request $request){
+
+
+        $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
+        $data['students'] = user::where('role','Student')->get();
+        // dd($data['packages']);
+
+        // foreach($data['packages'] as $package){
+        //     $test_id = $package->id;
+        //     $user_id = TestUser::where('test_id',$test_id)
+        //                                         ->first();                                
+        //     $assigned = user::where('id',$user_id)->get();
+
+        // }
+        // dd($assigned);
+        
+        
+        // dd($data['students']);
+        return view('teacher.test.Assign',$data);
+    }
+
+
+    public function assignTo(Request $request){
+
+        // dd($request->all());
+        
+        $input = TestUser::firstOrNew(array('id' => Input::get('package_id')));
+        // dd($input);
+        $input->test_id = $request->package_id;
+        $input->user_id = json_encode($request->students);
+        $input->teacher_id = Auth::guard('user')->user()->id;
+        $input->save();
+         
+        Session::flash('success', 'Test Assigned successfully!');
+        return "success";
+
     }
 }

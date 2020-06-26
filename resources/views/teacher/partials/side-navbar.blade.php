@@ -71,8 +71,8 @@
         
           {{-- Basic Settings --}}
           <li class="nav-item
-          @if(request()->path() == 'admin/favicon') active
-          @elseif(request()->path() == 'admin/logo') active
+          @if(request()->path() == '/test') active
+          @elseif(request()->path() == 'test/assign') active
           @elseif(request()->path() == 'admin/homeversion') active
           @elseif(request()->path() == 'admin/basicinfo') active
           @elseif(request()->path() == 'admin/support') active
@@ -93,8 +93,8 @@
               <span class="caret"></span>
             </a>
             <div class="collapse
-            @if(request()->path() == 'admin/favicon') show
-            @elseif(request()->path() == 'admin/logo') show
+            @if(request()->path() == '/test') show
+            @elseif(request()->path() == 'test/assign') show
             @elseif(request()->path() == 'admin/homeversion') show
             @elseif(request()->path() == 'admin/basicinfo') show
             @elseif(request()->path() == 'admin/support') show
@@ -110,16 +110,16 @@
             @elseif(request()->path() == 'admin/cookie-alert') show
             @endif" id="basic">
               <ul class="nav nav-collapse">
-                <li class="@if(request()->path() == 'admin/favicon') active @endif">
+                <li class="@if(request()->path() == '/test') active @endif">
                   <a href=" {{route('teacher.test.index')}}">
                     <span class="sub-item">All Test</span>
                   </a>
                 </li>
-                {{-- <li class="@if(request()->path() == 'admin/logo') active @endif">
-                  <a href=". '?language=' . $default->code}}">
-                    <span class="sub-item">Create Test</span>
+                <li class="@if(request()->path() == 'test/assign') active @endif">
+                <a href="{{route('teacher.test.assign')}}">
+                    <span class="sub-item">Assign Test</span>
                   </a>
-                </li> --}}
+                </li>
                 {{-- <li class="@if(request()->path() == 'admin/social') active
                   @elseif(request()->is('admin/social/*')) active @endif">
                     <a href="">
@@ -222,7 +222,7 @@
 
         
           <!-- Package Management -->
-          <li class="nav-item
+          {{-- <li class="nav-item
           @if(request()->path() == 'admin/packages') active
           @elseif(request()->path() == 'admin/package/form') active
           @elseif(request()->is('admin/package/*/inputEdit')) active
@@ -231,8 +231,8 @@
           @elseif(request()->path() == 'admin/processing/orders') active
           @elseif(request()->path() == 'admin/completed/orders') active
           @elseif(request()->path() == 'admin/rejected/orders') active
-          @endif">
-            <a data-toggle="collapse" href="#packages">
+          @endif"> --}}
+            {{-- <a data-toggle="collapse" href="#packages">
               <i class="la flaticon-box-1"></i>
               <p>Package Management</p>
               <span class="caret"></span>
@@ -247,7 +247,7 @@
             @elseif(request()->path() == 'admin/completed/orders') show
             @elseif(request()->path() == 'admin/rejected/orders') show
             @endif" id="packages">
-              <ul class="nav nav-collapse">
+              <ul class="nav nav-collapse"> --}}
                 {{-- <li class="
                   @if(request()->path() == 'admin/package/form') active
                   @elseif(request()->is('admin/package/*/inputEdit')) active
@@ -256,11 +256,11 @@
                       <span class="sub-item">Form Builder</span>
                     </a>
                 </li> --}}
-                <li class="@if(request()->path() == 'admin/packages') active @endif">
+                {{-- <li class="@if(request()->path() == 'admin/packages') active @endif">
                   <a href="{{route('admin.package.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Packages</span>
                   </a>
-                </li>
+                </li> --}}
                 {{-- <li class="@if(request()->path() == 'admin/all/orders') active @endif">
                   <a href="{{route('admin.all.orders')}}">
                     <span class="sub-item">All Orders</span>
@@ -286,10 +286,9 @@
                     <span class="sub-item">Rejected Orders</span>
                   </a>
                 </li> --}}
-              </ul>
+              {{-- </ul>
             </div>
-          </li>
-        
+          </li>-}}
 
 
         {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Quote Management', $permissions)))

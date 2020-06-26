@@ -87,6 +87,11 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::post('/test/update', 'Admin\test\TestController@update')->name('teacher.test.update');
   // Route::get('/test/{id}/inputEdit', 'Admin\TestController@inputEdit')->name('teacher.test.inputEdit');
   Route::post('/test/delete', 'Admin\test\TestController@delete')->name('teacher.test.delete');
+
+  //assign test
+  Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
+  Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
+
 });
 
 //student
