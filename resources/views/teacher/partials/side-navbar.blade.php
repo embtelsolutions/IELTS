@@ -71,7 +71,7 @@
         
           {{-- Basic Settings --}}
           <li class="nav-item
-          @if(request()->path() == '/test') active
+          @if(request()->path() == 'test') active
           @elseif(request()->path() == 'test/assign') active
           @elseif(request()->path() == 'admin/homeversion') active
           @elseif(request()->path() == 'admin/basicinfo') active
@@ -93,7 +93,7 @@
               <span class="caret"></span>
             </a>
             <div class="collapse
-            @if(request()->path() == '/test') show
+            @if(request()->path() == 'test') show
             @elseif(request()->path() == 'test/assign') show
             @elseif(request()->path() == 'admin/homeversion') show
             @elseif(request()->path() == 'admin/basicinfo') show
@@ -110,7 +110,7 @@
             @elseif(request()->path() == 'admin/cookie-alert') show
             @endif" id="basic">
               <ul class="nav nav-collapse">
-                <li class="@if(request()->path() == '/test') active @endif">
+                <li class="@if(request()->path() == 'test') active @endif">
                   <a href=" {{route('teacher.test.index')}}">
                     <span class="sub-item">All Test</span>
                   </a>
