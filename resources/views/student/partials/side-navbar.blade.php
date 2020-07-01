@@ -219,10 +219,10 @@
         @endif --}}
 
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Packages', $permissions)))
+        {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Packages', $permissions))) --}}
           <!-- Package Management -->
           <li class="nav-item
-          @if(request()->path() == 'admin/packages') active
+          @if(request()->path() == 'student/test') active
           @elseif(request()->path() == 'admin/package/form') active
           @elseif(request()->is('admin/package/*/inputEdit')) active
           @elseif(request()->path() == 'admin/all/orders') active
@@ -233,11 +233,11 @@
           @endif">
             <a data-toggle="collapse" href="#packages">
               <i class="la flaticon-box-1"></i>
-              <p>Package Management</p>
+              <p>Test Management</p>
               <span class="caret"></span>
             </a>
             <div class="collapse
-            @if(request()->path() == 'admin/packages') show
+            @if(request()->path() == 'student/test') show
             @elseif(request()->path() == 'admin/package/form') show
             @elseif(request()->is('admin/package/*/inputEdit')) show
             @elseif(request()->path() == 'admin/all/orders') show
@@ -255,9 +255,9 @@
                       <span class="sub-item">Form Builder</span>
                     </a>
                 </li> --}}
-                <li class="@if(request()->path() == 'admin/packages') active @endif">
-                  <a href="{{route('admin.package.index') . '?language=' . $default->code}}">
-                    <span class="sub-item">Packages</span>
+                <li class="@if(request()->path() == 'student/test') active @endif">
+                <a href="{{route('student.test')}}">
+                    <span class="sub-item">My Test</span>
                   </a>
                 </li>
                 {{-- <li class="@if(request()->path() == 'admin/all/orders') active @endif">
@@ -288,7 +288,7 @@
               </ul>
             </div>
           </li>
-        @endif
+        {{-- @endif --}}
 
 
         {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Quote Management', $permissions)))

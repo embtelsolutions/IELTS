@@ -135,12 +135,11 @@ class TestController extends Controller
 
     public function assignTo(Request $request){
 
-        // dd($request->all());
+
         
-        $input = TestUser::firstOrNew(array('id' => Input::get('package_id')));
-        // dd($input);
-        $input->test_id = $request->package_id;
-        $input->user_id = json_encode($request->students);
+        $input = TestUser::firstOrNew(array('test_id' => Input::get('package_id')));
+ 
+        $input->user_id = implode(',',$request->students);
         $input->teacher_id = Auth::guard('user')->user()->id;
         $input->save();
          
@@ -148,4 +147,20 @@ class TestController extends Controller
         return "success";
 
     }
+
+        public function mytest(Request $request){
+
+            $user = Auth::guard('user')->user()->id;
+            // $data['packages'] = TestUser::whereIn('user_id',[$user])
+            //                     ->join('tests','test_users.test_id','tests.id')
+            //                     ->get();
+            $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
+                                        $q->where('user_id', $user);
+                                        $q->groupBy('user_id');
+                                    })
+                                ->join('test_users','tests.id','test_users.test_id')
+                                ->paginate(15);
+            // dd($data);           
+            return view('student.test.index',$data);
+        }
 }

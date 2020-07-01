@@ -1,6 +1,6 @@
-@extends('teacher.layout')
+@extends('student.layout')
 
-@section('teacher-content')
+@section('student-content')
 <div class="page-header">
    <h4 class="page-title">Tests</h4>
    <ul class="breadcrumbs">
@@ -42,7 +42,7 @@
                   @endif --}}
                </div>
                <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                  <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test</a>
+                  {{-- <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test</a> --}}
                   <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                </div>
             </div>
@@ -63,8 +63,9 @@
                                  <th scope="col">Title</th>
                                  {{-- <th scope="col">Currency</th>
                                  <th scope="col">Price</th> --}}
-                                 <th scope="col">Details</th>
+                                 {{-- <th scope="col">Details</th> --}}
                                  <th scope="col">Type</th>
+                                 <th scope="col">View</th>
                                  <th scope="col">Actions</th>
                               </tr>
                            </thead>
@@ -75,20 +76,20 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 <td>{!!convertUtf8($package->description)!!}</td>
+                                 {{-- <td>{{convertUtf8($package->description)}}</td> --}}
                                  <td>{{convertUtf8($package->type)}}</td>
                                  <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}" >
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Edit
+                                    Start Test
                                     </a>
-                                    <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
+                                    {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
                                        @csrf
                                        <input type="hidden" name="package_id" value="{{$package->id}}">
                                        <button type="submit" class="btn btn-danger btn-sm deletebtn">
@@ -97,7 +98,7 @@
                                        </span>
                                        Delete
                                        </button>
-                                    </form>
+                                    </form> --}}
                                  </td>
                               </tr>
                               <!-- Services Modal -->
@@ -161,7 +162,7 @@
                   <p id="errlanguage_id" class="mb-0 text-danger em"></p>
                </div> --}}
                <div class="form-group">
-                  <label for="">Title **</label>
+                  <label for="">Title*</label>
                   <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
                   <p id="errtitle" class="mb-0 text-danger em"></p>
                </div>
@@ -176,7 +177,7 @@
                   <p id="errprice" class="mb-0 text-danger em"></p>
                </div> --}}
                <div class="form-group">
-                  <label for="">Description **</label>
+                  <label for="">Description*</label>
                   <textarea class="form-control summernote" name="description" rows="8" cols="80" placeholder="Enter description" data-height="300"></textarea>
                   <p id="errdescription" class="mb-0 text-danger em"></p>
                </div>
@@ -223,7 +224,7 @@
    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit Test</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Start Test</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -234,7 +235,7 @@
                <input id="inpackage_id" type="hidden" name="package_id" value="">
                <div class="form-group">
                   <label for="">Title **</label>
-                  <input id="intitle" type="text" class="form-control" name="title" value="" placeholder="Enter title">
+                  <input id="intitle" type="text" class="form-control" name="title" value="" placeholder="Enter title" readonly>
                   <p id="eerrtitle" class="mb-0 text-danger em"></p>
                </div>
                {{-- <div class="form-group">
@@ -248,19 +249,20 @@
                   <p id="eerrprice" class="mb-0 text-danger em"></p>
                </div> --}}
                <div class="form-group">
-                  <label for="">Description **</label>
-                  <textarea id="indescription" class="form-control summernote" name="description" placeholder="Enter description" data-height="200"></textarea>
+                  <label for="">Description*</label>
+                  <input type="textarea" id="indescription" class="form-control " name="description" placeholder="Enter description" data-height="200" readonly>
                   <p id="eerrdescription" class="mb-0 text-danger em"></p>
                </div>
                <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-                  <select class="form-control mg-10" id="type" name="type">
+                  <input type="text" id="intype" class="form-control " name="type"  readonly>
+                  {{-- <select class="form-control mg-10" id="type" name="type" readonly>
                      <option>reading</option>
                      <option>listening</option>
                      <option>speaking</option>
                      <option>writing</option>
-                  </select>
+                  </select> --}}
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>

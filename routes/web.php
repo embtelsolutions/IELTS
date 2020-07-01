@@ -97,6 +97,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
 //student
 Route::group([ 'middleware' => 'student'], function () {
   Route::get('/student', 'Auth\StudentController@index')->name('student.index');
+  Route::get('/student/test', 'Admin\test\TestController@mytest')->name('student.test');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {

@@ -41,10 +41,10 @@
                   </select>
                   @endif --}}
                </div>
-               <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
+               {{-- <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
                   <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test</a>
                   <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
-               </div>
+               </div> --}}
             </div>
          </div>
          <div class="card-body">
@@ -63,8 +63,8 @@
                                  <th scope="col">Title</th>
                                  {{-- <th scope="col">Currency</th>
                                  <th scope="col">Price</th> --}}
-                                 <th scope="col">Details</th>
                                  <th scope="col">Type</th>
+                                 {{-- <th scope="col">Assign to</th> --}}
                                  <th scope="col">Actions</th>
                               </tr>
                            </thead>
@@ -75,7 +75,7 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 <td>{!!convertUtf8($package->description)!!}</td>
+                                 {{-- <td>{{convertUtf8($package->description)}}</td> --}}
                                  <td>{{convertUtf8($package->type)}}</td>
                                  <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
@@ -86,18 +86,8 @@
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Edit
+                                    Assign Now
                                     </a>
-                                    <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
-                                       @csrf
-                                       <input type="hidden" name="package_id" value="{{$package->id}}">
-                                       <button type="submit" class="btn btn-danger btn-sm deletebtn">
-                                       <span class="btn-label">
-                                       <i class="fas fa-trash"></i>
-                                       </span>
-                                       Delete
-                                       </button>
-                                    </form>
                                  </td>
                               </tr>
                               <!-- Services Modal -->
@@ -137,87 +127,6 @@
       </div>
    </div>
 </div>
-<!-- Create Package Modal -->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Add Test</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <form id="ajaxForm" class="modal-form" action="{{route('teacher.test.store')}}" method="POST">
-               @csrf
-               {{-- <div class="form-group">
-                  <label for="">Language **</label>
-                  <select id="language" name="language_id" class="form-control">
-                     <option value="" selected disabled>Select a language</option>
-                     @foreach ($langs as $lang)
-                     <option value="{{$lang->id}}">{{$lang->name}}</option>
-                     @endforeach
-                  </select>
-                  <p id="errlanguage_id" class="mb-0 text-danger em"></p>
-               </div> --}}
-               <div class="form-group">
-                  <label for="">Title **</label>
-                  <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
-                  <p id="errtitle" class="mb-0 text-danger em"></p>
-               </div>
-               {{-- <div class="form-group">
-                  <label for="">Currency **</label>
-                  <input type="text" class="form-control" name="currency" placeholder="Enter currency" value="">
-                  <p id="errcurrency" class="mb-0 text-danger em"></p>
-               </div>
-               <div class="form-group">
-                  <label for="">Price **</label>
-                  <input type="text" class="form-control" name="price" placeholder="Enter price" value="">
-                  <p id="errprice" class="mb-0 text-danger em"></p>
-               </div> --}}
-               <div class="form-group">
-                  <label for="">Description **</label>
-                  <textarea class="form-control summernote" name="description" rows="8" cols="80" placeholder="Enter description" data-height="300"></textarea>
-                  <p id="errdescription" class="mb-0 text-danger em"></p>
-               </div>
-               <div class="form-group">
-                  <label for="">Test Type</label>
-                  {{-- Test type --}}
-                  <select class="form-control mg-10" id="type" name="type">
-                     <option>reading</option>
-                     <option>listening</option>
-                     <option>speaking</option>
-                     <option>writing</option>
-                  </select>
-                  <p id="type" class="mb-0 text-danger em"></p>
-                  {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
-               </div>
-               {{-- <div class="form-group">
-                  <label for="">Serial Number **</label>
-                  <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
-                  <p id="errserial_number" class="mb-0 text-danger em"></p>
-                  <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p>
-               </div>
-               <div class="form-group">
-                  <label>Meta Keywords</label>
-                  <input class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
-                  <p id="errmeta_keywords" class="mb-0 text-danger em"></p>
-               </div>
-               <div class="form-group">
-                  <label>Meta Description</label>
-                  <textarea class="form-control" name="meta_description" rows="5" placeholder="Enter meta description"></textarea>
-                  <p id="errmeta_description" class="mb-0 text-danger em"></p>
-               </div> --}}
-
-            </form>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
-         </div>
-      </div>
-   </div>
-</div>
 <!-- Edit Package Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -229,40 +138,28 @@
             </button>
          </div>
          <div class="modal-body">
-            <form id="ajaxEditForm" class="" action="{{route('teacher.test.update')}}" method="POST">
+            <form id="ajaxEditForm" class="" action="{{route('teacher.test.assign-to')}}" method="POST">
                @csrf
                <input id="inpackage_id" type="hidden" name="package_id" value="">
                <div class="form-group">
                   <label for="">Title **</label>
-                  <input id="intitle" type="text" class="form-control" name="title" value="" placeholder="Enter title">
+                  <input id="intitle" type="text" class="form-control" name="title" value="" readonly>
                   <p id="eerrtitle" class="mb-0 text-danger em"></p>
-               </div>
-               {{-- <div class="form-group">
-                  <label for="">Description **</label>
-                  <input id="incurrency" type="text" class="form-control" name="currency" value="" placeholder="Enter currency">
-                  <p id="eerrcurrency" class="mb-0 text-danger em"></p>
-               </div>
-               <div class="form-group">
-                  <label for="">Price **</label>
-                  <input id="inprice" type="text" class="form-control" name="price" placeholder="Enter price" value="">
-                  <p id="eerrprice" class="mb-0 text-danger em"></p>
-               </div> --}}
-               <div class="form-group">
-                  <label for="">Description **</label>
-                  <textarea id="indescription" class="form-control summernote" name="description" placeholder="Enter description" data-height="200"></textarea>
-                  <p id="eerrdescription" class="mb-0 text-danger em"></p>
                </div>
                <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-                  <select class="form-control mg-10" id="type" name="type">
-                     <option>reading</option>
-                     <option>listening</option>
-                     <option>speaking</option>
-                     <option>writing</option>
-                  </select>
+               <input id="intype" type="text" class="form-control" name="type" value=""  readonly>
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
+               </div>
+               <div class="form-group">
+               <label for="">Assign to </label>
+                  <select class="form-control mg-10" id="type" name="students[]" multiple="true">
+                     @foreach($students as $student)
+                     <option value="{{$student->id}}">{{$student->name}}</option>
+                     @endforeach
+                  </select>
                </div>
                {{-- <div class="form-group">
                   <label>Meta Keywords</label>
