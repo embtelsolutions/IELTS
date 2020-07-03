@@ -48,7 +48,9 @@
                 <div class="col-lg-10">
                     <div class="card-title">Update Slider Section</div>
                 </div>
-                {{-- <div class="col-lg-2">
+
+                <div class="col-lg-2">
+
                     @if (!empty($langs))
                         <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                             <option value="" selected disabled>Select a Language</option>
@@ -57,20 +59,22 @@
                             @endforeach
                         </select>
                     @endif
-                </div> --}}
+
+                </div>
             </div>
         </div>
         <div class="card-body pt-5 pb-4">
           <div class="row">
             <div class="col-lg-6 offset-lg-3">
-              <form class="mb-3 dm-uploader drag-and-drop-zone" enctype="multipart/form-data" action="{{route('admin.introsection.upload', $lang_id)}}" method="POST">
+              {{-- <form class="mb-3 dm-uploader drag-and-drop-zone" enctype="multipart/form-data" action="{{route('admin.slider-section.upload', $lang_id)}}" method="POST">
+
                 <div class="form-row">
                   <div class="col-12 mb-2">
                     <label for=""><strong>Image **</strong></label>
                   </div>
                   <div class="col-md-12 d-md-block d-sm-none mb-3">
-                    @if (!empty($abs->intro_bg))
-                        <img src="{{asset('assets/front/img/'.$abs->intro_bg)}}" alt="..." class="img-thumbnail">
+                    @if (!empty($abs->image))
+                        <img src="{{asset('assets/front/img/'.$abs->iamge)}}" alt="..." class="img-thumbnail">
                     @else
                         <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="..." class="img-thumbnail">
                     @endif
@@ -101,30 +105,31 @@
                     </div>
                   </div>
                 </div>
-              </form>
+              </form> --}}
 
 
-              <form id="ajaxForm" action="{{route('admin.introsection.update', $id)}}" method="post">
+              <form id="ajaxForm" action="{{route('admin.slider-section.update', $lang_id)}}" method="post">
                 @csrf
                 <div class="form-group">
                   <label for="">Title **</label>
-                  <input type="text" class="form-control" name="slider_section_title" value="{{$abs->slider_section_title}}">
+                  <input type="text" class="form-control" name="slider_section_title" value="{{$abs->title}}">
+
                   <p id="errslider_section_title" class="em text-danger mb-0"></p>
                 </div>
                 
                 <div class="form-group">
                   <label for="">Text **</label>
-                  <input name="slider_section_text" class="form-control" value="{{$abs->slider_section_text}}">
+                  <input name="slider_section_text" class="form-control" value="{{$abs->text}}">
                   <p id="errslider_section_text" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">Button Text</label>
-                  <input type="text" class="form-control" name="slider_section_button_text" value="{{$abs->slider_section_button_text}}">
+                  <input type="text" class="form-control" name="slider_section_button_text" value="{{$abs->button_text}}">
                   <p id="errslider_section_button_text" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">Button URL</label>
-                  <input type="text" class="form-control ltr" name="slider_section_button_url" value="{{$abs->slider_section_button_url}}">
+                  <input type="text" class="form-control ltr" name="slider_section_button_url" value="{{$abs->button_url}}">
                   <p id="errslider_section_button_url" class="em text-danger mb-0"></p>
                 </div>
               </form>

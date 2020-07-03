@@ -3,13 +3,16 @@
 }
 .team-page .title-section h3{
     font-weight: bold;
-    font-size: 35px;
+    font-size: 36px;
+    padding-bottom: 20px;
 }
 
 .team-page .title-section p{
     line-height: 1.5;
     padding: 10px 0px;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
 }
 
 .all-teachers{
@@ -51,14 +54,18 @@
 }
 .all-teachers .single-teacher .teacher-info h4{
     margin: 10px 0px;
+    color:#02758D;
+    font-size: 24px;
+    font-weight: 500;
 }
 .all-teachers .single-teacher .teacher-info p{
     font-size: 15px;
+    font-weight: 500;
 }
 .all-teachers .single-teacher .teacher-img-wrapper img{
     width: 85%;
     border-radius: 100%;
-    border: 2px solid;
+    border: 5px solid #D9E6FF;
 }
 
 .header-navbar{
@@ -114,7 +121,7 @@
     content: none;
 }
 .main-menu li.active a, .main-menu li a:hover{
-    font-weight: bold;
+    /* font-weight: bold; */
     color: #000 !important;
 }
 .main-menu li a, .mega-dropdown .dropbtn{
@@ -177,6 +184,13 @@
     border-radius: 100%;
     margin: 0px 10px;
 }
+@media(min-width:320px) and (max-width:420px){
+    .footer-social-links .social-links li{
+        border-radius: 21px;
+        padding: 16px;
+    }
+}
+
 .footer-social-links .social-links li i{
     color: #232323;
 }
@@ -185,4 +199,36 @@
 }
 .bg-dark{
     background-color: white;
+
+}
+
+/*team page filter responsive*/
+@media(min-width:320px) and (max-width:420px){
+    ul.teacher-filter{
+        display: block;
+        left: 0px;
+        text-align: center;
+    }
+}
+@media(width:1024px){
+    ul.teacher-filter{
+        left: 4%;
+    }
+    .filter-div{
+        width: 60%;
+    }
+}
+@media(width:768px){
+    ul.teacher-filter{
+        left: 3%;
+    }
+    .filter-div{
+        width: 75%;
+    }
+}
+@media (min-width: 1280px){
+    .col-lg-4.col-xl-4.pricing-box{
+        max-width: 30%;
+    }
+
 }

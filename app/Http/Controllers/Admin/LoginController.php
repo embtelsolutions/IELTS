@@ -18,6 +18,7 @@ class LoginController extends Controller
         'username'   => 'required',
         'password' => 'required'
       ]);
+        
       if (Auth::guard('admin')->attempt(['username' => $request->username,'password' => $request->password]))
       {
           return redirect()->route('admin.dashboard');
@@ -27,6 +28,6 @@ class LoginController extends Controller
 
     public function logout() {
       Auth::guard('admin')->logout();
-      return redirect()->route('admin.login');
+      return redirect()->route('admin.login')->with('message','Logout Successfully');
     }
 }

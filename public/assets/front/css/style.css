@@ -1639,7 +1639,12 @@ a.hero-boxed-btn:hover::after {
     transform: translateY(0px);
     transition: .3s;
 }
-
+@media(min-width:320px) and (max-width:420px){
+    .service-categories .single-category{
+        margin-bottom: 20px;
+    }
+    
+}
 .service-categories .single-category:hover {
     transform: translateY(-10px);
 }
@@ -2213,11 +2218,11 @@ a.contact-btn:hover::after {
 }
 
 .single-testimonial .img-wrapper {
-    float: left;
+    /* float: left; */
 }
 
 .client-desc {
-    margin-left: 100px;
+    /* margin-left: 100px; */
 }
 
 .single-testimonial {

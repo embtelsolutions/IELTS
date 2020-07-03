@@ -208,8 +208,8 @@ class MemberController extends Controller
     public function textupdate(Request $request, $langid)
     {
         $request->validate([
-            'team_section_title' => 'required|max:25',
-            'team_section_subtitle' => 'required|max:80',
+            'team_section_title' => 'required|max:255',
+            'team_section_subtitle' => 'required|max:255',
         ]);
 
         $bs = BS::where('language_id', $langid)->firstOrFail();

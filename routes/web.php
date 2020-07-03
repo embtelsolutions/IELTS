@@ -37,7 +37,7 @@ Route::group(['middleware' => 'setlang'], function() {
   Route::post('/sendquote', 'Front\FrontendController@sendquote')->name('front.sendquote');
   Route::get('/package-order/{id}', 'Front\FrontendController@packageorder')->name('front.packageorder.index');
   Route::post('/package-order', 'Front\FrontendController@submitorder')->name('front.packageorder.submit');
-  Route::get('/team', 'Front\FrontendController@team')->name('front.team');
+  Route::get('/teachers', 'Front\FrontendController@team')->name('front.team');
   Route::get('/career', 'Front\FrontendController@career')->name('front.career');
   Route::get('/career-details/{slug}/{id}', 'Front\FrontendController@careerdetails')->name('front.careerdetails');
   Route::get('/calendar', 'Front\FrontendController@calendar')->name('front.calendar');
@@ -64,6 +64,41 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
   Route::post('/sendmail', 'Admin\ForgetController@sendmail')->name('admin.forget.mail');
 });
 
+//registration routes 
+
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
+Route::post('/register-post', 'Auth\RegisterController@register')->name('admin.register.post');
+
+
+//login routes
+Route::group([ 'middleware' => 'guest'], function () {
+  Route::get('/login-user', 'Auth\LoginController@index')->name('admin.login-user');
+  Route::any('/login-user-post', 'Auth\LoginController@authenticate')->name('admin.login-user.post');
+  Route::get('logout', 'Auth\LoginController@logout')->name('admin.login-user.logout');
+});
+
+//teacher admin
+Route::group([ 'middleware' => 'teacher'], function () {
+  Route::get('/teacher/admin', 'Auth\TeacherController@index')->name('teacher.index');
+  
+  //test routes
+  Route::get('/test', 'Admin\test\TestController@index')->name('teacher.test.index');
+  Route::post('/test/store', 'Admin\test\TestController@store')->name('teacher.test.store');
+  Route::post('/test/update', 'Admin\test\TestController@update')->name('teacher.test.update');
+  // Route::get('/test/{id}/inputEdit', 'Admin\TestController@inputEdit')->name('teacher.test.inputEdit');
+  Route::post('/test/delete', 'Admin\test\TestController@delete')->name('teacher.test.delete');
+
+  //assign test
+  Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
+  Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
+
+});
+
+//student
+Route::group([ 'middleware' => 'student'], function () {
+  Route::get('/student', 'Auth\StudentController@index')->name('student.index');
+  Route::get('/student/test', 'Admin\test\TestController@mytest')->name('student.test');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {
 
@@ -235,6 +270,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/slider-section/{id}/upload', 'Admin\slidersectionController@upload')->name('admin.slider-section.upload');
     Route::post('/slider-section/{id}/update', 'Admin\slidersectionController@update')->name('admin.slider-section.update');
 
+    //Admin About home Routes
+    Route::get('/about-section', 'Admin\homepageaboutController@index')->name('admin.about-section.index');
+    Route::post('/about-section/{id}/upload', 'Admin\homepageaboutController@upload')->name('admin.about-section.upload');
+    Route::post('/about-section/{id}/update', 'Admin\homepageaboutController@update')->name('admin.about-section.update');
+
+
     // Admin Service Section Routes
     Route::get('/servicesection', 'Admin\ServicesectionController@index')->name('admin.servicesection.index');
     Route::post('/servicesection/{langid}/update', 'Admin\ServicesectionController@update')->name('admin.servicesection.update');
@@ -336,7 +377,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/footer/{langid}/upload', 'Admin\FooterController@upload')->name('admin.footer.upload');
     Route::post('/footer/{langid}/update', 'Admin\FooterController@update')->name('admin.footer.update');
 
-
+    //footer Signup content route
+    Route::get('/footersigup', 'Admin\footerSignupController@index')->name('admin.footersigup.index');
+    Route::post('/footersigup/{langid}/update', 'Admin\footerSignupController@update')->name('admin.footersigup.update');
 
     // Admin Ulink Routes
     Route::get('/ulinks', 'Admin\UlinkController@index')->name('admin.ulink.index');

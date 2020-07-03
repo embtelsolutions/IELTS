@@ -41,10 +41,10 @@
                   </select>
                   @endif
                </div>
-               <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
+               {{-- <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
                   <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Package</a>
                   <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
-               </div>
+               </div> --}}
             </div>
          </div>
          <div class="card-body">

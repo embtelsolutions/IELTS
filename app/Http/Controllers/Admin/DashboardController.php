@@ -13,5 +13,6 @@ class DashboardController extends Controller
       $data['quotes'] = Quote::orderBy('id', 'DESC')->limit(10)->get();
       $data['portfolios'] = Portfolio::orderBy('id', 'DESC')->limit(10)->get();
       return view('admin.dashboard', $data);
+      // return view('admin.dashboard', $data);
     }
 }

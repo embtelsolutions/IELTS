@@ -110,3 +110,22 @@ a.forget-link {
   margin-top: 10px;
   margin-bottom: 0px;
 }
+/*custom Register page css*/
+
+.mg-10{
+  /* margin-top:5px; */
+  margin-bottom:15px;
+
+}
+a.home-link {
+  display: block;
+  position: relative;
+  right: 10%;
+  margin-top: 20px;
+}
+a.home-link:before {
+  content: '\f060';
+  font-family: 'FontAwesome';
+  padding: 13px;
+  /* font-size: 27px; */
+}

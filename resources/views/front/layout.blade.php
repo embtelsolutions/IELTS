@@ -39,6 +39,7 @@
       <link rel="stylesheet" href="{{asset('ielts-assets/css/style.css')}}">
 
       <link rel="stylesheet" href="{{asset('ielts-assets/css/customs.css')}}">
+   
         
       <!---css style linkg--->
 
@@ -245,32 +246,35 @@
       <div class="header-area inner-header">
           <div class="container">
               <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-2">
                       <!-- logo Start -->
                       <div class="logo">
                           {{-- <a href="index.html"><img src="{{asset('ielts-assets/images/logo/logo.png')}}" alt=""></a> --}}
-                          <a href="index.html"><img src="https://via.placeholder.com/155x32?text=logo" alt=""></a>
+                          <a href="{{route('front.index')}}"><img src="{{asset('assets/front/img/'.$bs->logo)}}" alt=""></a>
                       </div><!--// logo End -->
                   </div>
-                  <div class="col-lg-8">
+                  <div class="col-lg-10">
                       <!-- main-menu-area Start -->
                       <div class="main-menu">
                           <nav class="main-navigation">
                               <ul>
-                                  <li class="active"><a href="#">HOME</a>
+                                  <li class="@if(request()->path() == '/') active  @endif"><a href="{{route('front.index')}}">HOME</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="index.html">Home Page 1</a></li>
                                           <li><a href="index-2.html">Home Page 2</a></li>
                                       </ul> --}}
                                   </li>
-                                  <li><a href="#">ABOUT</a></li>
                                   <li><a href="#">COURSES</a>
-                                      {{-- <ul class="sub-menu">
-                                          <li><a href="service-2.html">Service 2</a></li>
-                                          <li><a href="service-3.html">Service 3</a></li>
-                                      </ul> --}}
-                                  </li>
-                                  <li><a href="{{route('front.team')}}">TEACHER</a>
+                                    <li><a href="#">ABOUT</a></li>
+                                    @if(!Auth::guard('user')->check())
+                                       <li><a href="{{route('admin.register')}}">REGISTRATION</a></li>
+                                          {{-- <ul class="sub-menu">
+                                                <li><a href="service-2.html">Service 2</a></li>
+                                                <li><a href="service-3.html">Service 3</a></li>
+                                          </ul> --}}
+                                       </li>
+                                    @endauth
+                                  <li class="@if(request()->path() == 'teachers') active  @endif"><a href="{{route('front.team')}}">TEACHER</a>
                                       {{-- <ul class="sub-menu">
                                           <li><a href="errer-404.html">Error 404</a></li>
                                           <li><a href="case-studie.html">Case Study</a></li>
@@ -278,7 +282,21 @@
                                       </ul> --}}
                                   </li>
                                   <li><a href="#">CONTACT</a></li>
-                                  <li><a href="#" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                               
+                                  @if(Auth::guard('user')->check())
+                                       <li><a>Hi {{Auth::guard('user')->user()->name}}</a>
+                                          <ul class="sub-menu">
+                                             @if(Auth::guard('user')->user()->role == 'Teacher')
+                                             <li><a href="{{route('teacher.index')}}">Dashboard</a></li>
+                                             @elseif(Auth::guard('user')->user()->role == 'Student')
+                                             <li><a href="{{route('student.index')}}">Dashboard</a></li>
+                                             @endif
+                                             <li><a href="{{route('admin.login-user.logout')}}">Logout</a></li>
+                                          </ul>
+                                       </li>
+                                  @else
+                                    <li><a href="{{route('admin.login-user')}}" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                                 @endif
                               </ul>
                           </nav>
                       </div><!--// main-menu-area End -->
@@ -301,46 +319,49 @@
       <!--    announcement banner section start   -->
       <a class="announcement-banner" href="{{asset('assets/front/img/'.$bs->announcement)}}"></a>
       <!--    announcement banner section end   -->
-<!----Signup Content--->
-      <div class="signup-section bg-color-blue">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-6">
-                  <div class="single-signup">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <img src="{{asset('ielts-assets/images/signup_teacher.png')}}" alt="">
-                        </div>
-                        <div class="col-md-6">
-                           <h4>Sign Up As a Teacher</h4>
-                           <p>There’s a new elite forming in higher education: universities that have millions of enrollments.</p>
-                           <div class="mt-5">
-                              <a href="#">Apply Now</a>
+   @if(!empty($footersignup))
+      <!----Signup Content--->
+            <div class="signup-section bg-color-blue">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="single-signup">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <img src="{{asset('ielts-assets/images/signup_teacher.png')}}" alt="">
+                              </div>
+                              <div class="col-lg-6 signup-teacher">
+                                 <h4>{{convertUtf8($footersignup->title_one)}}</h4>
+                                 <p>{{convertUtf8($footersignup->description_one)}}</p>
+                                 <div class="mt-5">
+                                    <a href="{{convertUtf8($footersignup->button_url_one)}}">{{convertUtf8($footersignup->button_text_one)}}</a>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="single-signup">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <img src="{{asset('ielts-assets/images/signup_student.png')}}" alt="">
-                        </div>
-                        <div class="col-md-6">
-                           <h4>Sign Up As a Student</h4>
-                           <p>Join millions of people from around the world learning together. Online learning is as easy and natural as chatting.</p>
-                           <div class="mt-5">
-                              <a href="#">Apply Now</a>
+                     <div class="col-md-6">
+                        <div class="single-signup">
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <img src="{{asset('ielts-assets/images/signup_student.png')}}" alt="">
+                              </div>
+                              <div class="col-lg-6 signup-student">
+                                 <h4>{{convertUtf8($footersignup->title_two)}}</h4>
+                                 <p>{{convertUtf8($footersignup->description_two)}}</p>
+                                 <div class="mt-5">
+                                    <a href="{{convertUtf8($footersignup->button_url_two)}}">{{convertUtf8($footersignup->button_text_two)}}</a>
+                                 </div>
+                              </div>
+
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
-      </div>
-<!----Signup Content--->
+      <!----Signup Content--->
+   @endif
 
       <!--    footer section start   -->
       <footer class="footer-section">
@@ -495,9 +516,9 @@
          toastr["error"]("{{__(session('error'))}}");
       </script>
       @endif
-
+      @stack('before-scripts')
       <!--Start of subscribe functionality-->
-      <script>
+      <script type="text/javascript">
         $(document).ready(function() {
           $("#subscribeForm, #footerSubscribeForm").on('submit', function(e) {
             // console.log($(this).attr('id'));
@@ -526,7 +547,10 @@
               }
             });
           });
-
+          $('.main-navigation ul li a').click(function() {
+            $('.main-navigation ul li a').removeClass('active');
+            $(this).addClass('active');
+         });
          
         });
         

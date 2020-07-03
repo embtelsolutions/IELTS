@@ -52,6 +52,11 @@ return [
             'provider' => 'admins',
         ],
 
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'admin-api' => [
             'driver' => 'token',
             'provider' => 'admins',

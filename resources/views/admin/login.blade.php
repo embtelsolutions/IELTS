@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="login-page">
+      
       <div class="text-center mb-4">
         <img class="login-logo" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="">
       </div>
@@ -31,7 +32,7 @@
           @endif
           <button type="submit">login</button>
         </form>
-        <a class="forget-link" href="{{route('admin.forget.form')}}">Forgot Password / Username ?</a>
+        {{-- <a class="forget-link" href="{{route('admin.forget.form')}}">Forgot Password / Username ?</a> --}}
       </div>
     </div>
 
