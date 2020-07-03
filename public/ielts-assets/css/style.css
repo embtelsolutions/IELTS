@@ -3236,6 +3236,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 
 }
+
 .main-menu li a:hover:before ,.main-menu li a:hover:after,.main-menu li a:before,.main-menu li a:after {
   display: none;
 }

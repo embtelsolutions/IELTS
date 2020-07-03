@@ -111,6 +111,7 @@
   <div class="service-categories">
    <div class="container">
      <div class="row">
+
          @foreach ($scats as $key => $scat)
             <div class="col-xl-3 col-lg-4 col-sm-6">
             <div class="single-category">
@@ -164,7 +165,6 @@
   </div>
   <!--   service section end   -->
   @endif --}}
-
   @if(!empty($aboutsection))
    <!-- About Us Area Start -->
    <div class="about-us-area bg-primary border-top-radius section-ptb">
@@ -199,8 +199,6 @@
   </div>
   <!-- About Us Area End -->
   @endif
-
-
 
   {{-- @if ($bs->approach_section == 1)
   <!--   how we do section start   -->

@@ -26,7 +26,7 @@ class slidersectionController extends Controller
     {
         $img = $request->file('file');
         $allowedExts = array('jpg', 'png', 'jpeg');
-       
+     
         $rules = [
             'file' => [
                 function ($attribute, $value, $fail) use ($img, $allowedExts) {
@@ -54,7 +54,6 @@ class slidersectionController extends Controller
             @unlink('assets/front/img/' . $bs->image);
             $filename = uniqid() .'.'. $img->getClientOriginalExtension();
             $img->move('assets/front/img/', $filename);
-         
             $bs->image = $filename;
             $bs->save();
 
@@ -72,13 +71,11 @@ class slidersectionController extends Controller
             'slider_section_button_url' => 'nullable|max:255',
         
         ];
-       
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             $errmsgs = $validator->getMessageBag()->add('error', 'true');
             return response()->json($validator->errors());
         }
-
         $bs = SliderSection::where('language_id', $langid)->firstOrFail();
         $bs->title = $request->slider_section_title;
         $bs->text = $request->slider_section_text;

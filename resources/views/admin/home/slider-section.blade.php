@@ -48,7 +48,9 @@
                 <div class="col-lg-10">
                     <div class="card-title">Update Slider Section</div>
                 </div>
+
                 <div class="col-lg-2">
+
                     @if (!empty($langs))
                         <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                             <option value="" selected disabled>Select a Language</option>
@@ -57,6 +59,7 @@
                             @endforeach
                         </select>
                     @endif
+
                 </div>
             </div>
         </div>
@@ -64,6 +67,7 @@
           <div class="row">
             <div class="col-lg-6 offset-lg-3">
               {{-- <form class="mb-3 dm-uploader drag-and-drop-zone" enctype="multipart/form-data" action="{{route('admin.slider-section.upload', $lang_id)}}" method="POST">
+
                 <div class="form-row">
                   <div class="col-12 mb-2">
                     <label for=""><strong>Image **</strong></label>
@@ -109,6 +113,7 @@
                 <div class="form-group">
                   <label for="">Title **</label>
                   <input type="text" class="form-control" name="slider_section_title" value="{{$abs->title}}">
+
                   <p id="errslider_section_title" class="em text-danger mb-0"></p>
                 </div>
                 
