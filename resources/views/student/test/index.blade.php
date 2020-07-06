@@ -73,7 +73,7 @@
                               @foreach ($packages as $key => $package)
                               <tr>
                                  <td>
-                                    <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
+                                    <input type="checkbox" class="bulk-check" data-val="{{$package->id}} {{$package->teacher_id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
                                  {{-- <td>{{convertUtf8($package->description)}}</td> --}}
