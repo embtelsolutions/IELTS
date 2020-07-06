@@ -275,6 +275,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/about-section/{id}/upload', 'Admin\homepageaboutController@upload')->name('admin.about-section.upload');
     Route::post('/about-section/{id}/update', 'Admin\homepageaboutController@update')->name('admin.about-section.update');
 
+
     // Admin Service Section Routes
     Route::get('/servicesection', 'Admin\ServicesectionController@index')->name('admin.servicesection.index');
     Route::post('/servicesection/{langid}/update', 'Admin\ServicesectionController@update')->name('admin.servicesection.update');

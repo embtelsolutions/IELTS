@@ -465,7 +465,6 @@
                       </ul>
                   </div>
                 </li> --}}
-
                 <li class="@if(request()->path() == 'admin/slider-section') active @endif">
                   <a href="{{route('admin.slider-section.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Slider Section</span>

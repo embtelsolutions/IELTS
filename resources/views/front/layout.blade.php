@@ -40,7 +40,6 @@
 
       <link rel="stylesheet" href="{{asset('ielts-assets/css/customs.css')}}">
    
-
         
       <!---css style linkg--->
 
@@ -354,6 +353,7 @@
                                     <a href="{{convertUtf8($footersignup->button_url_two)}}">{{convertUtf8($footersignup->button_text_two)}}</a>
                                  </div>
                               </div>
+
                            </div>
                         </div>
                      </div>
