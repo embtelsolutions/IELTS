@@ -20,15 +20,16 @@ use Illuminate\Support\Facades\Mail;
 use Validator;
 use Session;
 use Auth;
-
+use DB;
 class TestController extends Controller
 {
     //
     public function index(){
         
         // dd(Auth::guard('user')->user()->id);
-        $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
-        return view('teacher.test.index',$data);
+       // $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
+       // return view('teacher.test.index',$data);
+        return response('success');
 
     }
     public function store(Request $request)
@@ -162,5 +163,26 @@ class TestController extends Controller
                                 ->paginate(15);
             // dd($data);           
             return view('student.test.index',$data);
+        }
+        public function alltest(Request $request)
+        {
+            $user = Auth::guard('user')->user()->id;
+            // $data['packages'] = TestUser::whereIn('user_id',[$user])
+            //                     ->join('tests','test_users.test_id','tests.id')
+            //                     ->get();
+          /*  $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
+                                        $q->where('user_id', $user);
+                                        $q->groupBy('user_id');
+                                    })
+                                ->join('test_users','tests.id','test_users.test_id')
+                                ->paginate(15);*/
+            // dd($data);           
+            //return view('student.test.index',$data);
+
+
+             $data['packages']=DB::table('tests')->get();
+                               //->paginate(4); 
+             //dd($data);
+          return view('student.test.exam',$data);
         }
 }

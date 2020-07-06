@@ -29,7 +29,7 @@
          <div class="card-header">
             <div class="row">
                <div class="col-lg-4">
-                  <div class="card-title d-inline-block">All Test</div>
+                  <div class="card-title d-inline-block">All Test4</div>
                </div>
                <div class="col-lg-3">
                   {{-- @if (!empty($langs))
@@ -42,7 +42,7 @@
                   @endif --}}
                </div>
                <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                  <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test</a>
+                  <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test 5</a>
                   <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                </div>
             </div>
@@ -142,7 +142,7 @@
    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Add Test</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Test3</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -213,7 +213,7 @@
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
+            <button id="submitBtn" type="button" class="btn btn-primary">Submit1</button>
          </div>
       </div>
    </div>

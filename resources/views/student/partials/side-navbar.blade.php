@@ -260,6 +260,18 @@
                     <span class="sub-item">My Test</span>
                   </a>
                 </li>
+
+
+<!--get Test-->
+
+              <li class="@if(request()->path() == 'student/test') active @endif">
+                <a href="{{route('student.alltest')}}">
+                    <span class="sub-item">All Test</span>
+                  </a>
+                </li>
+
+
+
                 {{-- <li class="@if(request()->path() == 'admin/all/orders') active @endif">
                   <a href="{{route('admin.all.orders')}}">
                     <span class="sub-item">All Orders</span>

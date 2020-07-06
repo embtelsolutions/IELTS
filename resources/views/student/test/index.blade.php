@@ -87,7 +87,7 @@
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Start Test
+                                    Start Test123
                                     </a>
                                     {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
                                        @csrf
@@ -162,7 +162,7 @@
                   <p id="errlanguage_id" class="mb-0 text-danger em"></p>
                </div> --}}
                <div class="form-group">
-                  <label for="">Title*</label>
+                  <label for="">Title22*</label>
                   <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
                   <p id="errtitle" class="mb-0 text-danger em"></p>
                </div>
@@ -177,7 +177,7 @@
                   <p id="errprice" class="mb-0 text-danger em"></p>
                </div> --}}
                <div class="form-group">
-                  <label for="">Description*</label>
+                  <label for="">Description11*</label>
                   <textarea class="form-control summernote" name="description" rows="8" cols="80" placeholder="Enter description" data-height="300"></textarea>
                   <p id="errdescription" class="mb-0 text-danger em"></p>
                </div>
@@ -230,14 +230,14 @@
             </button>
          </div>
          <div class="modal-body">
-            <form id="ajaxEditForm" class="" action="{{route('teacher.test.update')}}" method="POST">
+            <form id="ajaxEditForm" class="" action="{{route('student.test.update')}}" method="POST">
                @csrf
                <input id="inpackage_id" type="hidden" name="package_id" value="">
-               <div class="form-group">
+              {{-- <div class="form-group">
                   <label for="">Title **</label>
                   <input id="intitle" type="text" class="form-control" name="title" value="" placeholder="Enter title" readonly>
                   <p id="eerrtitle" class="mb-0 text-danger em"></p>
-               </div>
+               </div>--}}
                {{-- <div class="form-group">
                   <label for="">Description **</label>
                   <input id="incurrency" type="text" class="form-control" name="currency" value="" placeholder="Enter currency">
@@ -248,12 +248,12 @@
                   <input id="inprice" type="text" class="form-control" name="price" placeholder="Enter price" value="">
                   <p id="eerrprice" class="mb-0 text-danger em"></p>
                </div> --}}
-               <div class="form-group">
+            {{--   <div class="form-group">
                   <label for="">Description*</label>
                   <input type="textarea" id="indescription" class="form-control " name="description" placeholder="Enter description" data-height="200" readonly>
                   <p id="eerrdescription" class="mb-0 text-danger em"></p>
-               </div>
-               <div class="form-group">
+               </div>--}}
+               <!--<div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
                   <input type="text" id="intype" class="form-control " name="type"  readonly>
@@ -265,7 +265,7 @@
                   </select> --}}
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
-               </div>
+               </div>-->
                {{-- <div class="form-group">
                   <label>Meta Keywords</label>
                   <input id="inmeta_keywords" class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
@@ -276,11 +276,28 @@
                   <textarea id="inmeta_description" class="form-control" name="meta_description" rows="5" placeholder="Enter meta description"></textarea>
                   <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
                </div> --}}
+               <div class="form-group">
+                  <label for="exampleInputEmail1">Student Id</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Student Id" name="student_id">
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputEmail1">Test Id</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Test Id" name="test_id">
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputEmail1">Teacher Id</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Teacher Id" name="teacher_id">
+                </div>
+                 <div class="form-group">
+                  <label for="">file*</label>
+                  <input type="file" id="indescription" class="form-control " name="photo" placeholder="Enter description" data-height="200" readonly>
+                  <p id="eerrdescription" class="mb-0 text-danger em"></p>
+               </div>
             </form>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>
          </div>
       </div>
    </div>

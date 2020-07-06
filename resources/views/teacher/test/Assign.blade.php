@@ -2,7 +2,7 @@
 
 @section('teacher-content')
 <div class="page-header">
-   <h4 class="page-title">Tests</h4>
+   <h4 class="page-title">Tests11</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('teacher.index')}}">
@@ -29,7 +29,7 @@
          <div class="card-header">
             <div class="row">
                <div class="col-lg-4">
-                  <div class="card-title d-inline-block">All Test</div>
+                  <div class="card-title d-inline-block">All1 Test</div>
                </div>
                <div class="col-lg-3">
                   {{-- @if (!empty($langs))
@@ -86,7 +86,7 @@
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Assign Now
+                                    Assign Now1
                                     </a>
                                  </td>
                               </tr>
@@ -175,7 +175,7 @@
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes1</button>
          </div>
       </div>
    </div>

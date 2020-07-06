@@ -92,12 +92,20 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
   Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
 
+  //show answer
+ Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
 });
 
 //student
 Route::group([ 'middleware' => 'student'], function () {
   Route::get('/student', 'Auth\StudentController@index')->name('student.index');
   Route::get('/student/test', 'Admin\test\TestController@mytest')->name('student.test');
+
+
+
+  //by me
+  Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');
+  Route::get('/student/alltest', 'Admin\test\TestController@alltest')->name('student.alltest');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {

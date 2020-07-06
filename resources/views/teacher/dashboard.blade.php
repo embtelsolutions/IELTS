@@ -12,7 +12,7 @@
 					<div class="col-lg-10">
 						<div class="card-title">
 							<h2 class="text-white text-center pb-2">
-								Welcome back, {{Auth::guard('user')->user()->name}} !
+								Welcome back1, {{Auth::guard('user')->user()->name}} !
 							</h2>
 						</div>
 					</div>
@@ -50,7 +50,7 @@
 						</div>
 						<div class="col-7 col-stats">
 							<div class="numbers">
-								<p class="card-category">Tests</p>
+								<p class="card-category">Tests2</p>
 								<h4 class="card-title">{{\App\Subscriber::count()}}</h4>
 							</div>
 						</div>
