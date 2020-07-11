@@ -50,7 +50,8 @@ Route::group(['middleware' => 'setlang'], function() {
 
 
 
-
+//pauumoney method
+  Route::any('hello', 'PayumoneyController@payumoneyPayment')->name('hello');
 
 /*=======================================================
 ******************** Admin Routes **********************
@@ -82,7 +83,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/teacher/admin', 'Auth\TeacherController@index')->name('teacher.index');
   
   //test routes
-  Route::get('/test', 'Admin\test\TestController@index')->name('teacher.test.index');
+  Route::get('/test1', 'Admin\test\TestController@index')->name('teacher.test.index');
   Route::post('/test/store', 'Admin\test\TestController@store')->name('teacher.test.store');
   Route::post('/test/update', 'Admin\test\TestController@update')->name('teacher.test.update');
   // Route::get('/test/{id}/inputEdit', 'Admin\TestController@inputEdit')->name('teacher.test.inputEdit');
@@ -92,12 +93,35 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
   Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
 
+  //show answer
+ Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
+ //writing answer
+  Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
+ //upload marks
+ Route::post('/upload/marks', 'Admin\test\StudentsubmitController@marksupload')->name('teacher.marks.update');
+ //writing mark upload
+  Route::post('/upload/marks', 'Admin\test\StudentsubmitController@writingmarksupload')->name('teacher.marks.writing');
 });
 
 //student
 Route::group([ 'middleware' => 'student'], function () {
   Route::get('/student', 'Auth\StudentController@index')->name('student.index');
   Route::get('/student/test', 'Admin\test\TestController@mytest')->name('student.test');
+
+
+//test
+Route::get('/student/reading', 'Admin\test\TestController@reading')->name('student.reading');
+Route::get('/student/writing', 'Admin\test\TestController@writing')->name('student.writing');
+Route::get('/student/speaking', 'Admin\test\TestController@speaking')->name('student.speaking');
+Route::get('/student/lisning', 'Admin\test\TestController@listening')->name('student.listening');
+
+
+
+  //by me
+  Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');
+  Route::get('/student/alltest', 'Admin\test\TestController@alltest')->name('student.alltest');
+  //writing
+    Route::post('student/test/writing', 'Admin\test\StudentsubmitController@writingtest')->name('student.test.writing');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {

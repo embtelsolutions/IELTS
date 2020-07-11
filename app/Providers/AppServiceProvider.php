@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\BasicSetting as BS;
@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		
+		Schema::defaultStringLength(191);
         $socials = Social::orderBy('serial_number', 'ASC')->get();
         $langs = Language::all();
 

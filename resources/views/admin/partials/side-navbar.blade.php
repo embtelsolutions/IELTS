@@ -60,7 +60,7 @@
           <li class="nav-item @if(request()->path() == 'admin/dashboard') active @endif">
             <a href="{{route('admin.dashboard')}}">
               <i class="la flaticon-paint-palette"></i>
-              <p>Dashboard</p>
+              <p>Dashboard2</p>
             </a>
           </li>
         @endif
