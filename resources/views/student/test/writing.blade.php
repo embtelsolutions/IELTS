@@ -84,11 +84,11 @@
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}" data-teacher="{{$package->teacher_id}}" >
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
                                        </span>
-                                       Start Test123
+                                       Start Test
                                     </a>
                                     {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
                                        @csrf
@@ -139,92 +139,11 @@
          </div>
       </div>
    </div>
-   <!-- Create Package Modal -->
-   <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLongTitle">Add Test</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <form id="ajaxForm" class="modal-form" action="{{route('teacher.test.store')}}" method="POST">
-                  @csrf
-                  {{-- <div class="form-group">
-                     <label for="">Language **</label>
-                     <select id="language" name="language_id" class="form-control">
-                        <option value="" selected disabled>Select a language</option>
-                        @foreach ($langs as $lang)
-                        <option value="{{$lang->id}}">{{$lang->name}}</option>
-                        @endforeach
-                     </select>
-                     <p id="errlanguage_id" class="mb-0 text-danger em"></p>
-                  </div> --}}
-                  <div class="form-group">
-                     <label for="">Title22*</label>
-                     <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
-                     <p id="errtitle" class="mb-0 text-danger em"></p>
-                  </div>
-                  {{-- <div class="form-group">
-                     <label for="">Currency **</label>
-                     <input type="text" class="form-control" name="currency" placeholder="Enter currency" value="">
-                     <p id="errcurrency" class="mb-0 text-danger em"></p>
-                  </div>
-                  <div class="form-group">
-                     <label for="">Price **</label>
-                     <input type="text" class="form-control" name="price" placeholder="Enter price" value="">
-                     <p id="errprice" class="mb-0 text-danger em"></p>
-                  </div> --}}
-                  <div class="form-group">
-                     <label for="">Description11*</label>
-                     <textarea class="form-control summernote" name="description" rows="8" cols="80" placeholder="Enter description" data-height="300"></textarea>
-                     <p id="errdescription" class="mb-0 text-danger em"></p>
-                  </div>
-                  <div class="form-group">
-                     <label for="">Test Type</label>
-                     {{-- Test type --}}
-                     <select class="form-control mg-10" id="type" name="type">
-                        <option>reading</option>
-                        <option>listening</option>
-                        <option>speaking</option>
-                        <option>writing</option>
-                     </select>
-                     <p id="type" class="mb-0 text-danger em"></p>
-                     {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
-                  </div>
-                  {{-- <div class="form-group">
-                     <label for="">Serial Number **</label>
-                     <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
-                     <p id="errserial_number" class="mb-0 text-danger em"></p>
-                     <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p>
-                  </div>
-                  <div class="form-group">
-                     <label>Meta Keywords</label>
-                     <input class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
-                     <p id="errmeta_keywords" class="mb-0 text-danger em"></p>
-                  </div>
-                  <div class="form-group">
-                     <label>Meta Description</label>
-                     <textarea class="form-control" name="meta_description" rows="5" placeholder="Enter meta description"></textarea>
-                     <p id="errmeta_description" class="mb-0 text-danger em"></p>
-                  </div> --}}
-
-               </form>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
-            </div>
-         </div>
-      </div>
-   </div>
 
 
 
    <!-- Edit Package Modal -->
-   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
          <div class="modal-content">
             <div class="modal-header">
@@ -234,11 +153,14 @@
                </button>
             </div>
             <div class="modal-body">
+               <div class="alert alert-info" role="alert">
+                  Test is automatically submitted in <span id="time" style="color:red">05:00</span> minutes!
+                </div>
                <form id="ajaxEditForm" class="" action="{{route('student.test.writing')}}" method="POST">
                   @csrf
                   <input id="inpackage_id" type="hidden" name="package_id" value="">
-                  <input id="test_id" type="hidden" name="test_id" value="{{$package->test_id}}">
-                  <input id="teacher_id" type="hidden" name="teacher_id" value="{{$package->test_id}}">
+                  {{-- <input id="test_id" type="hidden" name="test_id" value="{{$package->test_id}}"> --}}
+                  {{-- <input id="teacher_id" type="hidden" name="teacher_id" value="{{$package->test_id}}"> --}}
                   <div class="form-group">
                      <label for="">Title **</label>
                      <input id="intitle" type="text" class="form-control" name="title" value="" placeholder="Enter title" readonly>
@@ -255,16 +177,16 @@
                      <p id="eerrprice" class="mb-0 text-danger em"></p>
                   </div> --}}
                   <div class="form-group">
-                     <label for="">Description*</label>
+                     <label for="">Writing Topic</label>
                      <input type="textarea" id="indescription" class="form-control " name="description" placeholder="Enter description" data-height="200" readonly>
                      <p id="eerrdescription" class="mb-0 text-danger em"></p>
                   </div>
 
 
-               <!--<div class="form-group">
+               <!---<div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-                  <input type="text" id="intype" class="form-control " name="type"  readonly>
+                  <input type="hidden" id="intype" class="form-control " name="type"  readonly>
                   {{-- <select class="form-control mg-10" id="type" name="type" readonly>
                      <option>reading</option>
                      <option>listening</option>
@@ -274,14 +196,14 @@
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>-->
-               <div class="form-group">
+               {{-- <div class="form-group">
                   <label for="">Test Type</label>
 
                   <input type="text" value="{{$package->type}}" class="form-control " name="type"  readonly>
 
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   
-               </div>
+               </div> --}}
 
 
                {{-- <div class="form-group">
@@ -304,7 +226,7 @@
                   <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Teacher Id" name="teacher_id">
                </div>--}}
                <div>
-                  <input name="price" type="hidden" value="{{$package->id}}">
+                  <input name="teacher_id" id="inteacher" type="hidden" value="">
                </div>
 
              <!--  <div class="form-group">
@@ -314,7 +236,7 @@
                </div>-->
                <div class="form-group">
                   <label for="">Writing Space*</label>
-                  <textarea type="textarea" col="15" id="indescription" class="form-control " name="answer" placeholder="Enter answer" data-height="200"></textarea>
+                  <textarea type="textarea" col="15" id="writing-space" class="form-control " name="answer" placeholder="Enter answer" data-height="200"></textarea>
                   <p id="eerrdescription" class="mb-0 text-danger em"></p>
                </div>
 
@@ -326,7 +248,7 @@
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test1</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>
          </div>
       </div>
    </div>
@@ -372,6 +294,47 @@
            }
         })
         });
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+               minutes = parseInt(timer / 60, 10);
+               seconds = parseInt(timer % 60, 10);
+
+               minutes = minutes < 10 ? "0" + minutes : minutes;
+               seconds = seconds < 10 ? "0" + seconds : seconds;
+
+               console.log('second',seconds);
+               display.textContent = minutes + ":" + seconds;
+
+               if (--timer < 0) {
+                     timer = duration;
+               }
+               // if( seconds == "00") {
+               //    // $('#updateBtn').click();
+               //    $('#editModal').hide();
+               //    location.reload();
+               //    // console.log('hero');
+               // }
+            }, 1000);    
+      }
+
+      $('#editModal').on('show.bs.modal', function (e) {
+                  // do something...
+                  $('#writing-space').focus( function(){
+                     // $("#writing-space").keyup(function(){
+                        var fiveMinutes = 60 * 5,  
+                        display = document.querySelector('#time');
+                        console.log(fiveMinutes);
+                        startTimer(fiveMinutes, display);
+                     // });
+                     
+                  })
+               
+      })
+      $('#editModal').on('hide.bs.modal', function (e) {
+                  // do something...
+              location.reload();
+      })
     });
  </script>
  

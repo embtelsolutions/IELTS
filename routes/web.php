@@ -83,7 +83,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/teacher/admin', 'Auth\TeacherController@index')->name('teacher.index');
   
   //test routes
-  Route::get('/test1', 'Admin\test\TestController@index')->name('teacher.test.index');
+  Route::get('/test/all', 'Admin\test\TestController@index')->name('teacher.test.index');
   Route::post('/test/store', 'Admin\test\TestController@store')->name('teacher.test.store');
   Route::post('/test/update', 'Admin\test\TestController@update')->name('teacher.test.update');
   // Route::get('/test/{id}/inputEdit', 'Admin\TestController@inputEdit')->name('teacher.test.inputEdit');
@@ -98,9 +98,9 @@ Route::group([ 'middleware' => 'teacher'], function () {
  //writing answer
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
  //upload marks
- Route::post('/upload/marks', 'Admin\test\StudentsubmitController@marksupload')->name('teacher.marks.update');
+ Route::post('/upload/marks/', 'Admin\test\StudentsubmitController@marksupload')->name('teacher.marks.update');
  //writing mark upload
-  Route::post('/upload/marks', 'Admin\test\StudentsubmitController@writingmarksupload')->name('teacher.marks.writing');
+  Route::post('/upload/marks/writing', 'Admin\test\StudentsubmitController@writingmarksupload')->name('teacher.marks.writing');
 });
 
 //student
@@ -113,7 +113,7 @@ Route::group([ 'middleware' => 'student'], function () {
 Route::get('/student/reading', 'Admin\test\TestController@reading')->name('student.reading');
 Route::get('/student/writing', 'Admin\test\TestController@writing')->name('student.writing');
 Route::get('/student/speaking', 'Admin\test\TestController@speaking')->name('student.speaking');
-Route::get('/student/lisning', 'Admin\test\TestController@listening')->name('student.listening');
+Route::get('/student/listening', 'Admin\test\TestController@listening')->name('student.listening');
 
 
 

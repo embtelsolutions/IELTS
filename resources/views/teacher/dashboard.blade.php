@@ -31,8 +31,8 @@
 						</div>
 						<div class="col-7 col-stats">
 							<div class="numbers">
-								<p class="card-category">My Students</p>
-								<h4 class="card-title">{{$currentLang->members()->count()}}</h4>
+								<p class="card-category">My Tests</p>
+								<h4 class="card-title">{{count($alltest)}}</h4>
 							</div>
 						</div>
 					</div>
@@ -50,8 +50,8 @@
 						</div>
 						<div class="col-7 col-stats">
 							<div class="numbers">
-								<p class="card-category">Tests2</p>
-								<h4 class="card-title">{{\App\Subscriber::count()}}</h4>
+								<p class="card-category">Answered Test</p>
+								<h4 class="card-title">{{count($submitedtest)}}</h4>
 							</div>
 						</div>
 					</div>
