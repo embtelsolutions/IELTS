@@ -29,6 +29,7 @@
 
 </head>
 <body data-background-color="dark">
+
 	<div class="">
 
     {{-- top navbar area start --}}

@@ -252,6 +252,8 @@
             @elseif(request()->path() == 'student/speaking') show
             @elseif(request()->path() == 'student/reading') show
             @elseif(request()->path() == 'student/writing') show
+            @elseif(request()->path() == 'admin/rejected/orders') show
+
             @endif" id="packages">
               <ul class="nav nav-collapse">
                 {{-- <li class="
@@ -293,10 +295,7 @@
 
 <!--get Test-->
 
-              
-
-
-
+             
                 {{-- <li class="@if(request()->path() == 'admin/all/orders') active @endif">
                   <a href="{{route('admin.all.orders')}}">
                     <span class="sub-item">All Orders</span>

@@ -86,7 +86,7 @@
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Assign Now1
+                                    Assign Now
                                     </a>
                                  </td>
                               </tr>
@@ -175,7 +175,7 @@
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes1</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
          </div>
       </div>
    </div>
