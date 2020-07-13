@@ -29,7 +29,7 @@
 
 </head>
 <body data-background-color="dark">
-	<div class="wrapper">
+	<div class="">
 
     {{-- top navbar area start --}}
     @includeif('teacher.partials.top-navbar')

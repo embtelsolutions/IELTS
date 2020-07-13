@@ -29,7 +29,8 @@
 
 </head>
 <body data-background-color="dark">
-	<div class="wrapper">
+
+	<div class="">
 
     {{-- top navbar area start --}}
     @includeif('student.partials.top-navbar')
@@ -64,4 +65,7 @@
     </div>
     {{-- Loader --}}
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vquery/5.0.1/v.min.js"></script>
+
 </html>

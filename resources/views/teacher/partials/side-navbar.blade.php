@@ -86,6 +86,9 @@
           @elseif(request()->path() == 'admin/announcement') active
           @elseif(request()->path() == 'admin/avaibility') active
           @elseif(request()->path() == 'admin/cookie-alert') active
+          @elseif(request()->path() == 'test/answer') active
+          @elseif(request()->path() == 'test/all') active
+          @elseif(request()->path() == 'test/writing/answer') active
           @endif">
             <a data-toggle="collapse" href="#basic">
               <i class="la flaticon-settings"></i>
@@ -108,9 +111,12 @@
             @elseif(request()->path() == 'admin/announcement') show
             @elseif(request()->path() == 'admin/avaibility') show
             @elseif(request()->path() == 'admin/cookie-alert') show
+            @elseif(request()->path() == 'test/writing/answer') show
+            @elseif(request()->path() == 'test/answer') show
+            @elseif(request()->path() == 'test/all') show
             @endif" id="basic">
               <ul class="nav nav-collapse">
-                <li class="@if(request()->path() == 'test') active @endif">
+                <li class="@if(request()->path() == 'test/all') active @endif">
                   <a href=" {{route('teacher.test.index')}}">
                     <span class="sub-item">All Test</span>
                   </a>
@@ -118,6 +124,17 @@
                 <li class="@if(request()->path() == 'test/assign') active @endif">
                 <a href="{{route('teacher.test.assign')}}">
                     <span class="sub-item">Assign Test</span>
+                  </a>
+                </li>
+                 <li class="@if(request()->path() == 'test/answer') active @endif">
+                <a href="{{route('teacher.test.answer')}}">
+                    <span class="sub-item">Speaking Answer</span>
+                  </a>
+                </li>
+
+                 <li class="@if(request()->path() == 'test/writing/answer') active @endif">
+                <a href="{{route('teacher.test.writing')}}">
+                    <span class="sub-item">Writing Answer</span>
                   </a>
                 </li>
                 {{-- <li class="@if(request()->path() == 'admin/social') active

@@ -230,6 +230,10 @@
           @elseif(request()->path() == 'admin/processing/orders') active
           @elseif(request()->path() == 'admin/completed/orders') active
           @elseif(request()->path() == 'admin/rejected/orders') active
+          @elseif(request()->path() == 'student/listening') active
+          @elseif(request()->path() == 'student/speaking') active
+          @elseif(request()->path() == 'student/reading') active
+          @elseif(request()->path() == 'student/writing') active
           @endif">
             <a data-toggle="collapse" href="#packages">
               <i class="la flaticon-box-1"></i>
@@ -244,7 +248,12 @@
             @elseif(request()->path() == 'admin/pending/orders') show
             @elseif(request()->path() == 'admin/processing/orders') show
             @elseif(request()->path() == 'admin/completed/orders') show
+            @elseif(request()->path() == 'student/listening') show
+            @elseif(request()->path() == 'student/speaking') show
+            @elseif(request()->path() == 'student/reading') show
+            @elseif(request()->path() == 'student/writing') show
             @elseif(request()->path() == 'admin/rejected/orders') show
+
             @endif" id="packages">
               <ul class="nav nav-collapse">
                 {{-- <li class="
@@ -255,11 +264,38 @@
                       <span class="sub-item">Form Builder</span>
                     </a>
                 </li> --}}
-                <li class="@if(request()->path() == 'student/test') active @endif">
+                {{-- <li class="@if(request()->path() == 'student/test') active @endif">
                 <a href="{{route('student.test')}}">
                     <span class="sub-item">My Test</span>
                   </a>
-                </li>
+                </li> --}}
+          
+              <li class="nav-item @if(request()->path() == 'student/speaking') active @endif">
+                <a href="{{ route('student.speaking') }}" class="nav-link">Speaking</a></li>
+            {{-- <li class="nav-item @if(request()->path() == 'student/reading') active @endif">
+              <a href="{{ route('student.reading') }}" class="nav-link">Reading</a></li> --}}
+            <li class="nav-item @if(request()->path() == 'student/writing') active @endif">
+              <a href="{{ route('student.writing') }}" class="nav-link">Writing</a></li>
+            <li class="nav-item @if(request()->path() == 'student/listening') active @endif">
+              <a href="{{ route('student.listening') }}" class="nav-link">Listening</a></li>
+            <li class="@if(request()->path() == 'student/test') active @endif">
+              <a href="{{route('student.alltest')}}" class="nav-link">
+                  Submitted Test
+                </a>
+              </li>
+        </ul>
+               
+
+
+       
+
+
+
+
+
+<!--get Test-->
+
+             
                 {{-- <li class="@if(request()->path() == 'admin/all/orders') active @endif">
                   <a href="{{route('admin.all.orders')}}">
                     <span class="sub-item">All Orders</span>

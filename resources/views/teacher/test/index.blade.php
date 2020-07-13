@@ -82,7 +82,7 @@
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" data-time="{{$package->timer }}" >
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
@@ -183,7 +183,7 @@
                <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-                  <select class="form-control mg-10" id="type" name="type">
+                  <select class="form-control mg-10" id="type-c" name="type">
                      <option>reading</option>
                      <option>listening</option>
                      <option>speaking</option>
@@ -191,6 +191,15 @@
                   </select>
                   <p id="type" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
+               </div>
+
+               <div id ="timer" class="form-group d-none">
+                  <label for="">Timer in Minutes*</label>
+                  {{-- <input type="text" class="form-control" name="timer" value=""> --}}
+                  <select class="form-control mg-10" id="type-c" name="timer" placeholder="Enter time" >
+                     <option>5</option>
+                  </select>
+                  {{-- <p id="errtitle" class="mb-0 text-danger em"></p> --}}
                </div>
                {{-- <div class="form-group">
                   <label for="">Serial Number **</label>
@@ -264,6 +273,14 @@
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>
+               <div id ="timer" class="form-group d-none">
+                  <label for="">Timer in Minutes*</label>
+                  {{-- <input type="text" class="form-control" name="timer" value=""> --}}
+                  <select class="form-control mg-10" id="type-e" name="timer" placeholder="Enter time" >
+                     <option>5</option>
+                  </select>
+                
+               </div>
                {{-- <div class="form-group">
                   <label>Meta Keywords</label>
                   <input id="inmeta_keywords" class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
@@ -287,7 +304,15 @@
 @section('scripts')
 <script>
    $(document).ready(function() {
-
+      $('#type-c').change(function() {
+    // $(this).val() will work here
+      
+      if($('#type-c').val() == "writing"){
+            $('#timer').removeClass('d-none');
+      }else{
+         $('#timer').addClass('d-none');
+      }
+   });
        // make input fields RTL
        $("select[name='language_id']").on('change', function() {
            $(".request-loader").addClass("show");
