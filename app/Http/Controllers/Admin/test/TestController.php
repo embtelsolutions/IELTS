@@ -89,7 +89,8 @@ class TestController extends Controller
 
     public function Delete(Request $request)
     {
-        Test::where('id',$request->input_id)->delete();
+        // dd($request->all());
+        Test::where('id',$request->package_id)->delete();
         // $input->package_input_options()->delete();
         // $input->delete();
         Session::flash('success', 'Test deleted successfully!');
