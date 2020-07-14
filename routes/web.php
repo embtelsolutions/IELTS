@@ -93,7 +93,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
   Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
 
-  //show answer
+ //show answer
  Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
  //writing answer
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
@@ -121,7 +121,7 @@ Route::get('/student/listening', 'Admin\test\TestController@listening')->name('s
   Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');
   Route::get('/student/alltest', 'Admin\test\TestController@alltest')->name('student.alltest');
   //writing
-    Route::post('student/test/writing', 'Admin\test\StudentsubmitController@writingtest')->name('student.test.writing');
+    Route::post('student/test/writing', 'Admin\test\StudentsubmitController@writingtest')->name('student.test.writing');r
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {

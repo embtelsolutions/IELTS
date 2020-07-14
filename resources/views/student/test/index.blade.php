@@ -33,7 +33,7 @@
                </div>
                <div class="col-lg-3">
                   {{-- @if (!empty($langs))
-                     <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
+      <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                         <option value="" selected disabled>Select a Language</option>
                         @foreach ($langs as $lang)
                         <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>{{$lang->name}}</option>
@@ -83,6 +83,7 @@
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
+
                                     <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}">
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
@@ -258,8 +259,9 @@
                      <p id="eerrdescription" class="mb-0 text-danger em"></p>
                   </div>
 
-
                <!--<div class="form-group">
+</div>
+
                   <label for="">Test Type</label>
                   {{-- Test type --}}
                   <input type="text" id="intype" class="form-control " name="type"  readonly>
@@ -281,9 +283,7 @@
                   
                </div>
 
-             
-
-
+            
                {{-- <div class="form-group">
                   <label>Meta Keywords</label>
                   <input id="inmeta_keywords" class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
@@ -318,19 +318,16 @@
                </div>
 
 
-               
-
-
+        
             </form>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>ster
          </div>
       </div>
    </div>
 </div>
-
 
 
 @endsection
@@ -374,3 +371,4 @@
     });
  </script>
  @endsection
+

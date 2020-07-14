@@ -20,12 +20,13 @@ use Illuminate\Support\Facades\Mail;
 use Validator;
 use Session;
 use Auth;
+
 use DB;
 class TestController extends Controller
 {
     //
     public function index(){
-        
+  
          //dd(Auth::guard('user')->user()->id);
         $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
 
@@ -85,6 +86,7 @@ class TestController extends Controller
         Session::flash('success', 'Test added successfully!');
         return "success";
         }
+
     }
 
     public function Delete(Request $request)
@@ -110,12 +112,12 @@ class TestController extends Controller
            Session::flash('success', 'Test added successfully!');
            return "success";
         }else{
-           
         $package->save();
 
         Session::flash('success', 'Test updated successfully!');
         return "success";
         }
+
         
     }
 
@@ -264,5 +266,6 @@ public function listening(Request $request)
         ->select('submittests.*','users.name','tests.title')
         ->get();
           return view('student.test.exam',compact('data'));
+                             
         }
 }

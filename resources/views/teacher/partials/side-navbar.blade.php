@@ -89,7 +89,6 @@
           @elseif(request()->path() == 'test/answer') active
           @elseif(request()->path() == 'test/all') active
           @elseif(request()->path() == 'test/writing/answer') active
-
           @endif">
             <a data-toggle="collapse" href="#basic">
               <i class="la flaticon-settings"></i>
@@ -138,7 +137,6 @@
                     <span class="sub-item">Writing Answer</span>
                   </a>
                 </li>
-
                 {{-- <li class="@if(request()->path() == 'admin/social') active
                   @elseif(request()->is('admin/social/*')) active @endif">
                     <a href="">

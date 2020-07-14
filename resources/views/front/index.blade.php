@@ -460,7 +460,7 @@
                     <li>Lorem11 Ipsum is simply dummy789.</li>
                  </ul>
                </div>
-               <a href="" class="pricing-btn">Get Started123</a>
+               <a href="" class="pricing-btn">Get Started</a>r
            </div> --}}
          @endforeach
        </div>
