@@ -33,7 +33,7 @@
                </div>
                <div class="col-lg-3">
                   {{-- @if (!empty($langs))
-                     <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
+      <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                         <option value="" selected disabled>Select a Language</option>
                         @foreach ($langs as $lang)
                         <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>{{$lang->name}}</option>
@@ -51,7 +51,7 @@
                <div class="row">
                   <div class="col-lg-12">
                      @if (count($packages) == 0)
-                     <h3 class="text-center">NO TEST FOUND</h3>
+                        <h3 class="text-center">NO TEST FOUND</h3>
                      @else
                      <div class="table-responsive">
                         <table class="table table-striped mt-3">
@@ -87,7 +87,7 @@
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
                                        </span>
-                                       Start Test123
+                                       Start Test
                                     </a>
                                     {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
                                        @csrf
@@ -162,7 +162,7 @@
                      <p id="errlanguage_id" class="mb-0 text-danger em"></p>
                   </div> --}}
                   <div class="form-group">
-                     <label for="">Title22*</label>
+                     <label for="">Title*</label>
                      <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
                      <p id="errtitle" class="mb-0 text-danger em"></p>
                   </div>
@@ -177,7 +177,7 @@
                      <p id="errprice" class="mb-0 text-danger em"></p>
                   </div> --}}
                   <div class="form-group">
-                     <label for="">Description11*</label>
+                     <label for="">Description*</label>
                      <textarea class="form-control summernote" name="description" rows="8" cols="80" placeholder="Enter description" data-height="300"></textarea>
                      <p id="errdescription" class="mb-0 text-danger em"></p>
                   </div>
@@ -258,8 +258,9 @@
                      <p id="eerrdescription" class="mb-0 text-danger em"></p>
                   </div>
 
-
                <!--<div class="form-group">
+</div>
+
                   <label for="">Test Type</label>
                   {{-- Test type --}}
                   <input type="text" id="intype" class="form-control " name="type"  readonly>
@@ -281,9 +282,7 @@
                   
                </div>
 
-             
-
-
+            
                {{-- <div class="form-group">
                   <label>Meta Keywords</label>
                   <input id="inmeta_keywords" class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
@@ -318,19 +317,16 @@
                </div>
 
 
-               
-
-
+        
             </form>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test1</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>
          </div>
       </div>
    </div>
 </div>
-
 
 
 @endsection

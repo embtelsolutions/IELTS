@@ -1,7 +1,6 @@
 @extends('student.layout')
 
 @section('student-content')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="page-header">
    <h4 class="page-title">Tests</h4>
    <ul class="breadcrumbs">
@@ -51,9 +50,9 @@
             <div class="card-body">
                <div class="row">
                   <div class="col-lg-12">
-                     @if (count($packages) == 0)
-                     <h3 class="text-center">NO TEST FOUND</h3>
-                     @else
+                  @if (count($packages) == 0 )
+                        <h3 class="text-center">NO TEST FOUND</h3>
+                  @else
                      <div class="table-responsive">
                         <table class="table table-striped mt-3">
                            <thead>
@@ -72,60 +71,60 @@
                            </thead>
                            <tbody>
                               @foreach ($packages as $key => $package)
-                              <tr>
-                                 <td>
-                                    <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
-                                 </td>
-                                 <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 {{-- <td>{{convertUtf8($package->description)}}</td> --}}
-                                 <td>{{convertUtf8($package->type)}}</td>
-                                 <td>
-                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
-                                 </td>
-                                 {{-- <th scope="col">{{$package->serial_number}}</th> --}}
-                                 <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}" data-teacher="{{$package->teacher_id}}" >
-                                       <span class="btn-label">
-                                          <i class="fas fa-edit"></i>
-                                       </span>
-                                       Start Test
-                                    </a>
-                                    {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
-                                       @csrf
-                                       <input type="hidden" name="package_id" value="{{$package->id}}">
-                                       <button type="submit" class="btn btn-danger btn-sm deletebtn">
+                                 <tr>
+                                    <td>
+                                       <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
+                                    </td>
+                                    <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
+                                    {{-- <td>{{convertUtf8($package->description)}}</td> --}}
+                                    <td>{{convertUtf8($package->type)}}</td>
+                                    <td>
+                                       <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
+                                    </td>
+                                    {{-- <th scope="col">{{$package->serial_number}}</th> --}}
+                                    <td>
+                                       <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}" >
                                           <span class="btn-label">
-                                             <i class="fas fa-trash"></i>
+                                             <i class="fas fa-edit"></i>
                                           </span>
-                                          Delete
-                                       </button>
-                                    </form> --}}
-                                 </td>
-                              </tr>
-                              <!-- Services Modal -->
-                              <div class="modal fade" id="detailsModal{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                             <span aria-hidden="true">&times;</span>
+                                          Start Test
+                                       </a>
+                                       {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
+                                          @csrf
+                                          <input type="hidden" name="package_id" value="{{$package->id}}">
+                                          <button type="submit" class="btn btn-danger btn-sm deletebtn">
+                                             <span class="btn-label">
+                                                <i class="fas fa-trash"></i>
+                                             </span>
+                                             Delete
                                           </button>
-                                       </div>
-                                       <div class="modal-body">
-                                          {!! convertUtf8($package->description) !!}
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                       </form> --}}
+                                    </td>
+                                 </tr>
+                                 <!-- Services Modal -->
+                                 <div class="modal fade" id="detailsModal{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
+                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                             </button>
+                                          </div>
+                                          <div class="modal-body">
+                                             {!! convertUtf8($package->description) !!}
+                                          </div>
+                                          <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          </div>
                                        </div>
                                     </div>
                                  </div>
-                              </div>
                               @endforeach
                            </tbody>
                         </table>
                      </div>
-                     @endif
+                  @endif
                   </div>
                </div>
             </div>
@@ -140,10 +139,8 @@
       </div>
    </div>
 
-
-
    <!-- Edit Package Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
          <div class="modal-content">
             <div class="modal-header">
@@ -153,14 +150,9 @@
                </button>
             </div>
             <div class="modal-body">
-               <div class="alert alert-info" role="alert">
-                  Test is automatically submitted in <span id="time" style="color:red">05:00</span> minutes!
-                </div>
-               <form id="ajaxEditForm" class="" action="{{route('student.test.writing')}}" method="POST">
+               <form id="ajaxEditForm" class="" action="{{route('student.test.update')}}" method="POST">
                   @csrf
                   <input id="inpackage_id" type="hidden" name="package_id" value="">
-                  {{-- <input id="test_id" type="hidden" name="test_id" value="{{$package->test_id}}"> --}}
-                  {{-- <input id="teacher_id" type="hidden" name="teacher_id" value="{{$package->test_id}}"> --}}
                   <div class="form-group">
                      <label for="">Title **</label>
                      <input id="intitle" type="text" class="form-control" name="title" value="" placeholder="Enter title" readonly>
@@ -177,25 +169,19 @@
                      <p id="eerrprice" class="mb-0 text-danger em"></p>
                   </div> --}}
                   <div class="form-group">
-                     <label for="">Writing Topic</label>
+                     <label for="">Description*</label>
                      <input type="textarea" id="indescription" class="form-control " name="description" placeholder="Enter description" data-height="200" readonly>
                      <p id="eerrdescription" class="mb-0 text-danger em"></p>
                   </div>
 
 
-               <!---<div class="form-group">
+              <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-                  <input type="hidden" id="intype" class="form-control " name="type"  readonly>
-                  {{-- <select class="form-control mg-10" id="type" name="type" readonly>
-                     <option>reading</option>
-                     <option>listening</option>
-                     <option>speaking</option>
-                     <option>writing</option>
-                  </select> --}}
+                  <input type="text" id="intype" class="form-control " name="type"  readonly>
                   <p id="type-s" class="mb-0 text-danger em"></p>
-                  {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
-               </div>-->
+                   <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p>
+              </div>
                {{-- <div class="form-group">
                   <label for="">Test Type</label>
 
@@ -225,18 +211,13 @@
                   <label for="exampleInputEmail1">Teacher Id</label>
                   <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Teacher Id" name="teacher_id">
                </div>--}}
-               <div>
-                  <input name="teacher_id" id="inteacher" type="hidden" value="">
-               </div>
+               {{-- <div>
+                  <input name="price" type="hidden" value="{{$package->id}}">
+               </div> --}}
 
-             <!--  <div class="form-group">
+               <div class="form-group">
                   <label for="">video*</label>
                   <input type="file" accept="video/*, audio/*" id="indescription" class="form-control " name="video" placeholder="Enter description" data-height="200" readonly>
-                  <p id="eerrdescription" class="mb-0 text-danger em"></p>
-               </div>-->
-               <div class="form-group">
-                  <label for="">Writing Space*</label>
-                  <textarea type="textarea" col="15" id="writing-space" class="form-control " name="answer" placeholder="Enter answer" data-height="200"></textarea>
                   <p id="eerrdescription" class="mb-0 text-danger em"></p>
                </div>
 
@@ -294,72 +275,6 @@
            }
         })
         });
-        function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
-            setInterval(function () {
-               minutes = parseInt(timer / 60, 10);
-               seconds = parseInt(timer % 60, 10);
-
-               minutes = minutes < 10 ? "0" + minutes : minutes;
-               seconds = seconds < 10 ? "0" + seconds : seconds;
-
-               console.log('second',seconds);
-               display.textContent = minutes + ":" + seconds;
-
-               if (--timer < 0) {
-                     timer = duration;
-               }
-               // if( seconds == "00") {
-               //    // $('#updateBtn').click();
-               //    $('#editModal').hide();
-               //    location.reload();
-               //    // console.log('hero');
-               // }
-            }, 1000);    
-      }
-
-      $('#editModal').on('show.bs.modal', function (e) {
-                  // do something...
-                  $('#writing-space').focus( function(){
-                     // $("#writing-space").keyup(function(){
-                        var fiveMinutes = 60 * 5,  
-                        display = document.querySelector('#time');
-                        console.log(fiveMinutes);
-                        startTimer(fiveMinutes, display);
-                     // });
-                     
-                  })
-               
-      })
-      $('#editModal').on('hide.bs.modal', function (e) {
-                  // do something...
-              location.reload();
-      })
     });
  </script>
- 
-<script type="text/javascript">
-
-$(document).ready(function () {
-
-    //Disable cut copy paste
-
-    $(document).bind('cut copy paste', function (e) {
-
-        e.preventDefault();
-
-    });
-
-
-    //Disable mouse right click
-
-    $(document).on("contextmenu",function(e){
-
-        return false;
-
-    });
-
-});
-
-</script>
  @endsection

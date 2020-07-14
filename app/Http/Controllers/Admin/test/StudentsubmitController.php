@@ -22,8 +22,8 @@ class StudentsubmitController extends Controller
     $data['student_id']=$user;
    // $data['teacher_id']=$teacher_id->teacher_id;
      $data['teacher_id']=$request->teacher_id;
-    $data['test_id']=$request->package_id;
-//dd($data);
+    $data['test_id']=$test_id;
+
 
 
         $video=$request->file('video');
@@ -41,10 +41,11 @@ class StudentsubmitController extends Controller
           $data['video']=$video_url;
           $studenttest=DB::table('submittests')
           ->insert($data);
-          Session::flash('success', 'Test updated successfully!');
+          Session::flash('success', 'Test submitted successfully!');
           return "success";
 
         }else{
+          Session::flash('warning', 'oOps Error!');
           return Redirect()->back();
         }
 
@@ -75,7 +76,7 @@ class StudentsubmitController extends Controller
         $data['test_id']=$request->test_id;
         $data['marks']=$request->marks;
         DB::table('marks')->insert($data);
-         Session::flash('success', 'Test updated successfully!');
+         Session::flash('success', 'Marks Submitted successfully!');
           return "success";
 
         //dd($data);
@@ -91,7 +92,7 @@ class StudentsubmitController extends Controller
         $data['answer']=$request->answer;
         //dd($data);
         DB::table('writings')->insert($data);
-         Session::flash('success', 'Test updated successfully!');
+         Session::flash('success', 'Test Submitted successfully!');
           return "success";
       }
          public function writinganswer()
@@ -120,7 +121,8 @@ class StudentsubmitController extends Controller
         $data['test_id']=$request->test_id;
         $data['marks']=$request->marks;
         DB::table('writingmarks')->insert($data);
-         Session::flash('success', 'Test updated successfully!');
+
+         Session::flash('success', 'Test Submitted successfully!');
           return "success";
 
         //dd($data);

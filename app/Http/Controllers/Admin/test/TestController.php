@@ -25,9 +25,10 @@ class TestController extends Controller
 {
     //
     public function index(){
-        
+  
          //dd(Auth::guard('user')->user()->id);
         $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
+
         return view('teacher.test.index',$data);
         //return response('success');
 
@@ -70,24 +71,21 @@ class TestController extends Controller
         $input->description = $request->description;
         $input->type = $request->type;
         $input->teacher_id = Auth::guard('user')->user()->id;
-        // $input->label = $request->label;
-        // $input->name = $inname;
-        // $input->placeholder = $request->placeholder;
-        // $input->required = $request->required;
+        if($input->type == 'writing')
+        {
+           $input->timer = $request->timer;
+           $input->save();
+           Session::flash('success', 'Test added successfully!');
+           return "success";
+          // dd($input);
+        }else{
+        
         $input->save();
-
-    //     if ($request->type == 2 || $request->type == 3) {
-    //         $options = $request->options;
-    //         foreach ($options as $key => $option) {
-    //             $op = new PackageInputOption;
-    //             $op->package_input_id = $input->id;
-    //             $op->name = $option;
-    //             $op->save();
-    //         }
-    //     }
 
         Session::flash('success', 'Test added successfully!');
         return "success";
+        }
+
     }
 
     public function Delete(Request $request)
@@ -99,16 +97,25 @@ class TestController extends Controller
         return back();
     }
     public function update(Request $request){
-
+        
         $package = Test::findOrFail($request->package_id);
         
         $package->title = $request->title;
         $package->description = $request->description;
         $package->type = $request->type;
+        // $package->type = $request->time;
+        if($package->type == 'writing')
+        {
+           $input->timer = $request->timer;
+           Session::flash('success', 'Test added successfully!');
+           return "success";
+        }else{
         $package->save();
 
         Session::flash('success', 'Test updated successfully!');
         return "success";
+        }
+
         
     }
 
@@ -180,9 +187,8 @@ public function speaking(Request $request)
                                         $q->where('user_id', $user);
                                         $q->groupBy('user_id');
                                     })
-                                ->where('type','=','speaking')
                                 ->join('test_users','tests.id','test_users.test_id')
-
+                                ->where('type','=','speaking')
                                // ->join('submittests','tests.id','submittests.test_id')
                                 ->paginate(15);
             // dd($data);           
@@ -203,7 +209,7 @@ public function reading(Request $request)
 
                                // ->join('submittests','tests.id','submittests.test_id')
                                 ->paginate(15);
-            // dd($data);           
+            // dd($data);
             return view('student.test.reading',$data);
 }
 
@@ -215,14 +221,14 @@ public function writing(Request $request)
             //                     ->get();
             $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
                                         $q->where('user_id', $user);
-                                        $q->groupBy('user_id');
+                                        // $q->groupBy('user_id');
                                     })
                                 ->where('type','=','writing')
                                 ->join('test_users','tests.id','test_users.test_id')
 
                                // ->join('submittests','tests.id','submittests.test_id')
                                 ->paginate(15);
-            // dd($data);           
+            // dd($data['packages']);           
             return view('student.test.writing',$data);
 }
 
@@ -241,8 +247,9 @@ public function listening(Request $request)
 
                                // ->join('submittests','tests.id','submittests.test_id')
                                 ->paginate(15);
+                               
             // dd($data);           
-            return view('student.test.lestening',$data);
+            return view('student.test.listening',$data);
 }
 
 
@@ -257,5 +264,6 @@ public function listening(Request $request)
         ->select('submittests.*','users.name','tests.title')
         ->get();
           return view('student.test.exam',compact('data'));
+                             
         }
 }

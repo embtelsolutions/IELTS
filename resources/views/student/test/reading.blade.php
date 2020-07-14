@@ -87,7 +87,7 @@
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
                                        </span>
-                                       Start Test123
+                                       Start Test
                                     </a>
                                     {{-- <form class="deleteform d-inline-block" action="{{route('teacher.test.delete')}}" method="post">
                                        @csrf
@@ -162,7 +162,7 @@
                      <p id="errlanguage_id" class="mb-0 text-danger em"></p>
                   </div> --}}
                   <div class="form-group">
-                     <label for="">Title22*</label>
+                     <label for="">Title*</label>
                      <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
                      <p id="errtitle" class="mb-0 text-danger em"></p>
                   </div>
@@ -177,7 +177,7 @@
                      <p id="errprice" class="mb-0 text-danger em"></p>
                   </div> --}}
                   <div class="form-group">
-                     <label for="">Description11*</label>
+                     <label for="">Description*</label>
                      <textarea class="form-control summernote" name="description" rows="8" cols="80" placeholder="Enter description" data-height="300"></textarea>
                      <p id="errdescription" class="mb-0 text-danger em"></p>
                   </div>
@@ -258,7 +258,7 @@
                   </div>
 
 
-               <!--<div class="form-group">
+               <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
                   <input type="text" id="intype" class="form-control " name="type"  readonly>
@@ -270,15 +270,15 @@
                   </select> --}}
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
-               </div>-->
-               <div class="form-group">
+               </div>
+               {{-- <div class="form-group">
                   <label for="">Test Type</label>
 
                   <input type="text" value="{{$package->type}}" class="form-control " name="type"  readonly>
 
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   
-               </div>
+               </div> --}}
 
 
                {{-- <div class="form-group">
@@ -300,9 +300,9 @@
                   <label for="exampleInputEmail1">Teacher Id</label>
                   <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Teacher Id" name="teacher_id">
                </div>--}}
-               <div>
+               {{-- <div>
                   <input name="price" type="hidden" value="{{$package->id}}">
-               </div>
+               </div> --}}
 
                <div class="form-group">
                   <label for="">video*</label>
@@ -318,7 +318,7 @@
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test1</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>
          </div>
       </div>
    </div>

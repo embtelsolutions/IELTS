@@ -120,7 +120,7 @@
                               </div>
                        <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="form-control-label">Product Details<span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Submitted Details<span class="tx-danger">*</span></label>
                     <br>
                   <p >{!! $row->answer !!}</p>
                 </div>  
