@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97d80631c435b99ab098ca4f4ab44bcb",
+    "content-hash": "e9fc0841375ea795a148306bc2c1c97a",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -2196,6 +2196,65 @@
                 "page speed"
             ],
             "time": "2020-05-02T13:12:06+00:00"
+        },
+        {
+            "name": "softon/indipay",
+            "version": "v1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/softon/indipay.git",
+                "reference": "5b2080cff0d6fde6dfc0edcfbd33ab8cc9a97b70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/softon/indipay/zipball/5b2080cff0d6fde6dfc0edcfbd33ab8cc9a97b70",
+                "reference": "5b2080cff0d6fde6dfc0edcfbd33ab8cc9a97b70",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.0|~6.0",
+                "illuminate/support": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Softon\\Indipay\\IndipayServiceProvider"
+                    ],
+                    "aliases": {
+                        "Indipay": "Softon\\Indipay\\Facades\\Indipay"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Softon\\Indipay\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shiburaj",
+                    "email": "powerupneo@gmail.com"
+                }
+            ],
+            "description": "The Laravel 5+ Package for Indian Payment Gateways. Currently supported gateways: CCAvenue, PayUMoney, EBS, CitrusPay, InstaMojo, ZapakPay, Paytm, Mocker.",
+            "keywords": [
+                "CitrusPay",
+                "Indian Payment Gateways",
+                "ccavenue",
+                "ebs",
+                "instamojo",
+                "laravel 5",
+                "mocker",
+                "paytm",
+                "payumoney"
+            ],
+            "time": "2020-06-28T11:01:08+00:00"
         },
         {
             "name": "spatie/laravel-cookie-consent",

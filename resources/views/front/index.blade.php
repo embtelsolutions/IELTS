@@ -418,13 +418,13 @@
                 <div class="features">
                   {!! convertUtf8($package->description) !!}
                   {{-- <ul>
-                     <li>Lorem Ipsum is simply dummy.</li>
-                     <li>Lorem Ipsum is simply dummy.</li>
-                     <li>Lorem Ipsum is simply dummy.</li>
-                     <li>Lorem Ipsum is simply dummy.</li>
+                     <li>Lorem11 Ipsum is simply dummy.</li>
+                     <li>Lorem11 Ipsum is simply dummy.</li>
+                     <li>Lorem11 Ipsum is simply dummy.</li>
+                     <li>Lorem11 Ipsum is simply dummy.</li>
                   </ul> --}}
                 </div>
-                {{-- <a href="" class="pricing-btn">Get Started</a> --}}
+                {{-- <a href="" class="pricing-btn">Get Started11</a> --}}
                 <a href="{{route('front.packageorder.index', $package->id)}}" class="pricing-btn">Get Started</a>
             </div>
 
@@ -437,30 +437,30 @@
                </div>
                <div class="features">
                  <ul>
-                    <li>Lorem Ipsum is simply dummy.</li>
-                    <li>Lorem Ipsum is simply dummy.</li>
-                    <li>Lorem Ipsum is simply dummy.</li>
-                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem11 Ipsum is simply dummy.</li>
+                    <li>Lorem11 Ipsum is simply dummy.</li>
+                    <li>Lorem11 Ipsum is simply dummy.</li>
+                    <li>Lorem11 Ipsum is simply dummy.</li>
                  </ul>
                </div>
                <a href="" class="pricing-btn">Get Started</a>
            </div>
             <div class="col-lg-4 col-xl-4 pricing-box">
                <div class="pricing-title">
-                  <h2>Enterprise</h2>
+                  <h2>Enterprise12</h2>
                </div>
                <div class="pricing">
-                  <h1> <span class="currency">$</span> 900</h1>
+                  <h1> <span class="currency">$</span> 1500</h1>
                </div>
                <div class="features">
                  <ul>
-                    <li>Lorem Ipsum is simply dummy.</li>
-                    <li>Lorem Ipsum is simply dummy.</li>
-                    <li>Lorem Ipsum is simply dummy.</li>
-                    <li>Lorem Ipsum is simply dummy.</li>
+                    <li>Lorem11 Ipsum is simply dummy123.</li>
+                    <li>Lorem11 Ipsum is simply dummy456.</li>
+                    <li>Lorem11 Ipsum is simply dummy.</li>
+                    <li>Lorem11 Ipsum is simply dummy789.</li>
                  </ul>
                </div>
-               <a href="" class="pricing-btn">Get Started</a>
+               <a href="" class="pricing-btn">Get Started123</a>
            </div> --}}
          @endforeach
        </div>

@@ -18,7 +18,7 @@ class CreateSubmittestsTable extends Migration
             $table->string('student_id');
             $table->string('teacher_id');
             $table->string('test_id');
-             $table->string('photo')->nullable();
+             $table->string('video')->nullable();
             $table->timestamps();
         });
     }

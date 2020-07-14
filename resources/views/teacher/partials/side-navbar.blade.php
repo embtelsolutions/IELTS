@@ -117,14 +117,21 @@
                 </li>
                 <li class="@if(request()->path() == 'test/assign') active @endif">
                 <a href="{{route('teacher.test.assign')}}">
-                    <span class="sub-item">Assign Test11</span>
+                    <span class="sub-item">Assign Test</span>
                   </a>
                 </li>
-                 <li class="{{--@if(request()->path() == 'test/assign') active @endif--}}">
+                 <li class="@if(request()->path() == 'test/assign') active @endif">
                 <a href="{{route('teacher.test.answer')}}">
-                    <span class="sub-item">Test Answer</span>
+                    <span class="sub-item">Speaking Answer</span>
                   </a>
                 </li>
+
+                 <li class="@if(request()->path() == 'test/assign') active @endif">
+                <a href="{{route('teacher.test.writing')}}">
+                    <span class="sub-item">Writing Answer</span>
+                  </a>
+                </li>
+
                 {{-- <li class="@if(request()->path() == 'admin/social') active
                   @elseif(request()->is('admin/social/*')) active @endif">
                     <a href="">

@@ -262,6 +262,31 @@
                 </li>
 
 
+
+                 
+               <li class="@if(request()->path() == 'student/test') active @endif">
+                 <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <span class="menu-item-label">Different Test</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item @if(request()->path() == 'student/speaking') active @endif"><a href="{{ route('student.speaking') }}" class="nav-link">Speaking</a></li>
+          <li class="nav-item @if(request()->path() == '/student/reading') active @endif"><a href="{{ route('student.reading') }}" class="nav-link">Reading</a></li>
+          <li class="nav-item @if(request()->path() == 'student/writing') active @endif"><a href="{{ route('student.writing') }}" class="nav-link">Writing</a></li>
+           <li class="nav-item @if(request()->path() == 'student/listening') active @endif"><a href="{{ route('student.listening') }}" class="nav-link">Listening</a></li>
+        </ul>
+                </li>
+
+
+       
+
+
+
+
+
 <!--get Test-->
 
               <li class="@if(request()->path() == 'student/test') active @endif">
