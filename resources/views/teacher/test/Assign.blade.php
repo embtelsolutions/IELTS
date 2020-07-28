@@ -155,7 +155,7 @@
                </div>
                <div class="form-group">
                <label for="">Assign to </label>
-                  <select class="form-control mg-10" id="type" name="students[]" multiple="true">
+                  <select class="form-control mg-10" id="type" name="students[]" multiple="false">
                      @foreach($students as $student)
                      <option value="{{$student->id}}">{{$student->name}}</option>
                      @endforeach

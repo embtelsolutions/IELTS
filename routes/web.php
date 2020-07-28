@@ -46,8 +46,11 @@ Route::group(['middleware' => 'setlang'], function() {
   // Dynamic Page Routes
   Route::get('/{slug}/{id}/page', 'Front\FrontendController@dynamicPage')->name('front.dynamicPage');
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
-});
 
+  //student test route
+  Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
+  
+});
 
 
 //pauumoney method
@@ -63,6 +66,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 
   Route::get('/mail-form', 'Admin\ForgetController@mailForm')->name('admin.forget.form');
   Route::post('/sendmail', 'Admin\ForgetController@sendmail')->name('admin.forget.mail');
+  
+
 });
 
 //registration routes 
@@ -121,7 +126,7 @@ Route::get('/student/listening', 'Admin\test\TestController@listening')->name('s
   Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');
   Route::get('/student/alltest', 'Admin\test\TestController@alltest')->name('student.alltest');
   //writing
-    Route::post('student/test/writing', 'Admin\test\StudentsubmitController@writingtest')->name('student.test.writing');r
+    Route::post('student/test/writing', 'Admin\test\StudentsubmitController@writingtest')->name('student.test.writing');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']], function () {
@@ -254,6 +259,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/herosection/slider/{id}/uploadUpdate', 'Admin\SliderController@uploadUpdate')->name('admin.slider.uploadUpdate');
     Route::post('/herosection/slider/delete', 'Admin\SliderController@delete')->name('admin.slider.delete');
 
+    Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');
+    Route::get('/create/test/writing','Admin\TestController@write')->name('admin.create.write.test');
+    Route::get('/create/test/speaking','Admin\TestController@speak')->name('admin.create.speak.test');
 
     // Admin Hero Section (Video Version) Routes
     Route::get('/herosection/video', 'Admin\HerosectionController@video')->name('admin.herosection.video');
@@ -651,6 +659,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
   });
 
 
-  // Admin Cache Clear Routes
-  Route::get('/cache-clear', 'Admin\CacheController@clear')->name('admin.cache.clear');
 });

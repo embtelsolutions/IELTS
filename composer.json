@@ -14,10 +14,12 @@
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
+        "illuminate/html": "5.*",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "masterro/laravel-xss-filter": "^1.0",
         "renatomarinho/laravel-page-speed": "^1.8",
+        "softon/indipay": "^1.2",
         "spatie/laravel-cookie-consent": "^2.10"
     },
     "require-dev": {

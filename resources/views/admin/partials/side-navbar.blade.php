@@ -60,7 +60,7 @@
           <li class="nav-item @if(request()->path() == 'admin/dashboard') active @endif">
             <a href="{{route('admin.dashboard')}}">
               <i class="la flaticon-paint-palette"></i>
-              <p>Dashboard2</p>
+              <p>Dashboard</p>
             </a>
           </li>
         @endif
@@ -611,6 +611,44 @@
           </li>
         @endif
 
+
+       
+          <!-- Test Mangement -->
+          <li class="nav-item
+          @if(request()->path() == 'admin/create/test/listening') active
+          @elseif(request()->path() == 'admin/create/test/writing') active
+          @elseif(request()->path() == 'admin/create/test/speaking') active
+          @endif">
+            <a data-toggle="collapse" href="#test">
+              <i class="la flaticon-list"></i>
+              <p>Practice Tests</p>
+              <span class="caret"></span>
+            </a>
+            <div class="collapse
+            @if(request()->path() == 'admin/create/test/listening') show
+            @elseif(request()->path() == 'admin/create/test/writing') show
+            @elseif(request()->path() == 'admin/create/test/speaking') show
+            @endif" id="test">
+              <ul class="nav nav-collapse">
+                <li class="@if(request()->path() == 'admin/create/test/listening') active @endif">
+                  <a href="{{route('admin.create.listen.test')}}">
+                    <span class="sub-item">Create Listening Test</span>
+                  </a>
+                </li>
+                <li class="@if(request()->path() == 'admin/create/test/writing') active @endif">
+                  <a href="{{route('admin.create.write.test')}}">
+                    <span class="sub-item">Create Writing Test</span>
+                  </a>
+                </li>
+                <li class="@if(request()->path() == 'admin/create/test/speaking') active @endif">
+                  <a href="{{route('admin.create.speak.test')}}">
+                    <span class="sub-item">Create Speaking Test</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+     
 
 
         {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Pages', $permissions)))

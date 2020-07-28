@@ -20,7 +20,9 @@ class StudentController extends Controller
         ->get();
 
        $user = Auth::guard('user')->user()->id;
-    
+    //    $whereData = array(array('name','test') , array('id' ,'!=','5')); 
+    //     dd($whereData);
+
         $mytest  = Test::whereHas( 'test_users',function ($q) use ($user) {
                                     $q->where('user_id', $user);
                                     $q->groupBy('user_id');

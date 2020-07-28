@@ -63,5 +63,9 @@
         <img src="{{asset('assets/admin/img/loader.gif')}}" alt="">
     </div>
     {{-- Loader --}}
+
+    @stack('after-script')
+
 </body>
+
 </html>
