@@ -68,6 +68,7 @@
             <a href="{{route('student.history')}}">
               <i class="la flaticon-paint-palette"></i>
               <p>History</p>
+<<<<<<< HEAD
             </a>
           </li>
           @endif
@@ -97,101 +98,15 @@
               <i class="la flaticon-settings"></i>
               <p>Basic Settings</p>
               <span class="caret"></span>
+=======
+>>>>>>> 0a406984e2dbe353e9acfea932f95590cab7201b
             </a>
-            <div class="collapse
-            @if(request()->path() == 'admin/favicon') show
-            @elseif(request()->path() == 'admin/logo') show
-            @elseif(request()->path() == 'admin/homeversion') show
-            @elseif(request()->path() == 'admin/basicinfo') show
-            @elseif(request()->path() == 'admin/support') show
-            @elseif(request()->path() == 'admin/social') show
-            @elseif(request()->is('admin/social/*')) show
-            @elseif(request()->path() == 'admin/breadcrumb') show
-            @elseif(request()->path() == 'admin/heading') show
-            @elseif(request()->path() == 'admin/script') show
-            @elseif(request()->path() == 'admin/seo') show
-            @elseif(request()->path() == 'admin/maintainance') show
-            @elseif(request()->path() == 'admin/announcement') show
-            @elseif(request()->path() == 'admin/avaibility') show
-            @elseif(request()->path() == 'admin/cookie-alert') show
-            @endif" id="basic">
-              <ul class="nav nav-collapse">
-                <li class="@if(request()->path() == 'admin/favicon') active @endif">
-                  <a href="{{route('admin.favicon') . '?language=' . $default->code}}">
-                    <span class="sub-item">Favicon</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/logo') active @endif">
-                  <a href="{{route('admin.logo') . '?language=' . $default->code}}">
-                    <span class="sub-item">Logo</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/social') active
-                  @elseif(request()->is('admin/social/*')) active @endif">
-                    <a href="{{route('admin.social.index')}}">
-                      <span class="sub-item">Social Links</span>
-                    </a>
-                  </li>
-                {{-- <li class="@if(request()->path() == 'admin/homeversion') active @endif">
-                  <a href="{{route('admin.homeversion') . '?language=' . $default->code}}">
-                    <span class="sub-item">Home Versions</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/basicinfo') active @endif">
-                  <a href="{{route('admin.basicinfo') . '?language=' . $default->code}}">
-                    <span class="sub-item">Basic Informations</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/support') active @endif">
-                  <a href="{{route('admin.support') . '?language=' . $default->code}}">
-                    <span class="sub-item">Support Informations</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/breadcrumb') active @endif">
-                  <a href="{{route('admin.breadcrumb') . '?language=' . $default->code}}">
-                    <span class="sub-item">Breadcrumb</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/heading') active @endif">
-                  <a href="{{route('admin.heading') . '?language=' . $default->code}}">
-                    <span class="sub-item">Page Headings</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/script') active @endif">
-                  <a href="{{route('admin.script')}}">
-                    <span class="sub-item">Scripts</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/seo') active @endif">
-                  <a href="{{route('admin.seo') . '?language=' . $default->code}}">
-                    <span class="sub-item">SEO Information</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/maintainance') active @endif">
-                  <a href="{{route('admin.maintainance')}}">
-                    <span class="sub-item">Maintainance Mode</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/announcement') active @endif">
-                  <a href="{{route('admin.announcement') . '?language=' . $default->code}}">
-                    <span class="sub-item">Announcement Popup</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/avaibility') active @endif">
-                  <a href="{{route('admin.avaibility') . '?language=' . $default->code}}">
-                    <span class="sub-item">Pages Avaibility</span>
-                  </a>
-                </li>
-                <li class="@if(request()->path() == 'admin/cookie-alert') active @endif">
-                  <a href="{{route('admin.cookie.alert') . '?language=' . $default->code}}">
-                    <span class="sub-item">Cookie Alert</span>
-                  </a>
-                </li> --}}
-              </ul>
-            </div>
           </li>
-        @endif
+          @endif
 
+
+
+      
 
 
         {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Subscribers', $permissions)))
@@ -402,9 +317,9 @@
 
 
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Home Page', $permissions)))
+        {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Home Page', $permissions))) --}}
           {{-- Home Page --}}
-          <li class="nav-item
+          {{-- <li class="nav-item
           @if(request()->path() == 'admin/features') active
           @elseif(request()->path() == 'admin/introsection') active
           @elseif(request()->path() == 'admin/slider-section') active
@@ -470,7 +385,7 @@
             @elseif(request()->path() == 'admin/scategorys') show
             @elseif(request()->is('admin/scategory/*/edit')) show
             @endif" id="home">
-              <ul class="nav nav-collapse">
+              <ul class="nav nav-collapse"> --}}
 
                 {{-- <li class="
                 @if(request()->path() == 'admin/herosection/static') selected
@@ -511,7 +426,7 @@
                   </div>
                 </li> --}}
 
-                <li class="@if(request()->path() == 'admin/slider-section') active @endif">
+                {{-- <li class="@if(request()->path() == 'admin/slider-section') active @endif">
                   <a href="{{route('admin.slider-section.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Slider Section</span>
                   </a>
@@ -530,7 +445,7 @@
                   <a href="{{route('admin.about-section.index') . '?language=' . $default->code}}">
                     <span class="sub-item">About Section</span>
                   </a>
-                </li>
+                </li> --}}
                 {{-- <li class="
                 @if(request()->path() == 'admin/features') active
                 @elseif(request()->is('admin/feature/*/edit')) active
@@ -575,7 +490,7 @@
                     <span class="sub-item">Portfolio Section</span>
                   </a>
                 </li> --}}
-                <li class="
+                {{-- <li class="
                 @if(request()->path() == 'admin/testimonials') active
                 @elseif(request()->is('admin/testimonial/*/edit')) active
                 @endif">
@@ -591,7 +506,7 @@
                   <a href="{{route('admin.member.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Teacher Section</span>
                   </a>
-                </li>
+                </li> --}}
                 {{-- <li class="@if(request()->path() == 'admin/blogsection') active @endif">
                   <a href="{{route('admin.blogsection.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Blog Section</span>
@@ -612,14 +527,14 @@
                     <span class="sub-item">Section Customization</span>
                   </a>
                 </li> --}}
-              </ul>
+              {{-- </ul>
             </div>
           </li>
-        @endif
+        @endif --}}
 
 
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Footer', $permissions)))
+        {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Footer', $permissions)))
           <!-- Footer -->
           <li class="nav-item
           @if(request()->path() == 'admin/footers') active
@@ -646,16 +561,16 @@
                   <a href="{{route('admin.footersigup.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Signup Content</span>
                   </a>
-                </li>
+                </li> --}}
                 {{-- <li class="@if(request()->path() == 'admin/ulinks') active @endif">
                   <a href="{{route('admin.ulink.index') . '?language=' . $default->code}}">
                     <span class="sub-item">Useful Links</span>
                   </a>
                 </li> --}}
-              </ul>
+              {{-- </ul>
             </div>
           </li>
-        @endif
+        @endif --}}
 
 
 

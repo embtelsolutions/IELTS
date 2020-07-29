@@ -36,10 +36,6 @@ button.remove{
  </div>
 
  <div class="row">
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a406984e2dbe353e9acfea932f95590cab7201b
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
@@ -67,7 +63,7 @@ button.remove{
 					</div>
 					<div class="form-group col-md-4">
 						<label for="">Time*</label>
-						<input type="text" id="" class="form-control " name="test_time" placeholder="hh:mm:ss">
+						<input type="text" id="" class="form-control " name="test_time" placeholder="Enter description">
 						@error('test_time')
 							<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
 						@enderror
