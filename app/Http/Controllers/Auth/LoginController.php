@@ -40,7 +40,7 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    { 
         $this->middleware('guest')->except('logout');
         // $this->middleware('auth');
 
@@ -50,7 +50,7 @@ class LoginController extends Controller
       
         if(Auth::guard('user')->check())
         {
-            return redirect()->route('front.index');
+            return redirect()->route('teacher.index');
         }
         return view('admin.login-user');
     }

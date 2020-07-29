@@ -14,11 +14,11 @@ class TeacherController extends Controller
     //
     public function index(){
 
-        $user = Auth::guard('user')->user()->id;
-        $alltest = Test::where('teacher_id','=',$user)->get();
-        $submitedtest =DB::table('submittests')  
-        ->where('teacher_id','=',$user)
-        ->get();
-        return view('teacher.dashboard',compact('alltest','submitedtest'));
+        // $user = Auth::guard('user')->user()->id;
+        // $alltest = Test::where('teacher_id','=',$user)->get();
+        // $submitedtest =DB::table('submittests')  
+        // ->where('teacher_id','=',$user)
+        // ->get();
+        return view('teacher.dashboard');
     }
 }

@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('login', function() {})->name('login');
-
+// Route::get('login', function() {})->name('login');
+Route::get('login','LoginController@login');
 Route::get('/backup', 'Front\FrontendController@backup');
 
 /*=======================================================
@@ -111,11 +111,13 @@ Route::group([ 'middleware' => 'student'], function () {
 
 //test
 Route::get('/student/reading', 'Admin\test\TestController@reading')->name('student.reading');
-Route::get('/student/writing', 'Admin\test\TestController@writing')->name('student.writing');
-Route::get('/student/speaking', 'Admin\test\TestController@speaking')->name('student.speaking');
+Route::get('/student/FullTest', 'Admin\test\TestController@FullTest')->name('student.FullTest');
+Route::get('/student/PracticeTest', 'Admin\test\TestController@PracticeTest')->name('student.PracticeTest');
 Route::get('/student/listening', 'Admin\test\TestController@listening')->name('student.listening');
+Route::get('/student/history', 'Auth\StudentController@history')->name('student.history');
 
-
+Route::get('/student/history/Modules/{id}','Auth\StudentController@modules')->name('student.modules');
+Route::get('/student/history/Modules/sections/{id}','Auth\StudentController@sections')->name('student.sections');
 
   //by me
   Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');
@@ -653,4 +655,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
   // Admin Cache Clear Routes
   Route::get('/cache-clear', 'Admin\CacheController@clear')->name('admin.cache.clear');
+  Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');
+  Route::get('/create/test/writing','Admin\TestController@write')->name('admin.create.write.test');
+  Route::post('/newtest','Admin\TestController@newtest')->name('newtest');
+  Route::post('/newtest/writing','Admin\TestController@writing')->name('writing');
 });

@@ -177,22 +177,26 @@ class TestController extends Controller
         }
 
 
-public function speaking(Request $request)
+public function PracticeTest(Request $request)
 {
+
      $user = Auth::guard('user')->user()->id;
+     $i_id = Auth::guard('user')->user()->institute_id;
             // $data['packages'] = TestUser::whereIn('user_id',[$user])
-            //                     ->join('tests','test_users.test_id','tests.id')
-            //                     ->get();
-            $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
-                                        $q->where('user_id', $user);
-                                        $q->groupBy('user_id');
-                                    })
-                                ->join('test_users','tests.id','test_users.test_id')
-                                ->where('type','=','speaking')
-                               // ->join('submittests','tests.id','submittests.test_id')
-                                ->paginate(15);
-            // dd($data);           
-            return view('student.test.speaking',$data);
+            // //                     ->join('tests','test_users.test_id','tests.id')
+            // //                     ->get();
+            // $data['packages'] = Test::where( 'test_users',function ($q) use ($user) {
+            //                             $q->where('user_id', $user);
+            //                             $q->groupBy('user_id');
+            //                         })
+            //                     ->join('test_users','tests.id','test_users.test_id')
+            //                     ->where('type','=','speaking')
+            //                    // ->join('submittests','tests.id','submittests.test_id')
+            //                     ->paginate(15);
+            $data=\DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->get();
+            dd($data);           
+            
+            // return view('student.test.speaking',$data);
 }
 public function reading(Request $request)
 {
@@ -213,22 +217,29 @@ public function reading(Request $request)
             return view('student.test.reading',$data);
 }
 
-public function writing(Request $request)
+public function FullTest(Request $request)
 {
      $user = Auth::guard('user')->user()->id;
+     $i_id = Auth::guard('user')->user()->institute_id;
             // $data['packages'] = TestUser::whereIn('user_id',[$user])
             //                     ->join('tests','test_users.test_id','tests.id')
             //                     ->get();
-            $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
-                                        $q->where('user_id', $user);
-                                        // $q->groupBy('user_id');
-                                    })
-                                ->where('type','=','writing')
-                                ->join('test_users','tests.id','test_users.test_id')
+            // $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
+            //                             $q->where('user_id', $user);
+            //                             // $q->groupBy('user_id');
+            //                         })
+            //                     ->where('type','=','writing')
+            //                     ->join('test_users','tests.id','test_users.test_id')
 
-                               // ->join('submittests','tests.id','submittests.test_id')
-                                ->paginate(15);
+            //                    // ->join('submittests','tests.id','submittests.test_id')
+            //                     ->paginate(15);
             // dd($data['packages']);           
+            $data=\DB::table('tests')->where([['ins_id',$i_id],['test_type','FullTest']])->get();
+            foreach($data as $ftest)
+            {
+
+            }
+            dd($data);
             return view('student.test.writing',$data);
 }
 
@@ -258,10 +269,11 @@ public function listening(Request $request)
 
         public function alltest(Request $request)
         {
-            $data=DB::table('submittests')
-        ->join('users','submittests.student_id','users.id')
-        ->join('tests','submittests.test_id','tests.id')
-        ->select('submittests.*','users.name','tests.title')
+            $data=DB::table('submitted_test')
+        ->join('users','submitted_test.stud_id','users.id')
+        ->join('tests','submitted_test.test_id','tests.id')
+        ->where('stud_id',Auth::guard('user')->user()->id)
+        ->select('submitted_test.*','users.name','tests.title')
         ->get();
           return view('student.test.exam',compact('data'));
                              

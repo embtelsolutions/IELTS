@@ -51,7 +51,7 @@
 						<div class="col-7 col-stats">
 							<div class="numbers">
 								<p class="card-category">My Test</p>
-								<h4 class="card-title">{{count($mytest)}}</h4>
+								<h4 class="card-title"></h4>
 							</div>
 						</div>
 					</div>

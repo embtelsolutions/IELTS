@@ -9,9 +9,9 @@ class Test extends Model
     //
     protected $table = "tests";
 
-    public function test_users()
-    {
-      return $this->hasMany(TestUser::class);
-    }
+    // public function test_users()
+    // {
+    //   return $this->hasMany(TestUser::class);
+    // }
 
 }
