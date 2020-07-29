@@ -51,7 +51,8 @@ Route::group(['middleware' => 'setlang'], function() {
 
 });
 
-
+//pauumoney method
+  Route::any('hello', 'PayumoneyController@payumoneyPayment')->name('hello');
 
 //pauumoney method
   Route::any('hello', 'PayumoneyController@payumoneyPayment')->name('hello');
@@ -663,6 +664,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
   // Admin Cache Clear Routes
   Route::get('/cache-clear', 'Admin\CacheController@clear')->name('admin.cache.clear');
+  
   Route::get('/create/test','Admin\TestController@index')->name('admin.create.test');
   Route::post('/newtest','Admin\TestController@newtest')->name('newtest'); 
+  Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');
+  Route::get('/create/test/writing','Admin\TestController@write')->name('admin.create.write.test');
+  Route::post('/newtest','Admin\TestController@newtest')->name('newtest');
+  Route::post('/newtest/writing','Admin\TestController@writing')->name('writing');
 });

@@ -14,9 +14,19 @@ use App\answer;
 
 class TestController extends Controller
 {
+<<<<<<< HEAD
     public function index()
     {
         return view('admin.create');
+=======
+    public function listen(){
+        // dd(';hello');
+        return view('admin.Test.create');
+    }
+    public function write(){
+        // dd(';hello');
+        return view('admin.Test.create-writing');
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
     }
     public function newtest(Request $req)
     {   
@@ -103,7 +113,10 @@ class TestController extends Controller
             $ans->save();
 
         }
+<<<<<<< HEAD
         echo $c;
+=======
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
         $section=new test_section;
         $section->test_id=$test_id;
         $section->name="Section B";
@@ -122,7 +135,11 @@ class TestController extends Controller
         }
         $section->save();
         $sec2id=$section->id;
+<<<<<<< HEAD
         echo $sec1id;        
+=======
+        
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
         $c=count($req->sec2_que);
         for($i=0;$i<$c;$i++)
         {
@@ -146,7 +163,11 @@ class TestController extends Controller
             $ans->save();
 
         }
+<<<<<<< HEAD
         echo $c;
+=======
+        
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
         $section=new test_section;
         $section->test_id=$test_id;
         $section->name="Section C";
@@ -165,7 +186,11 @@ class TestController extends Controller
         }
         $section->save();
         $sec3id=$section->id;
+<<<<<<< HEAD
         echo $sec3id;        
+=======
+             
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
         $c=count($req->sec3_que);
         for($i=0;$i<$c;$i++)
         {
@@ -189,7 +214,11 @@ class TestController extends Controller
             $ans->save();
 
         }
+<<<<<<< HEAD
         echo $c;
+=======
+        
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
         $section=new test_section;
         $section->test_id=$test_id;
         $section->name="Section D";
@@ -208,7 +237,11 @@ class TestController extends Controller
         }
         $section->save();
         $sec4id=$section->id;
+<<<<<<< HEAD
         echo $sec4id;        
+=======
+        
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
         $c=count($req->sec4_que);
         for($i=0;$i<$c;$i++)
         {
@@ -232,6 +265,7 @@ class TestController extends Controller
             $ans->save();
 
         }
+<<<<<<< HEAD
         echo $c;
     }
     public function listen(){
@@ -245,5 +279,109 @@ class TestController extends Controller
     public function speak(){
         // dd(';hello');
         return view('admin.Test.create-speaking');
+=======
+        return back()->with('success','Listening Test Created Succussfully');
+    }
+    public function writing(Request $req)
+    {
+        $validatedData = $req->validate([
+            'title'=>'required',
+            'test_time'=>'required|date_format:H:i:s',
+            'inst_test'=>'required',
+            'module_type'=>'required',
+            
+            'sec1_time'=>'required|date_format:H:i:s',
+            'sec2_time'=>'required|date_format:H:i:s',
+            'sec1_que'=>'required|min:5',
+            'sec2_que'=>'required|min:5',
+            'sec1_topic'=>'required|min:5',
+            'sec2_topic'=>'required|min:5',
+            'sec1_instr'=>'required|min:5',
+            'sec2_instr'=>'required|min:5',
+
+        ],[
+            'title.required'=>'Please enter test title',
+            'test_time.required'=>'Please enter Test time limit',
+            'test_time.date_format'=>'Time limit should be in (hh:mm:ss) formate',
+            'sec1_time.*'=>'Please Enter time limit in given formate',
+            'sec2_time.*'=>'Please Enter time limit in given formate',
+            'inst_test.*'=>'Please Enter Test instructions',
+            'sec1_que.required'=>'Please Enter question',
+            'sec2_que.required'=>'Please Enter question',
+            'sec1_topic.required'=>'Please Enter Topic',
+            'sec2_topic.required'=>'Please Enter Topic',
+            'sec1_instr.required'=>'Please Enter Instructions for this section',
+            'sec2_instr.required'=>'Please Enter Instructions for this section',
+            'sec1_img.*'=>'file should be image',
+            'sec2_img.*'=>'file should be image',
+        ]);
+        $test=new Test;
+        $test->title=$req->title;
+        $test->test_type='Practice';
+        $test->time_limit=$req->test_time;
+        $test->instruction=$req->inst_test;
+        $test->ins_id=1;
+        $test->save();
+
+        $test_id=$test->id; 
+        $module = new module;
+        $module->test_id=$test_id;
+        $module->module_type=$req->module_type;
+        $module->save();
+        $module_id=$module->id;
+        
+
+        $section=new test_section;
+        $section->test_id=$test_id;
+        $section->name="Section A";
+        $section->instruction=$req->sec1_instr;
+        $section->module_id=$module_id;
+        $section->time=$req->sec1_time;
+        $section->sec_topic=$req->sec2_topic;
+        if($file = $req->file('sec1_img')) {
+
+            $name = time().$file->getClientOriginalname();
+            
+            $target_path = public_path('/public/test');
+            
+            if($file->move($target_path, $name)) {
+                $section->sec_topic=$name;
+            }
+        }
+        $section->save();
+        $sec1id=$section->id;
+
+        $question=new question;
+        $question->section_id=$sec1id;
+        $question->question=$req->sec1_que;
+        $question->module_id=$module_id;    
+        $question->save();
+
+        $section=new test_section;
+        $section->test_id=$test_id;
+        $section->name="Section A";
+        $section->instruction=$req->sec2_instr;
+        $section->module_id=$module_id;
+        $section->time=$req->sec2_time;
+        $section->sec_topic=$req->sec2_topic;
+        if($file = $req->file('sec2_img')) {
+
+            $name = time().$file->getClientOriginalname();
+            
+            $target_path = public_path('/public/test');
+            
+            if($file->move($target_path, $name)) {
+                $section->sec_topic=$name;
+            }
+        }
+        $section->save();
+        $sec2id=$section->id;
+        $question=new question;
+        $question->section_id=$sec2id;
+        $question->question=$req->sec2_que;
+        $question->module_id=$module_id;    
+        $question->save();
+        // return back()->with('success','Listening Test Created Succussfully');
+>>>>>>> b249dd74f76d49a18659dccf54db6eea59c2341f
     }
 }

@@ -693,6 +693,37 @@
           </li>
      
 
+       
+          <!-- Test Mangement -->
+          <li class="nav-item
+          @if(request()->path() == 'admin/create/test/listening') active
+          @elseif(request()->path() == 'admin/create/test/writing') active
+          @endif">
+            <a data-toggle="collapse" href="#test">
+              <i class="la flaticon-list"></i>
+              <p>Practice Tests</p>
+              <span class="caret"></span>
+            </a>
+            <div class="collapse
+            @if(request()->path() == 'admin/create/test/listening') show
+            @elseif(request()->path() == 'admin/create/test/writing') show
+            @endif" id="test">
+              <ul class="nav nav-collapse">
+                <li class="@if(request()->path() == 'admin/create/test/listening') active @endif">
+                  <a href="{{route('admin.create.listen.test')}}">
+                    <span class="sub-item">Create Listening Test</span>
+                  </a>
+                </li>
+                <li class="@if(request()->path() == 'admin/create/test/writing') active @endif">
+                  <a href="{{route('admin.create.write.test')}}">
+                    <span class="sub-item">Create Writing Test</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+     
+
 
         {{-- @if (empty($admin->role) || (!empty($permissions) && in_array('Pages', $permissions)))
            <!-- Dynamic Pages -->

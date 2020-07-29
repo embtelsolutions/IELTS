@@ -193,10 +193,10 @@ public function PracticeTest(Request $request)
             //                     ->where('type','=','speaking')
             //                    // ->join('submittests','tests.id','submittests.test_id')
             //                     ->paginate(15);
-            $data= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->get();
+            $data=\DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->get();
             dd($data);           
             
-            return view('student.test.speaking',$data);
+            // return view('student.test.speaking',$data);
 }
 public function reading(Request $request)
 {
