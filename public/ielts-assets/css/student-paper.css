@@ -104,3 +104,19 @@ div#pagination-container {
     position: relative;
     top: 5px;
 }
+/* CSS*/
+.jst-hours {
+  float: left;
+}
+.jst-minutes {
+  float: left;
+}
+.jst-seconds {
+  float: left;
+}
+.jst-clearDiv {
+  clear: both;
+}
+.jst-timeout {
+  color: #bbbbbb!important;
+}

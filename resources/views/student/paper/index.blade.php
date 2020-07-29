@@ -16,7 +16,8 @@
                </div>
                <div class="col-md-6">
                   <div class="section-timer text-right">
-                     <div id="timer" class=""><p>26:00:00</p></div>
+                     <div id="timer"><p class="timer_sec_1" data-minutes-left=1></p></div>
+                    
                   </div>
                </div>
             </div>
@@ -64,12 +65,14 @@
          <div class="container row">
             <div class="col-md-6">
                <div class="section-name text-left">
-                  <h2>Section 1: Question 3 - 4 </h2>
+                  <h2>Section 2: Question 3 - 4 </h2>
                </div>
             </div>
             <div class="col-md-6">
                <div class="section-timer text-right">
-                  <div id="timer" class=""><p>26:00:00</p></div>
+                     <div id="timer"><p class="timer_sec_2" data-minutes-left=1></p></div>
+                     
+                
                </div>
             </div>
          </div>
@@ -118,12 +121,12 @@
          <div class="container row">
             <div class="col-md-6">
                <div class="section-name text-left">
-                  <h2>Section 1: Question 5 - 6 </h2>
+                  <h2>Section 3: Question 5 - 6 </h2>
                </div>
             </div>
             <div class="col-md-6">
                <div class="section-timer text-right">
-                  <div id="timer" class=""><p>26:00:00</p></div>
+                  <div id="timer"><p class="timer_sec_3" data-minutes-left=1></p></div>
                </div>
             </div>
          </div>
@@ -177,7 +180,7 @@
             </div>
             <div class="col-md-6">
                <div class="section-timer text-right">
-                  <div id="timer" class=""><p>26:00:00</p></div>
+                  <div id="timer" class="timer_sec_4"></div>
                </div>
             </div>
          </div>
@@ -268,6 +271,15 @@
             items.hide().slice(showFrom, showTo).show();
         }
     });
+    
+    //timer
+      $(function(){
+            $('.timer_sec_1').startTimer({
+               onComplete: function(){
+               console.log('Complete');
+               }
+            });
+         })
    })
 </script>
 @endpush

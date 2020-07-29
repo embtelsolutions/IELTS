@@ -23,9 +23,11 @@
     <link rel="stylesheet" href="{{asset('ielts-assets/css/customs.css')}}">
     <link rel="stylesheet" href="{{asset('ielts-assets/css/student-paper.css')}}">
     <link rel="stylesheet" href="{{asset('ielts-assets/css/simplePagination.css')}}">
-  
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>  
     <script src="{{asset('ielts-assets/js/jquery.simplePagination.js')}}"  type="text/javascript"></script>
+    <script src="{{asset('ielts-assets/js/jquery.simple.timer.js')}}"  type="text/javascript"></script>
+    {{-- <script src="{{asset('ielts-assets/js/jquery.js')}}"  type="text/javascript"></script> --}}
 </head>
     <div class="header">
 
