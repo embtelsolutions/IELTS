@@ -83,7 +83,6 @@
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-
                                     <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}">
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
@@ -323,7 +322,7 @@
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>ster
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Test</button>
          </div>
       </div>
    </div>
@@ -371,4 +370,3 @@
     });
  </script>
  @endsection
-

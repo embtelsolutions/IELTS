@@ -23,7 +23,7 @@ class StudentsubmitController extends Controller
    // $data['teacher_id']=$teacher_id->teacher_id;
      $data['teacher_id']=$request->teacher_id;
     $data['test_id']=$test_id;
-;
+
 
 
         $video=$request->file('video');
@@ -53,15 +53,34 @@ class StudentsubmitController extends Controller
       }
       public function answer()
       {
-        $data=DB::table('submittests')
-        ->join('users','submittests.student_id','users.id')
-        ->join('tests','submittests.test_id','tests.id')
-        ->select('submittests.*','users.name','tests.title')
-        ->get();
-      // return response()->json($data);
+      //   $data=DB::table('submitted_test')
+      //   ->join('users','submitted_test.stud_id','users.id')
+      //   ->join('submitted_test','submitted_test.id','tests.id')
+      //   ->select('submittests.*','users.name','tests.title')
+      //   ->get();
+      // // return response()->json($data);
 
       // dd($data);
-        return view('teacher.test.answer',compact('data')); 
+      $data=\DB::table('submitted_test')
+      ->join('questions','questions.module_id','submitted_test.module_id')
+      ->join('tests','tests.id','submitted_test.test_id')
+      ->join('test_modules','test_modules.test_id','tests.id')
+      ->join('questions_type','questions_type.id','questions.que_type_id')
+      ->where('asign_to', Auth::guard('user')->user()->id)
+      ->where('test_modules.module_type','speaking')
+      ->select('questions.id','questions.question','questions_type.type_name')
+      ->get();
+
+      foreach($data as $que)
+      {
+        echo "\n";
+        echo ($que->question);
+        $answer=\DB::table('givenans')->where('que_id',$que->id)->first();
+        echo "\n";
+        echo ($answer->answer);
+      }
+    return response()->json($data);
+        return view('teacher.test.answer'); 
       }
       public function marksupload(Request $request)
       {
@@ -95,17 +114,30 @@ class StudentsubmitController extends Controller
          Session::flash('success', 'Test Submitted successfully!');
           return "success";
       }
-         public function writinganswer()
+      public function writinganswer()
       {
-        $data=DB::table('writings')
-        ->join('users','writings.student_id','users.id')
-        ->join('tests','writings.test_id','tests.id')
-        ->select('writings.*','users.name','tests.title')
-        ->get();
-      // return response()->json($data);
+          $data=\DB::table('submitted_test')
+          ->join('questions','questions.module_id','submitted_test.module_id')
+          ->join('tests','tests.id','submitted_test.test_id')
+          ->join('test_modules','test_modules.test_id','tests.id')
+          ->join('questions_type','questions_type.id','questions.que_type_id')
+          ->where('asign_to', Auth::guard('user')->user()->id)
+          ->where('test_modules.module_type','writing')
+          ->select('questions.id','questions.question','questions_type.type_name')
+          ->get();
 
-      // dd($data);
-        return view('teacher.test.writinganswer',compact('data')); 
+          foreach($data as $que)
+          {
+            echo "\n";
+            echo ($que->question);
+            $answer=\DB::table('givenans')->where('que_id',$que->id)->first();
+            echo "\n";
+            echo ($answer->answer);
+          }
+        return response()->json($data);
+
+      dd($data);
+        return view('teacher.test.writinganswer'); 
       }
 
        public function writingmarksupload(Request $request)
@@ -121,6 +153,7 @@ class StudentsubmitController extends Controller
         $data['test_id']=$request->test_id;
         $data['marks']=$request->marks;
         DB::table('writingmarks')->insert($data);
+
          Session::flash('success', 'Test Submitted successfully!');
           return "success";
 

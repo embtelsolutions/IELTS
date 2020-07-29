@@ -82,7 +82,7 @@
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type=" " data-description="{{ $package->description }}" data-time="{{$package->timer }}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" data-time="{{$package->timer }}" >
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
@@ -264,7 +264,7 @@
                <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-                  <select class="form-control mg-10" id="type-e" name="type">
+                  <select class="form-control mg-10" id="type" name="type">
                      <option>reading</option>
                      <option>listening</option>
                      <option>speaking</option>
@@ -273,10 +273,10 @@
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>
-               <div id ="timer-e" class="form-group d-none">
+               <div id ="timer" class="form-group d-none">
                   <label for="">Timer in Minutes*</label>
                   {{-- <input type="text" class="form-control" name="timer" value=""> --}}
-                  <select class="form-control mg-10" id="type" name="time" placeholder="Enter time" >
+                  <select class="form-control mg-10" id="type-e" name="timer" placeholder="Enter time" >
                      <option>5</option>
                   </select>
                 
@@ -311,20 +311,6 @@
             $('#timer').removeClass('d-none');
       }else{
          $('#timer').addClass('d-none');
-      }
-      if($('#type-e').val() == "writing"){
-            $('#timere').removeClass('d-none');
-      }else{
-         $('#timere').addClass('d-none');
-      }
-   });
-   $('#type-e').change(function() {
-    // $(this).val() will work here
-      
-      if($('#type-e').val() == "writing"){
-            $('#timer-e').removeClass('d-none');
-      }else{
-         $('#timer-e').addClass('d-none');
       }
    });
        // make input fields RTL

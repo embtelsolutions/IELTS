@@ -13,22 +13,49 @@ class StudentController extends Controller
     //
     public function index(){
 
-        $submited_test = DB::table('submittests')
-        ->join('users','submittests.student_id','users.id')
-        ->join('tests','submittests.test_id','tests.id')
-        ->select('submittests.*','users.name','tests.title')
+        $submited_test = DB::table('submitted_test')
+        ->where('stud_id', Auth::guard('user')->user()->id)
         ->get();
 
        $user = Auth::guard('user')->user()->id;
-    //    $whereData = array(array('name','test') , array('id' ,'!=','5')); 
-    //     dd($whereData);
-
-        $mytest  = Test::whereHas( 'test_users',function ($q) use ($user) {
-                                    $q->where('user_id', $user);
-                                    $q->groupBy('user_id');
-                                })
-                            ->join('test_users','tests.id','test_users.test_id')
-                            ->get();
-        return view('student.dashboard',compact('submited_test','mytest'));
+    
+        // $mytest  = Test::whereHas( 'test_users',function ($q) use ($user) {
+        //                             $q->where('user_id', $user);
+        //                             $q->groupBy('user_id');
+        //                         })
+        //                     ->join('test_users','tests.id','test_users.test_id')
+        //                     ->get();
+        return view('student.dashboard',compact('submited_test'));
+    }
+    public function history()
+    {
+        $submited_test = DB::table('submitted_test')
+        ->join('tests','tests.id','submitted_test.test_id')
+        ->join('users','users.id','submitted_test.asign_to')
+        ->where('stud_id', Auth::guard('user')->user()->id)
+        ->select('users.*','tests.*','submitted_test.id as testid','submitted_test.*')
+        ->get();
+        if(count($submited_test)>0)
+        {
+            return view('student.history',['data'=>$submited_test]);
+        }
+    }
+    public function modules($testid)
+    {
+        $module=\DB::table('test_modules')->where('test_id',$testid)->get();
+        // dd($module);
+        if(count($module)>0)
+        {
+            return view('student.TestModule',['data'=>$module]);
+        }
+    }
+    public function sections($Modid)
+    {
+        $section =\DB::table('sections')->where('module_id',$Modid)->get();
+        if(count($section)>0)
+        {
+            return view('student.sectionWise',['data'=>$section]);
+        }
+        
     }
 }

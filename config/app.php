@@ -169,7 +169,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Softon\Indipay\IndipayServiceProvider::class,
-        // Illuminate\Html\HtmlServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -238,7 +237,7 @@ return [
         'XSSCleaner' => MasterRO\LaravelXSSFilter\XSSCleanerFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Indipay' => Softon\Indipay\Facades\Indipay::class,
-        // 'Form'      => Illuminate\Html\FormFacade::class,
+
     ],
 
 ];

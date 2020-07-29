@@ -224,7 +224,6 @@
                <div class="form-group">
                   <label for="">video*</label>
                   <input type="file" accept="video/*, audio/*" id="indescription" class="form-control " name="video" placeholder="Enter description" data-height="200">
-                  <input type="file" accept="audio/*" capture>
                   {{-- <input type="file" accept="audio/*" capture>
                   <audio id="player" controls></audio>
                   <script>

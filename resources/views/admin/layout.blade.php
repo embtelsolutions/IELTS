@@ -28,6 +28,7 @@
     @yield('styles')
 
 </head>
+
 <body data-background-color="dark">
 	<div class="wrapper">
 
@@ -63,9 +64,6 @@
         <img src="{{asset('assets/admin/img/loader.gif')}}" alt="">
     </div>
     {{-- Loader --}}
-
     @stack('after-script')
-
 </body>
-
 </html>

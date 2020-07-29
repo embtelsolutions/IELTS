@@ -73,11 +73,11 @@
          <td>{{$row->title}}</td>
          <td>{{ Carbon\Carbon::parse($row->created_at)->format('Y-m-d') }}</td>
                                 <!-- <td>
-                                  <video src="{{ URL::to($row->video) }}" height="70px;" width="70px;" type="video/mp4">
+                                  <video src="" height="70px;" width="70px;" type="video/mp4">
                                   </td>-->
                                   <td>
                                     <video id="my-video" class="video-js" controls preload="auto" width="100" height="80" data-setup="{}">
-                                      <source src="{{URL::to($row->video)}}" type='audio/mp3'>
+                                      <source src="" type='audio/mp3'>
                                       </video>
                                     </td>
                                     <td>
@@ -128,7 +128,7 @@
                                   <label class="custom-file">
 
                                     <video id="my-video" class="video-js" controls preload="auto" width="150" height="100" data-setup="{}">
-                                      <source src="{{URL::to($row->video)}}" type='audio/mp3'>
+                                      <source src="" type='audio/mp3'>
                                       </video>
                                     </label>
                                     <p id="eerrtitle" class="mb-0 text-danger em"></p>
