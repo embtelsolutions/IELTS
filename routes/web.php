@@ -46,6 +46,9 @@ Route::group(['middleware' => 'setlang'], function() {
   // Dynamic Page Routes
   Route::get('/{slug}/{id}/page', 'Front\FrontendController@dynamicPage')->name('front.dynamicPage');
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
+
+  Route::get('/student-test', 'Student\StudentTestController@index')->name('student.test');
+
 });
 
 
@@ -255,6 +258,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
     Route::post('/herosection/sliderupdate', 'Admin\SliderController@update')->name('admin.slider.update');
     Route::post('/herosection/slider/{id}/uploadUpdate', 'Admin\SliderController@uploadUpdate')->name('admin.slider.uploadUpdate');
     Route::post('/herosection/slider/delete', 'Admin\SliderController@delete')->name('admin.slider.delete');
+
+    //admin create test
+    Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');
+    Route::get('/create/test/writing','Admin\TestController@write')->name('admin.create.write.test');
+    Route::get('/create/test/speaking','Admin\TestController@speak')->name('admin.create.speak.test');
 
 
     // Admin Hero Section (Video Version) Routes

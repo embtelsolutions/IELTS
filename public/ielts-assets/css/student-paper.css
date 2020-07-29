@@ -1,0 +1,106 @@
+/* topbar css*/
+
+.topbar {
+    background: #D9E6FF;
+    padding: 16px;
+    box-shadow: 0 0 20px 2px #00000054;
+}
+
+img.clock {
+    width: 45px;
+}
+.logo img {
+    position: relative;
+    top: 8px;
+}
+.timer {
+    display: inline-flex;
+}
+.timer_count h3{
+    position: relative;
+    top: 8px;
+    color:red;
+    
+}
+.timer div:last-child {
+    padding-left: 12px;
+}
+.help {
+    display: inline-flex;
+}
+.help_img img{
+    width: 45px;
+
+}
+.help div:last-child {
+    padding-left: 8px;
+}
+.help_txt {
+    position: relative;
+    top: 5px;
+}
+
+/*question paper*/
+.container.paper {
+    /* height: 100vh; */
+    background: #fbfbfb;
+    border: 1px solid #cfcece;
+    /* padding-top: 9px; */
+    margin-top: 9px;
+    padding-bottom: 9px;
+}
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 700;
+}
+.empty-space {
+    height: 40px;
+}
+.empty-space-20 {
+    height: 20px;
+}
+
+.section-name h2 {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.answer label {
+    padding: 15px 3px;
+}
+.que_img img {
+    padding-top: 20px;
+}
+h5.que {
+    border: 1px solid;
+    padding: 10px;
+}
+#timer p {
+    font-size: 30px;
+    position: relative;
+    top: 8px;
+    color: red;
+}
+.instruction {
+    background: #d8d8d8;
+    /* color: white; */
+    padding: 9px;
+}
+ol, ul{
+    list-style: initial;
+}
+ul.instruction-list {
+    position: relative;
+    /* left: 18px; */
+}
+ul.instruction-list li {
+    padding: 4px 0;
+}
+.submit_btn{
+    padding: 10px 45px!important;
+}
+div#pagination-container {
+    position: relative;
+    top: 5px;
+}

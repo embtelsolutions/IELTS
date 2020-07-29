@@ -234,4 +234,16 @@ class TestController extends Controller
         }
         echo $c;
     }
+    public function listen(){
+        // dd(';hello');
+        return view('admin.Test.create');
+    }
+    public function write(){
+        // dd(';hello');
+        return view('admin.Test.create-writing');
+    }
+    public function speak(){
+        // dd(';hello');
+        return view('admin.Test.create-speaking');
+    }
 }
