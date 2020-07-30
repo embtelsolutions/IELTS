@@ -61,22 +61,22 @@
         <th scope="col">Price</th> --}}
         <th scope="col">Tittle</th>
         <th scope="col">Date</th>
-        <th scope="col">Answer</th>
+        
         <th scope="col">View</th>
-        <th scope="col">Actions</th>
+        
       </tr>
     </thead>
     <tbody>
-    @foreach
+    <?php $i=0; ?>
+    @foreach($data as $test)
+    <?php $i++;?>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{$i}}</td>
+            <td>{{$test->name}}</td>
+            <td>{{$test->title}}</td>
+            <td>{{date('d-m-Y',strtotime($test->date) )}}</td>
+            <td><a href="{{url('writing_check')}}/{{$test->studId}}/{{$test->testId}}" class="btn btn-primary">View</a></td>
+            
           </tr>
 
     @endforeach

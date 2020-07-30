@@ -13,12 +13,11 @@ class questions extends Controller
     }
     public static function QueAns($qid)
     {
-       return \DB::table('questions')
-       ->join('givenans','givenans.que_id','questions.id')
-       ->join('answers','answers.question_id','questions.id')
-       ->select('questions.*','answers.answer as rightAnswer','givenans.*')
-       ->where('questions.id',$qid)
-       ->where('givenans.stud_id',Auth::guard('user')->user()->id)
-       ->first();
+    //    dd(\DB::table('questions')
+    //    ->join('givenans','givenans.que_id','questions.id')
+    //    ->select('questions.*','givenans.*')
+    //    ->where('questions.id',$qid)
+    //    ->where('givenans.stud_id',Auth::guard('user')->user()->id)
+    //    ->get());
     }
 }

@@ -102,6 +102,8 @@ Route::group([ 'middleware' => 'teacher'], function () {
  Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
  //writing answer
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
+  Route::get('/writing_check/{stud}/{testid}', 'Admin\test\StudentsubmitController@writingCheck');
+  Route::post('/submitWritingResult', 'Admin\test\StudentsubmitController@submitWritingResult');
  //upload marks
  Route::post('/upload/marks/', 'Admin\test\StudentsubmitController@marksupload')->name('teacher.marks.update');
  //writing mark upload
@@ -669,4 +671,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
   
   Route::post('/newtest','Admin\TestController@newtest')->name('newtest');
   Route::post('/newtest/writing','Admin\TestController@writing')->name('writing');
+  
 });
