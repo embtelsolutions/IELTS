@@ -74,6 +74,35 @@
 
 
 
+        @if (empty($admin->role) || (!empty($permissions) && in_array('Basic Settings', $permissions)))
+          {{-- Basic Settings --}}
+          <li class="nav-item
+          @if(request()->path() == 'admin/favicon') active
+          @elseif(request()->path() == 'admin/logo') active
+          @elseif(request()->path() == 'admin/homeversion') active
+          @elseif(request()->path() == 'admin/basicinfo') active
+          @elseif(request()->path() == 'admin/support') active
+          @elseif(request()->path() == 'admin/social') active
+          @elseif(request()->is('admin/social/*')) active
+          @elseif(request()->path() == 'admin/breadcrumb') active
+          @elseif(request()->path() == 'admin/heading') active
+          @elseif(request()->path() == 'admin/script') active
+          @elseif(request()->path() == 'admin/seo') active
+          @elseif(request()->path() == 'admin/maintainance') active
+          @elseif(request()->path() == 'admin/announcement') active
+          @elseif(request()->path() == 'admin/avaibility') active
+          @elseif(request()->path() == 'admin/cookie-alert') active
+          @endif">
+            <a data-toggle="collapse" href="#basic">
+              <i class="la flaticon-settings"></i>
+              <p>Basic Settings</p>
+              <span class="caret"></span>
+            </a>
+          </li>
+          @endif
+
+
+
       
 
 

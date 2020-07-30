@@ -7,11 +7,15 @@
           </div>
        </div>  
        <div class="empty-space"></div>
+       <form method="post" action="{{url('writing/submit')}}">
+       @csrf
+       <input type="hidden" name="test_id" value="{{$test_id}}">
+       @foreach($data as $sec)
        <div id="section_1" class="sections"> 
             <div class="container row">
                <div class="col-md-6">
                   <div class="section-name text-left">
-                     <h2>Section 1: Question 1 - 2 </h2>
+                     <h2>{{$sec->name}}</h2>
                   </div>
                </div>
                <div class="col-md-6">
@@ -26,8 +30,12 @@
                   <p class="font-weight-bold">Instruction :</p>
                   <div class="empty-space-20"></div>
                   <ul class="instruction-list container"> 
-                     <li>You should spent about 20 min in this task</li>
-                     <li>Write atleast 150 Word</li>
+                  @if($sec->instruction)
+                    <?php $ins=explode(';',$sec->instruction);?>
+                    @foreach($ins as $inst)
+                     <li>{{$inst}}</li>
+                     @endforeach
+                    @endif
                   </ul>
                </div>
             </div>
@@ -35,196 +43,31 @@
                <!--Questions-->
                <div class="row container">
                   <div class="text-left font-weight-normal">
-                     <h5 class="que">Q-1: The Two maps below show an island, before and after the construction of some tourist facilities. Summerise the information by selecting and reporting the main features, and make comparisons where relvant</h5>
+                  <?php $que=\DB::table('questions')->where('section_id',$sec->id)->get();$i=0;?>
+                    @foreach($que as $q)
+                    <?php $i++; ?>
+                     <h5 class="que">Q-{{$i}}: {{$q->question}}</h5>
+                    @endforeach
+                    @if($sec->sec_file)
                      <div class="que_img">
-                        <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
+                        <img src="{{url('public\test')}}\{{$sec->sec_file}}">
                      </div>
+                    @endif
+                    <input type="hidden" name="mod" value="{{$sec->module_id}}"> 
                      <div class="answer pt-4">
                         <label class="font-weight-normal">Answer</label>
-                        <textarea name ="answer" rows="4" cols="50"></textarea>
+                        <input type="hidden" name="que[]" value="{{$q->id}}">
+                        <textarea name ="answer[]" rows="4" cols="50" spellcheck="false"></textarea>
                      </div>
                   </div>
                </div>
                <div class="empty-space"></div>
-               <div class="row container">
-                  <div class="text-left font-weight-normal">
-                     <h5 class="que">Q-2: The Two maps below show an island, before and after the construction of some tourist facilities</h5>
-                     <div class="que_img">
-                        <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                     </div>
-                     <div class="answer pt-4">
-                        <label class="font-weight-normal">Answer</label>
-                        <textarea name ="answer" rows="4" cols="50"></textarea>
-                     </div>
-                  </div>
-               </div>
+               
 
             </div>
        </div>
-       <div id="section_2" class="sections"> 
-         <div class="container row">
-            <div class="col-md-6">
-               <div class="section-name text-left">
-                  <h2>Section 2: Question 3 - 4 </h2>
-               </div>
-            </div>
-            <div class="col-md-6">
-               <div class="section-timer text-right">
-                     <div id="timer"><p class="timer_sec_2" data-minutes-left=1></p></div>
-                     
-                
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="instruction p-3 mt-3 border rounded">
-               <p class="font-weight-bold">Instruction :</p>
-               <div class="empty-space-20"></div>
-               <ul class="instruction-list container"> 
-                  <li>You should spent about 20 min in this task</li>
-                  <li>Write atleast 150 Word</li>
-               </ul>
-            </div>
-         </div>
-         
-         <div class="questions container pt-4">
-            <!--Questions-->
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Q-3: The Two maps below show an island, before and after the construction of some tourist facilities. Summerise the information by selecting and reporting the main features, and make comparisons where relvant</h5>
-                  <div class="que_img">
-                     <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                  </div>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <textarea name ="answer" rows="4" cols="50"></textarea>
-                  </div>
-               </div>
-            </div>
-            <div class="empty-space"></div>
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Q-4: The Two maps below show an island, before and after the construction of some tourist facilities</h5>
-                  <div class="que_img">
-                     <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                  </div>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <textarea name ="answer" rows="4" cols="50"></textarea>
-                  </div>
-               </div>
-            </div>
-
-         </div>
-      </div>
-      <div id="section_3" class="sections"> 
-         <div class="container row">
-            <div class="col-md-6">
-               <div class="section-name text-left">
-                  <h2>Section 3: Question 5 - 6 </h2>
-               </div>
-            </div>
-            <div class="col-md-6">
-               <div class="section-timer text-right">
-                  <div id="timer"><p class="timer_sec_3" data-minutes-left=1></p></div>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="instruction p-3 mt-3 border rounded">
-               <p class="font-weight-bold">Instruction :</p>
-               <div class="empty-space-20"></div>
-               <ul class="instruction-list container"> 
-                  <li>You should spent about 20 min in this task</li>
-                  <li>Write atleast 150 Word</li>
-               </ul>
-            </div>
-         </div>
-         
-         <div class="questions container pt-4">
-            <!--Questions-->
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Q-5: The Two maps below show an island, before and after the construction of some tourist facilities. Summerise the information by selecting and reporting the main features, and make comparisons where relvant</h5>
-                  <div class="que_img">
-                     <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                  </div>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <textarea name ="answer" rows="4" cols="50"></textarea>
-                  </div>
-               </div>
-            </div>
-            <div class="empty-space"></div>
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Q-6: The Two maps below show an island, before and after the construction of some tourist facilities</h5>
-                  <div class="que_img">
-                     <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                  </div>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <textarea name ="answer" rows="4" cols="50"></textarea>
-                  </div>
-               </div>
-            </div>
-
-         </div>
-      </div>
-      <div id="section_4" class="sections"> 
-         <div class="container row">
-            <div class="col-md-6">
-               <div class="section-name text-left">
-                  <h2>Section 4: Question 7 - 8  </h2>
-               </div>
-            </div>
-            <div class="col-md-6">
-               <div class="section-timer text-right">
-                  <div id="timer" class="timer_sec_4"></div>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="instruction p-3 mt-3 border rounded">
-               <p class="font-weight-bold">Instruction :</p>
-               <div class="empty-space-20"></div>
-               <ul class="instruction-list container"> 
-                  <li>You should spent about 20 min in this task</li>
-                  <li>Write atleast 150 Word</li>
-               </ul>
-            </div>
-         </div>
-         
-         <div class="questions container pt-4">
-            <!--Questions-->
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Q-7: The Two maps below show an island, before and after the construction of some tourist facilities. Summerise the information by selecting and reporting the main features, and make comparisons where relvant</h5>
-                  <div class="que_img">
-                     <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                  </div>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <textarea name ="answer" rows="4" cols="50"></textarea>
-                  </div>
-               </div>
-            </div>
-            <div class="empty-space"></div>
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Q-8: The Two maps below show an island, before and after the construction of some tourist facilities</h5>
-                  <div class="que_img">
-                     <img src="https://via.placeholder.com/468x468?text=Island+iamge.com+Now">
-                  </div>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <textarea name ="answer" rows="4" cols="50"></textarea>
-                  </div>
-               </div>
-            </div>
-
-         </div>
-      </div>
+       @endforeach
+       
    </div>
    <div class="empty-space"></div>
    <div class="bg-light border container d-block p-2 pagination">
@@ -237,6 +80,7 @@
       </div>
       
    </div>
+   </from>
    <div class="empty-space"></div>
 
 @endsection

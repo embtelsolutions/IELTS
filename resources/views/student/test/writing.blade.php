@@ -83,7 +83,7 @@
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-description="{!! $package->title !!}" data-teacher="{{$package->title}}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="{{url('student-test')}}/{{$package->id}}">
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
                                        </span>

@@ -47,7 +47,11 @@ button.remove{
             </div>
         </div>
         <div class="card-body p-body pt-5 pb-4">
+<<<<<<< HEAD
 			<form action="{{route('writing')}}" method="post">
+=======
+			<form action="{{route('writing')}}" method="post" enctype="multipart/form-data">
+>>>>>>> 1e065d4b0c1bd0a1eb7fe78c0a490462d88646cb
 			@csrf
 				<div class="row">
 					<div class="form-group col-md-4">

@@ -47,7 +47,8 @@ Route::group(['middleware' => 'setlang'], function() {
   Route::get('/{slug}/{id}/page', 'Front\FrontendController@dynamicPage')->name('front.dynamicPage');
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
 
-  Route::get('/student-test', 'Student\StudentTestController@index')->name('student.test');
+  Route::get('/student-test/{id}', 'Student\StudentTestController@index');
+  Route::post('/writing/submit','Student\StudentTestController@submitWritingTest');
 
 });
 
