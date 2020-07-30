@@ -276,10 +276,28 @@
       $(function(){
             $('.timer_sec_1').startTimer({
                onComplete: function(){
-               console.log('Complete');
-               }
+               $('textarea[name="answer"]').attr('readonly', true)              }
             });
          })
+
+         // $(function(){
+         //    $('.timer_sec_2').startTimer({
+         //       onComplete: function(){
+         //       $('textarea[name="answer"]').attr('readonly', true)              }
+         //    });
+         // })
+         // $(function(){
+         //    $('.timer_sec_3').startTimer({
+         //       onComplete: function(){
+         //       $('textarea[name="answer"]').attr('readonly', true)              }
+         //    });
+         // })
+         // $(function(){
+         //    $('.timer_sec_4').startTimer({
+         //       onComplete: function(){
+         //       $('textarea[name="answer"]').attr('readonly', true)              }
+         //    });
+         // })
    })
 </script>
 @endpush

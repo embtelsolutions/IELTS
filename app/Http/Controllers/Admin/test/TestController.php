@@ -193,10 +193,12 @@ public function PracticeTest(Request $request)
             //                     ->where('type','=','speaking')
             //                    // ->join('submittests','tests.id','submittests.test_id')
             //                     ->paginate(15);
-            $data=\DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->get();
-            dd($data);           
-            
-            // return view('student.test.speaking',$data);
+            $data['packages']=\DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
+            // foreach ($data as $d)
+            // {
+            //     dd($d);           
+            // }
+            return view('student.test.writing',$data);
 }
 public function reading(Request $request)
 {
@@ -270,11 +272,12 @@ public function listening(Request $request)
         public function alltest(Request $request)
         {
             $data=DB::table('submitted_test')
-        ->join('users','submitted_test.stud_id','users.id')
-        ->join('tests','submitted_test.test_id','tests.id')
-        ->where('stud_id',Auth::guard('user')->user()->id)
-        ->select('submitted_test.*','users.name','tests.title')
-        ->get();
+                    ->join('users','submitted_test.stud_id','users.id')
+                    ->join('tests','submitted_test.test_id','tests.id')
+                    ->where('stud_id',Auth::guard('user')->user()->id)
+                    ->select('submitted_test.*','users.name','tests.title')
+                    ->get();
+                    
           return view('student.test.exam',compact('data'));
                              
         }

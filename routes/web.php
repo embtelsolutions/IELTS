@@ -97,10 +97,12 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
   Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
 
- //show answer
- Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
- //writing answer
+  //show answer
+  Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
+  //writing answer
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
+  //writingcheck
+  Route::get('/test/writing/answer/id', 'Admin\test\StudentsubmitController@writingcheck')->name('teacher.test.writing.check');
  //upload marks
  Route::post('/upload/marks/', 'Admin\test\StudentsubmitController@marksupload')->name('teacher.marks.update');
  //writing mark upload
@@ -664,7 +666,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
   // Admin Cache Clear Routes
   Route::get('/cache-clear', 'Admin\CacheController@clear')->name('admin.cache.clear');
-  
+
   Route::get('/create/test','Admin\TestController@index')->name('admin.create.test');
   Route::post('/newtest','Admin\TestController@newtest')->name('newtest'); 
   Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');

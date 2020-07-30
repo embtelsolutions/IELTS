@@ -75,11 +75,11 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 {{-- <td>{{convertUtf8($package->description)}}</td> --}}
-                                 <td>{{convertUtf8($package->type)}}</td>
-                                 <td>
+                                 <td>type</td>
+                                 {{-- <td>{{convertUtf8($package->type)}}</td> --}}
+                                 {{-- <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
-                                 </td>
+                                 </td> --}}
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
                                     <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" >
@@ -138,52 +138,70 @@
             </button>
          </div>
          <div class="modal-body">
-            <form id="ajaxEditForm" class="" action="{{route('teacher.test.assign-to')}}" method="POST">
+            <form id="" class="" action="" method="POST">
                @csrf
                <input id="inpackage_id" type="hidden" name="package_id" value="">
                <div class="form-group">
                   <label for="">Title **</label>
-                  <input id="intitle" type="text" class="form-control" name="title" value="" readonly>
+                  <input id="title" type="text" class="form-control" name="title" value="Test 1" readonly>
                   <p id="eerrtitle" class="mb-0 text-danger em"></p>
                </div>
                <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-               <input id="intype" type="text" class="form-control" name="type" value=""  readonly>
+               <input id="" type="text" class="form-control" name="type" value="Writing"  readonly>
                   <p id="type-s" class="mb-0 text-danger em"></p>
-                  {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
+                
                </div>
                <div class="form-group">
-               <label for="">Assign to </label>
-                  <select class="form-control mg-10" id="type" name="students[]" multiple="true">
-                     @foreach($students as $student)
-                     <option value="{{$student->id}}">{{$student->name}}</option>
-                     @endforeach
-                  </select>
+                  <label for="">Submitted by Student</label>
+                  
                </div>
-               {{-- <div class="form-group">
-                  <label>Meta Keywords</label>
-                  <input id="inmeta_keywords" class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
-                  <p id="eerrmeta_keywords" class="mb-0 text-danger em"></p>
-               </div>
+               
                <div class="form-group">
-                  <label>Meta Description</label>
-                  <textarea id="inmeta_description" class="form-control" name="meta_description" rows="5" placeholder="Enter meta description"></textarea>
+                  <label>Answer 1</label>
+                  <textarea id="inmeta_description" class="form-control" name="answer_1" rows="20" cols="40" placeholder="" value readonly></textarea>
                   <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
-               </div> --}}
+                  <span class="count"></span>
+                  <br>
+                  <button type="button" class="btn btn-secondary" id="count">count</button>
+
+               </div>
+               <div class="form-group">
+                  <label>Marks</label>
+                  <input id="" type="number" class="form-control" name="marks" value="">
+                  <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
+               </div>
+               <div class="form-group">
+                  <label>Remarks</label>
+                  <textarea id="inmeta_description" class="form-control" name="remarks" rows="10" cols="40" placeholder="Enter meta description"></textarea>
+                  <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
+               </div>
             </form>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Submit Marks</button>
          </div>
       </div>
    </div>
 </div>
+
+<!---end edit model-->
 @endsection
 @section('scripts')
 <script>
    $(document).ready(function() {
+
+      //
+      $('#count').on({
+         'click': function(){
+            var value = $.trim($('[name="answer_1"]').val()),
+                  count = value == '' ? 0 : value.split(' ').length;
+                  // alert(count);
+                  $('span.count').html(count);
+         }
+      });
 
        // make input fields RTL
        $("select[name='language_id']").on('change', function() {

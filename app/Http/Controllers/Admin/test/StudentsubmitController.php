@@ -81,7 +81,11 @@ class StudentsubmitController extends Controller
       }
     return response()->json($data);
         return view('teacher.test.answer'); 
+      
+      
       }
+
+
       public function marksupload(Request $request)
       {
 
@@ -95,7 +99,7 @@ class StudentsubmitController extends Controller
         $data['test_id']=$request->test_id;
         $data['marks']=$request->marks;
         DB::table('marks')->insert($data);
-         Session::flash('success', 'Marks Submitted successfully!');
+        Session::flash('success', 'Marks Submitted successfully!');
           return "success";
 
         //dd($data);
@@ -116,27 +120,27 @@ class StudentsubmitController extends Controller
       }
       public function writinganswer()
       {
-          $data=\DB::table('submitted_test')
-          ->join('questions','questions.module_id','submitted_test.module_id')
-          ->join('tests','tests.id','submitted_test.test_id')
-          ->join('test_modules','test_modules.test_id','tests.id')
-          ->join('questions_type','questions_type.id','questions.que_type_id')
-          ->where('asign_to', Auth::guard('user')->user()->id)
-          ->where('test_modules.module_type','writing')
-          ->select('questions.id','questions.question','questions_type.type_name')
-          ->get();
+        //   $data=\DB::table('submitted_test')
+        //   ->join('questions','questions.module_id','submitted_test.module_id')
+        //   ->join('tests','tests.id','submitted_test.test_id')
+        //   ->join('test_modules','test_modules.test_id','tests.id')
+        //   ->join('questions_type','questions_type.id','questions.que_type_id')
+        //   ->where('asign_to', Auth::guard('user')->user()->id)
+        //   ->where('test_modules.module_type','writing')
+        //   ->select('questions.id','questions.question','questions_type.type_name')
+        //   ->get();
 
-          foreach($data as $que)
-          {
-            echo "\n";
-            echo ($que->question);
-            $answer=\DB::table('givenans')->where('que_id',$que->id)->first();
-            echo "\n";
-            echo ($answer->answer);
-          }
-        return response()->json($data);
+        //   foreach($data as $que)
+        //   {
+        //     echo "\n";
+        //     echo ($que->question);
+        //     $answer=\DB::table('givenans')->where('que_id',$que->id)->first();
+        //     echo "\n";
+        //     echo ($answer->answer);
+        //   }
+        // return response()->json($data);
 
-      dd($data);
+      // dd($data);
         return view('teacher.test.writinganswer'); 
       }
 
@@ -158,5 +162,10 @@ class StudentsubmitController extends Controller
           return "success";
 
         //dd($data);
+      }
+
+      public function writingcheck(){
+
+        return view('teacher.test.writing_check');
       }
     }

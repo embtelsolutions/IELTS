@@ -50,63 +50,14 @@
   <div class="card-body">
   <div class="row">
   <div class="col-lg-12">
-
-    <div class="table-responsive">
-      <table class="table table-striped mt-3">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Tittle</th>
-          <th scope="col">Date</th>
-          {{-- <th scope="col">Answer</th> --}}
-          {{-- <th scope="col">View</th> --}}
-          <th scope="col">Actions</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Test 1</td>
-          <td>26 aug 2020</td>
-          <td> <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" ">
-            <span class="btn-label">
-            </span>
-            Submit Marks
-          </a></td>
-        </tr>
-      </thead>
-      <tbody>
-  </tbody>
-
-  </table>
-    </div>
-    </div>
-    </div>
-  </div>
-                {{-- <div class="card-footer">
-                  <div class="row">
-                  <div class="d-inline-block mx-auto">
-                    {{$packages->appends(['language' => request()->input('language')])->links()}}
-                  </div>
-                </div>
-              </div>--}}
-            </div>
-          </div>
-        </div>
-
-
-
-
-
 <!-- Edit Package Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-     <div class="modal-content">
-        <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLongTitle">Edit Test</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-           </button>
+<div class="" id="" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="" role="">
+     <div class="">
+        <div class="">
+         
         </div>
-        <div class="modal-body">
+        <div class="">
            <form id="" class="" action="" method="POST">
               @csrf
               <input id="inpackage_id" type="hidden" name="package_id" value="">
@@ -173,6 +124,26 @@
   </div>
 </div>
 <!---end edit model-->
+
+    </div>
+    </div>
+  </div>
+                {{-- <div class="card-footer">
+                  <div class="row">
+                  <div class="d-inline-block mx-auto">
+                    {{$packages->appends(['language' => request()->input('language')])->links()}}
+                  </div>
+                </div>
+              </div>--}}
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
 
       @endsection
       @section('scripts')

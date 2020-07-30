@@ -124,6 +124,7 @@
           @elseif(request()->path() == 'student/speaking') active
           @elseif(request()->path() == 'student/reading') active
           @elseif(request()->path() == 'student/writing') active
+          @elseif(request()->path() == 'student/PracticeTest') active
           @endif">
             <a data-toggle="collapse" href="#packages">
               <i class="la flaticon-box-1"></i>
@@ -143,6 +144,7 @@
             @elseif(request()->path() == 'student/speaking') show
             @elseif(request()->path() == 'student/reading') show
             @elseif(request()->path() == 'student/writing') show
+            @elseif(request()->path() == 'student/PracticeTest') show
             @elseif(request()->path() == 'admin/rejected/orders') show
 
             @endif" id="packages">
@@ -161,7 +163,7 @@
                   </a>
                 </li> --}}
           
-              <li class="nav-item @if(request()->path() == 'student/speaking') active @endif">
+              <li class="nav-item @if(request()->path() == 'student/PracticeTest') active @endif">
                 <a href="{{ route('student.PracticeTest') }}" class="nav-link">Parctice Test</a></li>
             {{-- <li class="nav-item @if(request()->path() == 'student/reading') active @endif">
               <a href="{{ route('student.reading') }}" class="nav-link">Parctice Test</a></li> --}}
@@ -176,15 +178,7 @@
               </li>
               
         </ul>
-              
-
-
-       
-
-
-
-
-
+  
 <!--get Test-->
 
              
