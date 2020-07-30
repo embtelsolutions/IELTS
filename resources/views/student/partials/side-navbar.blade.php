@@ -68,7 +68,6 @@
             <a href="{{route('student.history')}}">
               <i class="la flaticon-paint-palette"></i>
               <p>History</p>
-<<<<<<< HEAD
             </a>
           </li>
           @endif
@@ -98,8 +97,6 @@
               <i class="la flaticon-settings"></i>
               <p>Basic Settings</p>
               <span class="caret"></span>
-=======
->>>>>>> 0a406984e2dbe353e9acfea932f95590cab7201b
             </a>
           </li>
           @endif

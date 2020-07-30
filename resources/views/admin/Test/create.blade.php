@@ -36,10 +36,6 @@ button.remove{
  </div>
 
  <div class="row">
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a406984e2dbe353e9acfea932f95590cab7201b
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">

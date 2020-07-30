@@ -77,14 +77,13 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 {{-- <td>{{convertUtf8($package->description)}}</td> --}}
-                                 <td>{{convertUtf8($package->type)}}</td>
+                                 <td>{{convertUtf8($package->test_type)}}</td>
                                  <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
                                  </td>
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{!! $package->description !!}" data-teacher="{{$package->teacher_id}}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="{{url('student-test')}}/{{$package->id}}">
                                        <span class="btn-label">
                                           <i class="fas fa-edit"></i>
                                        </span>
@@ -103,24 +102,7 @@
                                  </td>
                               </tr>
                               <!-- Services Modal -->
-                              <div class="modal fade" id="detailsModal{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                 <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                             <span aria-hidden="true">&times;</span>
-                                          </button>
-                                       </div>
-                                       <div class="modal-body">
-                                          {!! convertUtf8($package->description) !!}
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
+                             
                               @endforeach
                            </tbody>
                         </table>

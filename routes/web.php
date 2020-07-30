@@ -47,7 +47,8 @@ Route::group(['middleware' => 'setlang'], function() {
   Route::get('/{slug}/{id}/page', 'Front\FrontendController@dynamicPage')->name('front.dynamicPage');
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
 
-  Route::get('/student-test', 'Student\StudentTestController@index')->name('student.test');
+  Route::get('/student-test/{id}', 'Student\StudentTestController@index');
+  Route::post('/writing/submit','Student\StudentTestController@submitWritingTest');
 
 });
 
@@ -664,13 +665,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
 
   // Admin Cache Clear Routes
   Route::get('/cache-clear', 'Admin\CacheController@clear')->name('admin.cache.clear');
-<<<<<<< HEAD
-  Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');
-  Route::get('/create/test/writing','Admin\TestController@write')->name('admin.create.write.test');
+  Route::get('/create/test','Admin\TestController@index')->name('admin.create.test');
+  
   Route::post('/newtest','Admin\TestController@newtest')->name('newtest');
   Route::post('/newtest/writing','Admin\TestController@writing')->name('writing');
-=======
-  Route::get('/create/test','Admin\TestController@index')->name('admin.create.test');
-  Route::post('/newtest','Admin\TestController@newtest')->name('newtest'); 
->>>>>>> 0a406984e2dbe353e9acfea932f95590cab7201b
 });

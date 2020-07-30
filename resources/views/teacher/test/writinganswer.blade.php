@@ -67,8 +67,19 @@
       </tr>
     </thead>
     <tbody>
-   
+    @foreach
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
 
+    @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -92,19 +103,83 @@
 
 
       <!-- Edit Package Modal -->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Submit Result</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+      <!-- Edit Package Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+     <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLongTitle">Edit Test</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
         </div>
         <div class="modal-body">
-       
-      </div>
-    </div> -->
+           <form id="" class="" action="" method="POST">
+              @csrf
+              <input id="inpackage_id" type="hidden" name="package_id" value="">
+              <div class="form-group">
+                 <label for="">Title **</label>
+                 <input id="title" type="text" class="form-control" name="title" value="Test 1" readonly>
+                 <p id="eerrtitle" class="mb-0 text-danger em"></p>
+              </div>
+              <div class="form-group">
+                 <label for="">Test Type</label>
+                 {{-- Test type --}}
+              <input id="" type="text" class="form-control" name="type" value="Writing"  readonly>
+                 <p id="type-s" class="mb-0 text-danger em"></p>
+               
+              </div>
+              <div class="form-group">
+                 <label for="">Submitted by Student</label>
+                 
+              </div>
+              
+              <div class="form-group">
+                
+                <hr style="background: white;color:white"/>
+                  <h1>Section 1</h1>
+                  <br>
+                 <label>Answer 1</label>
+                 <textarea id="inmeta_description" class="form-control" name="answer_1" rows="20" cols="40" placeholder="" value readonly></textarea>
+                 <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
+                 <span class="count"></span>
+                 <br>
+                 <button type="button" class="btn btn-secondary" id="count_word">count</button>
+
+              </div>
+              <div class="form-group">
+                
+                <hr style="background: white;color:white"/>
+                  <h1>Section 2</h1>
+                  <br>
+                 <label>Answer 2</label>
+                 <textarea id="inmeta_description" class="form-control" name="answer_2" rows="20" cols="40" placeholder="" value readonly></textarea>
+                 <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
+                 <span class="count"></span>
+                 <br>
+                 <button type="button" class="btn btn-secondary" id="count_word_2" onclick="count_word();">count</button>
+
+              </div>
+              <div class="form-group">
+                 <label>Marks</label>
+                 <input id="" type="number" class="form-control" name="marks" value="">
+                 <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
+              </div>
+              <div class="form-group">
+                 <label>Remarks</label>
+                 <textarea id="inmeta_description" class="form-control" name="remarks" rows="10" cols="40" placeholder="Enter meta description"></textarea>
+                 <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
+              </div>
+           </form>
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           <button id="updateBtn" type="button" class="btn btn-primary">Submit Marks</button>
+        </div>
+     </div>
+  </div>
+</div>
+<!---end edit model-->
 
     @endsection
     @section('scripts')

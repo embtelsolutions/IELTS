@@ -34,10 +34,6 @@ button.remove{
  </div>
 
  <div class="row">
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a406984e2dbe353e9acfea932f95590cab7201b
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
@@ -51,7 +47,7 @@ button.remove{
             </div>
         </div>
         <div class="card-body p-body pt-5 pb-4">
-			<form action="{{route('writing')}}" method="post">
+			<form action="{{route('writing')}}" method="post" enctype="multipart/form-data">
 			@csrf
 				<div class="row">
 					<div class="form-group col-md-4">

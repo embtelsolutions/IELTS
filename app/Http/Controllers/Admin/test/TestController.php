@@ -193,10 +193,10 @@ public function PracticeTest(Request $request)
             //                     ->where('type','=','speaking')
             //                    // ->join('submittests','tests.id','submittests.test_id')
             //                     ->paginate(15);
-            $data= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->get();
-            dd($data);           
+            $data['packages']= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
+            // dd($data);           
             
-            return view('student.test.speaking',$data);
+            return view('student.test.writing',$data);
 }
 public function reading(Request $request)
 {
@@ -242,6 +242,7 @@ public function FullTest(Request $request)
             dd($data);
             return view('student.test.writing',$data);
 }
+
 
 public function listening(Request $request)
 {

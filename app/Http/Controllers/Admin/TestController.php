@@ -267,8 +267,7 @@ class TestController extends Controller
             'sec2_topic.required'=>'Please Enter Topic',
             'sec1_instr.required'=>'Please Enter Instructions for this section',
             'sec2_instr.required'=>'Please Enter Instructions for this section',
-            'sec1_img.*'=>'file should be image',
-            'sec2_img.*'=>'file should be image',
+            
         ]);
         $test=new Test;
         $test->title=$req->title;
@@ -292,7 +291,7 @@ class TestController extends Controller
         $section->instruction=$req->sec1_instr;
         $section->module_id=$module_id;
         $section->time=$req->sec1_time;
-        $section->sec_topic=$req->sec2_topic;
+        $section->sec_topic=$req->sec1_topic;
         if($file = $req->file('sec1_img')) {
 
             $name = time().$file->getClientOriginalname();
@@ -300,7 +299,7 @@ class TestController extends Controller
             $target_path = public_path('/public/test');
             
             if($file->move($target_path, $name)) {
-                $section->sec_topic=$name;
+                $section->sec_file=$name;
             }
         }
         $section->save();
@@ -314,7 +313,7 @@ class TestController extends Controller
 
         $section=new test_section;
         $section->test_id=$test_id;
-        $section->name="Section A";
+        $section->name="Section B";
         $section->instruction=$req->sec2_instr;
         $section->module_id=$module_id;
         $section->time=$req->sec2_time;
@@ -326,7 +325,7 @@ class TestController extends Controller
             $target_path = public_path('/public/test');
             
             if($file->move($target_path, $name)) {
-                $section->sec_topic=$name;
+                $section->sec_file=$name;
             }
         }
         $section->save();
@@ -336,6 +335,6 @@ class TestController extends Controller
         $question->question=$req->sec2_que;
         $question->module_id=$module_id;    
         $question->save();
-        return back()->with('success','writing Test Created Succussfully');
+        // return back()->with('success','writing Test Created Succussfully');
     }
 }
