@@ -345,10 +345,6 @@ class TestController extends Controller
         $question->question=$req->sec2_que;
         $question->module_id=$module_id;    
         $question->save();
-        // return back()->with('success','Listening Test Created Succussfully');
-
-
         return back()->with('success','writing Test Created Succussfully');
-
     }
 }

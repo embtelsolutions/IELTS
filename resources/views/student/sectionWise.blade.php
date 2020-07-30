@@ -4,7 +4,7 @@
 
 @foreach($data as $record)
 <div class="container">
-    <h1 class="text-white">Section {{ucfirst($record->name)}}</h1>
+    <h1 class="text-white">{{ucfirst($record->name)}}</h1>
     <hr class="bg-white">
     <?php $quetions=App\Http\Controllers\questions::sectionQuestion($record->id); ?>
     <table class="table">
@@ -18,10 +18,11 @@
         <tbody> 
     @foreach($quetions as $quetion)
     <?php $queAns=App\Http\Controllers\questions::QueAns($quetion->id); ?>
+    {{dd($queAns)}}
         <tr>
             <td scope="row">{{$quetion->question}}</td>
             <td>{{$queAns->answer}}</td>
-            <td>{{$queAns->rightAnswer}}
+            <!-- <td>{{$queAns->rightAnswer}} -->
         </tr>
     @endforeach
         </tbody>

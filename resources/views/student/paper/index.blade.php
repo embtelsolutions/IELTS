@@ -20,7 +20,7 @@
                </div>
                <div class="col-md-6">
                   <div class="section-timer text-right">
-                     <div id="timer"><p class="timer_sec_1" data-minutes-left=1></p></div>
+                     <div id="timer"><p class="timer_sec_1" data-minutes-left="1"></p></div>
                     
                   </div>
                </div>

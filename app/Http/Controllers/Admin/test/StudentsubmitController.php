@@ -126,11 +126,35 @@ class StudentsubmitController extends Controller
           ->join('test_modules','test_modules.test_id','tests.id')
           ->where('asign_to', Auth::guard('user')->user()->id)
           ->where('test_modules.module_type','writing')
+          ->select('users.*','users.id as studId','tests.*','tests.id as testId','submitted_test.created_at as date')
           ->get();
           
         return view('teacher.test.writinganswer',['data'=>$data]); 
       }
-
+      public function writingCheck($stud,$test)
+      {
+        $data=\DB::table('submitted_test')
+        ->join('sections','sections.test_id','submitted_test.test_id')
+        ->join('questions','questions.section_id','sections.id')
+        ->join('givenans','givenans.que_id','questions.id')
+        ->where('submitted_test.test_id',$test)
+        ->where('givenans.stud_id',$stud)
+        ->select('sections.*','questions.*','givenans.*','givenans.id as aid')
+        ->get();
+        $test=\DB::table('tests')->where('id',$test)->first();
+        // dd($data);
+        return view('teacher.test.writing_check',['data'=>$data,'test'=>$test]);
+      }
+      public function submitWritingResult(Request $req)
+      {
+        $c=count($req->aid);
+        for($i=0;$i<$c;$i++)
+        {
+          $aid=$req->aid[$i];
+          \DB::table('givenans')->where('id','=',$aid)->update(['remark'=>$req->remarks[$i],'marks'=>$req->marks[$i]]);
+        }
+        return redirect()->route('teacher.index')->with('success',' Test checked Succussfully');
+      }
        public function writingmarksupload(Request $request)
       {
 

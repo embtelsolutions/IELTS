@@ -46,10 +46,53 @@
       <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
     </div>--}}
   </div>
-  </div>
-  <div class="card-body">
-  <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-3">
+    {{-- @if (!empty($langs))
+      <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
+       <option value="" selected disabled>Select a Language</option>
+       @foreach ($langs as $lang)
+       <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>{{$lang->name}}</option>
+       @endforeach
+     </select>
+     @endif --}}
+   </div>
+   {{-- <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
+    <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test 5</a>
+    <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+  </div>--}}
+</div>
+</div>
+<div class="card-body">
+<div class="row">
+ <div class="col-lg-12">
+
+   <div class="table-responsive">
+    <table class="table table-striped mt-3">
+     <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Student Name</th>
+        {{-- <th scope="col">Currency</th>
+        <th scope="col">Price</th> --}}
+        <th scope="col">Tittle</th>
+        <th scope="col">Date</th>
+        
+        <th scope="col">View</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    <?php $i=0; ?>
+    @foreach($data as $test)
+    <?php $i++;?>
+          <tr>
+            <td>{{$i}}</td>
+            <td>{{$test->name}}</td>
+            <td>{{$test->title}}</td>
+            <td>{{date('d-m-Y',strtotime($test->date) )}}</td>
+            <td><a href="{{url('writing_check')}}/{{$test->studId}}/{{$test->testId}}" class="btn btn-primary">View</a></td>
+            
+          </tr>
 
     <div class="table-responsive">
       <table class="table table-striped mt-3">
