@@ -103,7 +103,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
   //writing answer
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
   //writingcheck
-  Route::get('/test/writing/answer/id', 'Admin\test\StudentsubmitController@writingcheck')->name('teacher.test.writing.check');
+  // Route::get('/test/writing/answer/id', 'Admin\test\StudentsubmitController@writingcheck')->name('teacher.test.writing.check');
   Route::get('/writing_check/{stud}/{testid}', 'Admin\test\StudentsubmitController@writingCheck');
   Route::post('/submitWritingResult', 'Admin\test\StudentsubmitController@submitWritingResult');
  //upload marks

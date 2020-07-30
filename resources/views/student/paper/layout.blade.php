@@ -46,7 +46,7 @@
                             <img class="clock" src="{{asset('ielts-assets/images/clock.svg')}}">
                         </div>
                         <div class="timer_count">
-                            <h3>52 Miniutes Remaining</h3>
+                            <h3 class="time"   data-minutes-left="60"></h3>
                         </div>
                     </div>
                 </div>

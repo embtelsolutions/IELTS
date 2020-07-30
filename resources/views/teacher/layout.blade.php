@@ -24,6 +24,7 @@
     }
     </style>
     @endif
+    <script src="{{asset('ielts-assets/JavaScriptSpellCheck/include.js')}}"></script>
 
     @yield('styles')
 
@@ -63,5 +64,6 @@
         <img src="{{asset('assets/admin/img/loader.gif')}}" alt="">
     </div>
     {{-- Loader --}}
+    @stack('scripts')
 </body>
 </html>

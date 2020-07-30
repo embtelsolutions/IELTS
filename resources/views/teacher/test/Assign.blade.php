@@ -85,11 +85,12 @@
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Assign Now
+                                    Assign Now 
                                     </a>
                                     @php
                                     $testid =$package->id;
                                      @endphp
+                                   
                                  </td>
                               </tr>
                               <!-- Services Modal -->
@@ -143,7 +144,7 @@
          <div class="modal-body">
             <form id="ajaxEditForm" class="" action="{{route('teacher.test.assign-to')}}" method="POST">
                @csrf
-               <input id="inpackage_id" type="hidden" name="package_id" value="">
+               <input id="inpackage_id" type="hidden" name="package_id" value="package_id">
                <div class="form-group">
                   <label for="">Title **</label>
                   <input id="intitle" type="text" class="form-control" name="title" value="" readonly>
@@ -157,10 +158,11 @@
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>
                @php
-                     $testid = \Request::input('package_id');
+                     
                      $user_id = \DB::table('test_users')->where('test_id',$testid)->select('user_id')->get();
                @endphp
                {{$testid}}
+               {{-- {{$testid}}
                <div class="form-group">
                   <label for="">Already Assigned </label>
                      <select class="form-control mg-10" id="type" name="students[]" multiple="false">
@@ -168,7 +170,7 @@
                         <option value="{{$student->id}}" >{{$student->name}}</option>
                         @endforeach
                      </select>
-                  </div>
+                  </div> --}}
 
                <div class="form-group">
                <label for="">Assign to </label>

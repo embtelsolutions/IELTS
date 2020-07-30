@@ -10,7 +10,13 @@
        <form method="post" action="{{url('writing/submit')}}">
        @csrf
        <input type="hidden" name="test_id" value="{{$test_id}}">
+       @php
+           $t=0;
+       @endphp
        @foreach($data as $sec)
+       @php
+           $t++;
+       @endphp
        <div id="section_1" class="sections"> 
             <div class="container row">
                <div class="col-md-6">
@@ -20,7 +26,7 @@
                </div>
                <div class="col-md-6">
                   <div class="section-timer text-right">
-                     <div id="timer"><p class="timer_sec_1" data-minutes-left="1"></p></div>
+                  <div id="timer"><p class="timer_sec_{{$t}}" data-minutes-left="1"></p></div>
                     
                   </div>
                </div>
@@ -50,14 +56,14 @@
                     @endforeach
                     @if($sec->sec_file)
                      <div class="que_img">
-                        <img src="{{url('public\test')}}\{{$sec->sec_file}}">
+                        <img src="{{url('public\test')}}\{{$sec->sec_file}}" width="450px">
                      </div>
                     @endif
                     <input type="hidden" name="mod" value="{{$sec->module_id}}"> 
                      <div class="answer pt-4">
                         <label class="font-weight-normal">Answer</label>
                         <input type="hidden" name="que[]" value="{{$q->id}}">
-                        <textarea name ="answer[]" rows="4" cols="50" spellcheck="false"></textarea>
+                     <textarea class="answer_{{$t}}"name ="answer[]" rows="4" cols="50" spellcheck="false"></textarea>
                      </div>
                   </div>
                </div>
@@ -118,9 +124,21 @@
     
     //timer
       $(function(){
+
+         
             $('.timer_sec_1').startTimer({
                onComplete: function(){
-               $('textarea[name="answer"]').attr('readonly', true)              }
+               $('.answer_1').attr('readonly', true) ;
+                  $('.timer_sec_2').startTimer({
+                     onComplete: function(){ $('.answer_2').attr('readonly', true)  }
+                  })
+               }
+            });
+         })
+         $(function(){
+            $('.time').startTimer({
+               onComplete: function(){
+               console.log('yes');           }
             });
          })
 

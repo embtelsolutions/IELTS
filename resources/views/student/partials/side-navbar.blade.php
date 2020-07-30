@@ -63,14 +63,14 @@
               <p>Dashboard</p>
             </a>
           </li>
-          @if(Auth::guard('user')->user()->role=="Student")
+          {{-- @if(Auth::guard('user')->user()->role=="Student")
            <li class="nav-item">
             <a href="{{route('student.history')}}">
               <i class="la flaticon-paint-palette"></i>
               <p>History</p>
             </a>
           </li>
-          @endif
+          @endif --}}
 
 
 
@@ -196,15 +196,15 @@
                 <a href="{{ route('student.PracticeTest') }}" class="nav-link">Parctice Test</a></li>
             {{-- <li class="nav-item @if(request()->path() == 'student/reading') active @endif">
               <a href="{{ route('student.reading') }}" class="nav-link">Parctice Test</a></li> --}}
-            <li class="nav-item @if(request()->path() == 'student/writing') active @endif">
-              <a href="{{ route('student.FullTest') }}" class="nav-link">Full Tests</a></li>
+            {{-- <li class="nav-item @if(request()->path() == 'student/writing') active @endif">
+              <a href="{{ route('student.FullTest') }}" class="nav-link">Full Tests</a></li> --}}
             <!-- <li class="nav-item @if(request()->path() == 'student/listening') active @endif">
               <a href="{{ route('student.listening') }}" class="nav-link">Listening</a></li> -->
-            <li class="@if(request()->path() == 'student/test') active @endif">
+            {{-- <li class="@if(request()->path() == 'student/test') active @endif">
               <a href="{{route('student.alltest')}}" class="nav-link">
                   Submitted Test
                 </a>
-              </li>
+              </li> --}}
               
         </ul>
   
