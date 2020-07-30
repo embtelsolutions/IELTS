@@ -25,7 +25,7 @@
       <td>{{$test->marks}}</td>
       <td>{{$test->time_limit}}</td>
       <td>{{$test->taken_time}}</td>
-      <td><a href="history/Modules/{{$test->id}}"><button class="btn btn-primary">View</button></a></td>
+      <td><a href="history/Modules/{{$test->test_id}}"><button class="btn btn-primary">View</button></a></td>
     </tr>
     @endforeach
   </tbody>

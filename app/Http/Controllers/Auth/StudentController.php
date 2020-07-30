@@ -33,7 +33,7 @@ class StudentController extends Controller
         ->join('tests','tests.id','submitted_test.test_id')
         ->join('users','users.id','submitted_test.asign_to')
         ->where('stud_id', Auth::guard('user')->user()->id)
-        ->select('users.*','tests.*','submitted_test.id as testid','submitted_test.*')
+        ->select('users.*','tests.*','tests.id as testid','submitted_test.*')
         ->get();
         if(count($submited_test)>0)
         {
