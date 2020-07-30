@@ -34,4 +34,6 @@ class StudentTestController extends Controller
         }
         return redirect()->route('student.index')->with('success','writing Test submitted Succussfully');
     }
+
+    
 }

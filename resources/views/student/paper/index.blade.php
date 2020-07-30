@@ -80,7 +80,7 @@
       </div>
       
    </div>
-   </from>
+   </form>
    <div class="empty-space"></div>
 
 @endsection

@@ -124,6 +124,7 @@ class TestController extends Controller
 
         $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
         $data['students'] = user::where('role','Student')->get();
+        
         // dd($data['packages']);
 
         // foreach($data['packages'] as $package){
@@ -181,10 +182,14 @@ public function PracticeTest(Request $request)
 {
 
      $user = Auth::guard('user')->user()->id;
+    //  dd($user);
      $i_id = Auth::guard('user')->user()->institute_id;
-            // $data['packages'] = TestUser::whereIn('user_id',[$user])
-            // //                     ->join('tests','test_users.test_id','tests.id')
-            // //                     ->get();
+    
+    //  dd($data);
+
+            $data['packages'] = TestUser::where('user_id','like',"%$user%")
+                                ->join('tests','test_users.test_id','tests.id')
+                                ->paginate();
             // $data['packages'] = Test::where( 'test_users',function ($q) use ($user) {
             //                             $q->where('user_id', $user);
             //                             $q->groupBy('user_id');
@@ -193,7 +198,7 @@ public function PracticeTest(Request $request)
             //                     ->where('type','=','speaking')
             //                    // ->join('submittests','tests.id','submittests.test_id')
             //                     ->paginate(15);
-            $data['packages']= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
+            // $data['packages']= Test::where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
             // dd($data);           
             
             return view('student.test.writing',$data);

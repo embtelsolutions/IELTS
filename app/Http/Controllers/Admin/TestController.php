@@ -236,6 +236,8 @@ class TestController extends Controller
 
 
         echo $c;
+        return back()->with('success','Listening Test Created Succussfully');
+
 
     }
 
@@ -243,7 +245,7 @@ class TestController extends Controller
         // dd(';hello');
         return view('admin.Test.create-speaking');
 
-        return back()->with('success','Listening Test Created Succussfully');
+        // return back()->with('success','Listening Test Created Succussfully');
     }
     public function writing(Request $req)
     {
@@ -346,7 +348,7 @@ class TestController extends Controller
         // return back()->with('success','Listening Test Created Succussfully');
 
 
-        // return back()->with('success','writing Test Created Succussfully');
+        return back()->with('success','writing Test Created Succussfully');
 
     }
 }

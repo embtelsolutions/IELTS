@@ -2,7 +2,7 @@
 
 @section('teacher-content')
 <div class="page-header">
-   <h4 class="page-title">Tests11</h4>
+   <h4 class="page-title">Tests</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('teacher.index')}}">
@@ -75,24 +75,27 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 <td>type</td>
-                                 {{-- <td>{{convertUtf8($package->type)}}</td> --}}
+                                 <td>{{convertUtf8($package->test_type)}}</td>
                                  {{-- <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
                                  </td> --}}
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->test_type}}" data-description="{{ $package->description }}" >
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
                                     Assign Now
                                     </a>
+                                    @php
+                                    $testid =$package->id;
+                                     @endphp
                                  </td>
                               </tr>
                               <!-- Services Modal -->
                               <div class="modal fade" id="detailsModal{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                   
                                     <div class="modal-content">
                                        <div class="modal-header">
                                           <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
@@ -138,70 +141,66 @@
             </button>
          </div>
          <div class="modal-body">
-            <form id="" class="" action="" method="POST">
+            <form id="ajaxEditForm" class="" action="{{route('teacher.test.assign-to')}}" method="POST">
                @csrf
                <input id="inpackage_id" type="hidden" name="package_id" value="">
                <div class="form-group">
                   <label for="">Title **</label>
-                  <input id="title" type="text" class="form-control" name="title" value="Test 1" readonly>
+                  <input id="intitle" type="text" class="form-control" name="title" value="" readonly>
                   <p id="eerrtitle" class="mb-0 text-danger em"></p>
                </div>
                <div class="form-group">
                   <label for="">Test Type</label>
                   {{-- Test type --}}
-               <input id="" type="text" class="form-control" name="type" value="Writing"  readonly>
+               <input id="intype" type="text" class="form-control" name="type" value=""  readonly>
                   <p id="type-s" class="mb-0 text-danger em"></p>
-                
+                  {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>
+               @php
+                     $testid = \Request::input('package_id');
+                     $user_id = \DB::table('test_users')->where('test_id',$testid)->select('user_id')->get();
+               @endphp
+               {{$testid}}
                <div class="form-group">
-                  <label for="">Submitted by Student</label>
-                  
-               </div>
-               
-               <div class="form-group">
-                  <label>Answer 1</label>
-                  <textarea id="inmeta_description" class="form-control" name="answer_1" rows="20" cols="40" placeholder="" value readonly></textarea>
-                  <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
-                  <span class="count"></span>
-                  <br>
-                  <button type="button" class="btn btn-secondary" id="count">count</button>
+                  <label for="">Already Assigned </label>
+                     <select class="form-control mg-10" id="type" name="students[]" multiple="false">
+                        @foreach($students as $student)
+                        <option value="{{$student->id}}" >{{$student->name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
 
+               <div class="form-group">
+               <label for="">Assign to </label>
+                  <select class="form-control mg-10" id="type" name="students[]" multiple="false">
+                     @foreach($students as $student)
+                     <option value="{{$student->id}}" >{{$student->name}}</option>
+                     @endforeach
+                  </select>
+               </div>
+               {{-- <div class="form-group">
+                  <label>Meta Keywords</label>
+                  <input id="inmeta_keywords" class="form-control" name="meta_keywords" value="" placeholder="Enter meta keywords" data-role="tagsinput">
+                  <p id="eerrmeta_keywords" class="mb-0 text-danger em"></p>
                </div>
                <div class="form-group">
-                  <label>Marks</label>
-                  <input id="" type="number" class="form-control" name="marks" value="">
+                  <label>Meta Description</label>
+                  <textarea id="inmeta_description" class="form-control" name="meta_description" rows="5" placeholder="Enter meta description"></textarea>
                   <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
-               </div>
-               <div class="form-group">
-                  <label>Remarks</label>
-                  <textarea id="inmeta_description" class="form-control" name="remarks" rows="10" cols="40" placeholder="Enter meta description"></textarea>
-                  <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
-               </div>
+               </div> --}}
             </form>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Submit Marks</button>
+            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
          </div>
       </div>
    </div>
 </div>
-
-<!---end edit model-->
 @endsection
 @section('scripts')
 <script>
    $(document).ready(function() {
-
-      //
-      $('#count').on({
-         'click': function(){
-            var value = $.trim($('[name="answer_1"]').val()),
-                  count = value == '' ? 0 : value.split(' ').length;
-                  // alert(count);
-                  $('span.count').html(count);
-         }
-      });
 
        // make input fields RTL
        $("select[name='language_id']").on('change', function() {
