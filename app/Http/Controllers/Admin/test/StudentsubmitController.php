@@ -175,8 +175,8 @@ class StudentsubmitController extends Controller
         //dd($data);
       }
 
-      public function writingcheck(){
+      // public function writingcheck(){
 
-        return view('teacher.test.writing_check');
-      }
+      //   return view('teacher.test.writing_check');
+      // }
     }
