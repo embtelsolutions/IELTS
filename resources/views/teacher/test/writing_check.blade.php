@@ -98,6 +98,7 @@
                  <button type="button" class="btn btn-secondary" id="count_word">count</button>
 
               </div>
+              <input type="hidden" name="sid" value="{{$d->sid}}">
               <input type="hidden" name="aid[]" value="{{$d->aid}}">
               <div class="form-group">
                  <label>Marks</label>
