@@ -96,6 +96,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
 
   //assign test
   Route::get('/test/assign', 'Admin\test\TestController@assign')->name('teacher.test.assign');
+  Route::get('/test/assign/{id}', 'Admin\test\TestController@AssignBox')->name('teacher.test.assignbox');
   Route::post('/test/assign-to', 'Admin\test\TestController@assignTo')->name('teacher.test.assign-to');
 
   //show answer

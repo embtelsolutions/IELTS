@@ -124,7 +124,6 @@ class TestController extends Controller
 
         $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
         $data['students'] = user::where('role','Student')->get();
-        
         // dd($data['packages']);
 
         // foreach($data['packages'] as $package){
@@ -141,19 +140,37 @@ class TestController extends Controller
         return view('teacher.test.Assign',$data);
     }
 
+    public function AssignBox($id){
+
+        $packages = Test::where('id','=',$id)->first();
+        $students = user::where('role','Student')->get();
+        
+        $testuser = TestUser::select('user_id')->where('test_id',$id)->first();
+        $users = $testuser->user_id;
+        $user = explode(',',$users);
+        $assinged = user::whereIn('id',$user)->get();
+    
+        return view('teacher.test.AssignTo',['students'=>$students,'packages'=>$packages,'assinged'=>$assinged]);
+        
+    }
+
 
     public function assignTo(Request $request){
 
-
-        
         $input = TestUser::firstOrNew(array('test_id' => Input::get('package_id')));
- 
-        $input->user_id = implode(',',$request->students);
+        // if(!$request->update_stud = "" ){
+        //     $input->user_id = implode(',',$request->students + $request->update_stud );
+        //     dd($input->user_id);
+        // }else{
+            $input->user_id = implode(',',$request->students);
+        // }
+        // dd($input->user_id);
         $input->teacher_id = Auth::guard('user')->user()->id;
         $input->save();
-         
-        Session::flash('success', 'Test Assigned successfully!');
-        return "success";
+        // Session::flash('success', 'Test Assigned successfully!');
+        // return "success";
+        return redirect()->route('teacher.test.assign')->with('success',' Test Assigned successfully!');
+
 
     }
 

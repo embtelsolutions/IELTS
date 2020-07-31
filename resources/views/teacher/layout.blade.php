@@ -25,7 +25,8 @@
     </style>
     @endif
     <script src="{{asset('ielts-assets/JavaScriptSpellCheck/include.js')}}"></script>
-
+    
+    @yield('teacher-scripts')
     @yield('styles')
 
 </head>

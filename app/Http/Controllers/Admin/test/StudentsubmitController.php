@@ -140,7 +140,7 @@ class StudentsubmitController extends Controller
         ->where('submitted_test.test_id',$test)
         ->where('givenans.stud_id',$stud)
         ->select('sections.*','questions.*','givenans.*','givenans.id as aid')
-        ->get();
+        ->get()->unique('id');;
         $test=\DB::table('tests')->where('id',$test)->first();
         // dd($data);
         return view('teacher.test.writing_check',['data'=>$data,'test'=>$test]);

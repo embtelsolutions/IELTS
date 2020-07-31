@@ -81,16 +81,19 @@
                                  </td> --}}
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->test_type}}" data-description="{{ $package->description }}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="{{route('teacher.test.assignbox',['id'=> $package->id])}}">
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
                                     Assign Now 
                                     </a>
-                                    @php
-                                    $testid =$package->id;
-                                     @endphp
-                                   
+                                    {{-- <a class="btn btn-secondary btn-sm editbtn" href="#editModel" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->test_type}}" data-description="{{ $package->description }}" >
+                                       <span class="btn-label">
+                                       <i class="fas fa-edit"></i>
+                                       </span>
+                                       Assign Now 
+                                       </a> --}}
+
                                  </td>
                               </tr>
                               <!-- Services Modal -->
@@ -144,7 +147,7 @@
          <div class="modal-body">
             <form id="ajaxEditForm" class="" action="{{route('teacher.test.assign-to')}}" method="POST">
                @csrf
-               <input id="inpackage_id" type="hidden" name="package_id" value="package_id">
+               <input id="inpackage_id" type="hidden" name="package_id" value="">
                <div class="form-group">
                   <label for="">Title **</label>
                   <input id="intitle" type="text" class="form-control" name="title" value="" readonly>
@@ -158,25 +161,24 @@
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>
                @php
-                     
-                     $user_id = \DB::table('test_users')->where('test_id',$testid)->select('user_id')->get();
+
+                     $user_id = \DB::table('test_users')->where('test_id',$package->id)->select('user_id')->get();
                @endphp
-               {{$testid}}
-               {{-- {{$testid}}
+            
                <div class="form-group">
                   <label for="">Already Assigned </label>
                      <select class="form-control mg-10" id="type" name="students[]" multiple="false">
                         @foreach($students as $student)
-                        <option value="{{$student->id}}" >{{$student->name}}</option>
+                           <option value="{{$student->id}}" >{{$student->name}}</option>
                         @endforeach
                      </select>
-                  </div> --}}
+                  </div>
 
                <div class="form-group">
                <label for="">Assign to </label>
                   <select class="form-control mg-10" id="type" name="students[]" multiple="false">
                      @foreach($students as $student)
-                     <option value="{{$student->id}}" >{{$student->name}}</option>
+                        <option value="{{$student->id}}" >{{$student->name}}</option>
                      @endforeach
                   </select>
                </div>
