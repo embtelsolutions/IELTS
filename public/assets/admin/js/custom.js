@@ -351,6 +351,7 @@ $(function($) {
 
           if (data == "success") {
             location.reload();
+          
           }
 
           // if error occurs

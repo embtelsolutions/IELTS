@@ -21,6 +21,7 @@ class TestController extends Controller
     public function write(){
         // dd(';hello');
         return view('admin.Test.create-writing');
+
     }
     public function newtest(Request $req)
     {   
@@ -107,6 +108,7 @@ class TestController extends Controller
             $ans->save();
 
         }
+
         $section=new test_section;
         $section->test_id=$test_id;
         $section->name="Section B";
@@ -125,7 +127,6 @@ class TestController extends Controller
         }
         $section->save();
         $sec2id=$section->id;
-        
         $c=count($req->sec2_que);
         for($i=0;$i<$c;$i++)
         {
@@ -149,7 +150,6 @@ class TestController extends Controller
             $ans->save();
 
         }
-        
         $section=new test_section;
         $section->test_id=$test_id;
         $section->name="Section C";
@@ -168,7 +168,6 @@ class TestController extends Controller
         }
         $section->save();
         $sec3id=$section->id;
-             
         $c=count($req->sec3_que);
         for($i=0;$i<$c;$i++)
         {
@@ -192,7 +191,7 @@ class TestController extends Controller
             $ans->save();
 
         }
-        
+
         $section=new test_section;
         $section->test_id=$test_id;
         $section->name="Section D";
@@ -211,7 +210,6 @@ class TestController extends Controller
         }
         $section->save();
         $sec4id=$section->id;
-        
         $c=count($req->sec4_que);
         for($i=0;$i<$c;$i++)
         {
@@ -235,7 +233,19 @@ class TestController extends Controller
             $ans->save();
 
         }
+
+
+        echo $c;
         return back()->with('success','Listening Test Created Succussfully');
+
+
+    }
+
+    public function speak(){
+        // dd(';hello');
+        return view('admin.Test.create-speaking');
+
+        // return back()->with('success','Listening Test Created Succussfully');
     }
     public function writing(Request $req)
     {

@@ -91,11 +91,14 @@
                     <p id="eerrtitle" class="mb-0 text-danger em"></p>
                   </div>
                  <label>Answer {{$i}}</label>
-                 <textarea id="inmeta_description" class="form-control" name="answer_1" rows="20" cols="40" placeholder="" value="" readonly>{{$d->answer}}</textarea>
+                <textarea id="" class="form-control" name="answer_{{$i}}" rows="20" cols="40" placeholder="" value="" readonly>{{$d->answer}}</textarea>
                  <p id="eerrmeta_description" class="mb-0 text-danger em"></p>
-                 <span class="count"></span>
                  <br>
-                 <button type="button" class="btn btn-secondary" id="count_word">count</button>
+                 <span class="count_{{$i}}" style="color:red"></span>
+                 <br>
+                 {{-- <input type="button" value="Spell Check in a Dialog" onclick="$Spelling.SpellCheckInWindow('answer_1')" /> --}}
+                 <br>
+                <button type="button" class="btn btn-secondary" id="count_word_{{$i}}" onclick ="countword({{$i}})">count</button>
 
               </div>
               <input type="hidden" name="sid" value="{{$d->sid}}">
@@ -170,27 +173,29 @@
           return false;
         }
       }
+      function countword(i){
+        var value = $.trim($('[name="answer_'+ i +'"]').val()),
+                  count = value == '' ? 0 : value.split(' ').length;
+                  // alert(count);
+                  $('span.count_'+ i +'').html(count);
+      }
+      $Spelling.SpellCheckAsYouType('all');
+    
       $(document).ready(function() {
 
-
         //
+        // console.log(i);
           //
-      $('#count_word').on({
-         'click': function(){
-            var value = $.trim($('[name="answer_1"]').val()),
-                  count = value == '' ? 0 : value.split(' ').length;
-                  // alert(count);
-                  $('span.count').html(count);
-         }
-      });
-      $('#count_word_2').on({
-         'click': function(){
-            var value = $.trim($('[name="answer_2"]').val()),
-                  count = value == '' ? 0 : value.split(' ').length;
-                  // alert(count);
-                  $('span.count_2').html(count);
-         }
-      });
+         
+     
+      // $('#count_word_'+ i +'').on({
+      //    'click': function(){
+      //       var value = $.trim($('[name="answer_'+ i +'"]').val()),
+      //             count = value == '' ? 0 : value.split(' ').length;
+      //             // alert(count);
+      //             $('span.count_'+ i +'').html(count);
+      //    }
+      // });
       
 
       // make input fields RTL

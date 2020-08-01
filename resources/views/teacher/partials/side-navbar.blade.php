@@ -89,10 +89,11 @@
           @elseif(request()->path() == 'test/answer') active
           @elseif(request()->path() == 'test/all') active
           @elseif(request()->path() == 'test/writing/answer') active
+          @elseif(request()->path() == 'writing_check/') active
           @endif">
             <a data-toggle="collapse" href="#basic">
               <i class="la flaticon-settings"></i>
-              <p>Test</p>
+              <p>Test Management</p>
               <span class="caret"></span>
             </a>
             <div class="collapse
@@ -112,31 +113,39 @@
             @elseif(request()->path() == 'admin/avaibility') show
             @elseif(request()->path() == 'admin/cookie-alert') show
             @elseif(request()->path() == 'test/writing/answer') show
+            @elseif(request()->path() == 'test/writing/') show
             @elseif(request()->path() == 'test/answer') show
             @elseif(request()->path() == 'test/all') show
+           @elseif(request()->path() == 'writing_check/') show
+
             @endif" id="basic">
               <ul class="nav nav-collapse">
-                <li class="@if(request()->path() == 'test/all') active @endif">
+                {{-- <li class="@if(request()->path() == 'test/all') active @endif">
                   <a href=" {{route('teacher.test.index')}}">
                     <span class="sub-item">All Test</span>
                   </a>
-                </li>
+                </li> --}}
                 <li class="@if(request()->path() == 'test/assign') active @endif">
                 <a href="{{route('teacher.test.assign')}}">
                     <span class="sub-item">Assign Test</span>
                   </a>
                 </li>
-                 <li class="@if(request()->path() == 'test/answer') active @endif">
+                 {{-- <li class="@if(request()->path() == 'test/answer') active @endif">
                 <a href="{{route('teacher.test.answer')}}">
                     <span class="sub-item">Speaking Answer</span>
                   </a>
-                </li>
+                </li> --}}
 
                  <li class="@if(request()->path() == 'test/writing/answer') active @endif">
                 <a href="{{route('teacher.test.writing')}}">
                     <span class="sub-item">Writing Answer</span>
                   </a>
                 </li>
+                {{-- <li class="@if(request()->path() == 'test/writing/answer/id') active @endif">
+                  <a href="{{route('teacher.test.writing.check')}}">
+                      <span class="sub-item">Writing check</span>
+                    </a>
+                  </li> --}}
                 {{-- <li class="@if(request()->path() == 'admin/social') active
                   @elseif(request()->is('admin/social/*')) active @endif">
                     <a href="">

@@ -677,6 +677,11 @@
                     <span class="sub-item">Create Writing Test</span>
                   </a>
                 </li>
+                <li class="@if(request()->path() == 'admin/create/test/speaking') active @endif">
+                  <a href="{{route('admin.create.speak.test')}}">
+                    <span class="sub-item">Create Speaking Test</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>

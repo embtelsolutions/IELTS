@@ -141,19 +141,37 @@ class TestController extends Controller
         return view('teacher.test.Assign',$data);
     }
 
+    public function AssignBox($id){
+
+        $packages = Test::where('id','=',$id)->first();
+        $students = user::where('role','Student')->get();
+        
+        $testuser = TestUser::select('user_id')->where('test_id',$id)->first();
+        $users = $testuser->user_id;
+        $user = explode(',',$users);
+        $assinged = user::whereIn('id',$user)->get();
+    
+        return view('teacher.test.AssignTo',['students'=>$students,'packages'=>$packages,'assinged'=>$assinged]);
+        
+    }
+
 
     public function assignTo(Request $request){
 
-
-        
         $input = TestUser::firstOrNew(array('test_id' => Input::get('package_id')));
- 
-        $input->user_id = implode(',',$request->students);
+        // if(!$request->update_stud = "" ){
+        //     $input->user_id = implode(',',$request->students + $request->update_stud );
+        //     dd($input->user_id);
+        // }else{
+            $input->user_id = implode(',',$request->students);
+        // }
+        // dd($input->user_id);
         $input->teacher_id = Auth::guard('user')->user()->id;
         $input->save();
-         
-        Session::flash('success', 'Test Assigned successfully!');
-        return "success";
+        // Session::flash('success', 'Test Assigned successfully!');
+        // return "success";
+        return redirect()->route('teacher.test.assign')->with('success',' Test Assigned successfully!');
+
 
     }
 
@@ -182,10 +200,14 @@ public function PracticeTest(Request $request)
 {
 
      $user = Auth::guard('user')->user()->id;
+    //  dd($user);
      $i_id = Auth::guard('user')->user()->institute_id;
-            // $data['packages'] = TestUser::whereIn('user_id',[$user])
-            // //                     ->join('tests','test_users.test_id','tests.id')
-            // //                     ->get();
+    
+    //  dd($data);
+
+            $data['packages'] = TestUser::where('user_id','like',"%$user%")
+                                ->join('tests','test_users.test_id','tests.id')
+                                ->paginate();
             // $data['packages'] = Test::where( 'test_users',function ($q) use ($user) {
             //                             $q->where('user_id', $user);
             //                             $q->groupBy('user_id');
@@ -275,11 +297,12 @@ public function listening(Request $request)
         public function alltest(Request $request)
         {
             $data=DB::table('submitted_test')
-        ->join('users','submitted_test.stud_id','users.id')
-        ->join('tests','submitted_test.test_id','tests.id')
-        ->where('stud_id',Auth::guard('user')->user()->id)
-        ->select('submitted_test.*','users.name','tests.title')
-        ->get();
+                    ->join('users','submitted_test.stud_id','users.id')
+                    ->join('tests','submitted_test.test_id','tests.id')
+                    ->where('stud_id',Auth::guard('user')->user()->id)
+                    ->select('submitted_test.*','users.name','tests.title')
+                    ->get();
+                    
           return view('student.test.exam',compact('data'));
                              
         }

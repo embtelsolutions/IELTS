@@ -2,7 +2,7 @@
 
 @section('teacher-content')
 <div class="page-header">
-   <h4 class="page-title">Tests11</h4>
+   <h4 class="page-title">Tests</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
          <a href="{{route('teacher.index')}}">
@@ -75,24 +75,31 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 {{-- <td>{{convertUtf8($package->description)}}</td> --}}
-                                 <td>{{convertUtf8($package->type)}}</td>
-                                 <td>
+                                 <td>{{convertUtf8($package->test_type)}}</td>
+                                 {{-- <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
-                                 </td>
+                                 </td> --}}
                                  {{-- <th scope="col">{{$package->serial_number}}</th> --}}
                                  <td>
-                                    <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->type}}" data-description="{{ $package->description }}" >
+                                    <a class="btn btn-secondary btn-sm editbtn" href="{{route('teacher.test.assignbox',['id'=> $package->id])}}">
                                     <span class="btn-label">
                                     <i class="fas fa-edit"></i>
                                     </span>
-                                    Assign Now
+                                    Assign Now 
                                     </a>
+                                    {{-- <a class="btn btn-secondary btn-sm editbtn" href="#editModel" data-toggle="modal" data-package_id="{{$package->id}}" data-title="{{$package->title}}" data-type="{{$package->test_type}}" data-description="{{ $package->description }}" >
+                                       <span class="btn-label">
+                                       <i class="fas fa-edit"></i>
+                                       </span>
+                                       Assign Now 
+                                       </a> --}}
+
                                  </td>
                               </tr>
                               <!-- Services Modal -->
                               <div class="modal fade" id="detailsModal{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                   
                                     <div class="modal-content">
                                        <div class="modal-header">
                                           <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
@@ -153,11 +160,25 @@
                   <p id="type-s" class="mb-0 text-danger em"></p>
                   {{-- <p class="text-warning"><small>The higher the serial number is, the later the package will be shown everywhere.</small></p> --}}
                </div>
+               @php
+
+                     $user_id = \DB::table('test_users')->where('test_id',$package->id)->select('user_id')->get();
+               @endphp
+            
+               <div class="form-group">
+                  <label for="">Already Assigned </label>
+                     <select class="form-control mg-10" id="type" name="students[]" multiple="false">
+                        @foreach($students as $student)
+                           <option value="{{$student->id}}" >{{$student->name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
+
                <div class="form-group">
                <label for="">Assign to </label>
-                  <select class="form-control mg-10" id="type" name="students[]" multiple="true">
+                  <select class="form-control mg-10" id="type" name="students[]" multiple="false">
                      @foreach($students as $student)
-                     <option value="{{$student->id}}">{{$student->name}}</option>
+                        <option value="{{$student->id}}" >{{$student->name}}</option>
                      @endforeach
                   </select>
                </div>

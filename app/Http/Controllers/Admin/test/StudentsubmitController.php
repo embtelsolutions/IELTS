@@ -81,7 +81,11 @@ class StudentsubmitController extends Controller
       }
     return response()->json($data);
         return view('teacher.test.answer'); 
+      
+      
       }
+
+
       public function marksupload(Request $request)
       {
 
@@ -95,7 +99,7 @@ class StudentsubmitController extends Controller
         $data['test_id']=$request->test_id;
         $data['marks']=$request->marks;
         DB::table('marks')->insert($data);
-         Session::flash('success', 'Marks Submitted successfully!');
+        Session::flash('success', 'Marks Submitted successfully!');
           return "success";
 
         //dd($data);
@@ -174,4 +178,9 @@ class StudentsubmitController extends Controller
 
         //dd($data);
       }
+
+      // public function writingcheck(){
+
+      //   return view('teacher.test.writing_check');
+      // }
     }

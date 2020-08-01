@@ -244,4 +244,134 @@ button.remove{
   </div>
 @endsection
 @push('after-script')
+<script>
+	// $(document).ready(function(){
+
+	// 	var i = $('.section_one_que').length +1;
+	// 	var apend_div = `<div class="form-group col-md-10">
+	// 							<button class="remove btn btn-secondary">Remove</button>
+	// 						</div>
+	// 		`;
+	// 	$(function() {
+	// 		$('#add_que_1').click(function(){
+	// 			$(`<div class="row section_one_que" id="sec_que_`+ i +`">
+	// 						<!--- question one--->
+	// 						<div class="form-group col-md-6">
+	// 							<label for="field" class="">Question `+ i +`*</label>
+	// 							<textarea id="sec2_que`+ i +`" type="text" class="form-control" name="sec2_que`+ i +`" value="" placeholder="Enter question"></textarea>
+								
+	// 						</div>
+
+	// 					</div>`).append( apend_div ).insertBefore($('.row.addquestion_1'));
+						
+	// 					i++;
+	// 					return false;
+	// 			});
+
+	// 		$(document).on('click', 'button.remove', function( e ) {
+	// 			e.preventDefault();
+	// 			$(this).closest( 'div.row' ).remove();
+	// 			i--;
+	// 		});
+	// 		$('select[data-type="type"]').change(function(){
+	// 			var optionSelected = $(this).find("option:selected");
+	// 			var valueSelected  = optionSelected.val();
+	// 			if(valueSelected == "Blank"){
+	// 				alert(0);
+	// 			}
+	// 			else{
+	// 				alert(1);
+	// 			}
+	// 		})
+
+	// 	});
+
+	// 	var i2 = $('.section_two_que').length + 1;
+	// 	var apend_div_2 = `<div class="form-group col-md-10">
+	// 							<button class="remove2 btn btn-secondary">Remove</button>
+	// 						</div>
+	// 		`;
+	// 	$(function() {
+	// 		$('#add_que_2').click(function(){
+	// 			$(`<div class="row section_two_que" id="sec2_que_`+ i2 +`">
+	// 						<!--- question one--->
+	// 						<div class="form-group col-md-6">
+	// 							<label for="field" class="">Question `+ i2 +`*</label>
+	// 							<textarea id="sec2_que`+ i2 +`"  class="form-control" name="sec2_que`+ i2 +`" value="" placeholder="Enter question"></textarea>
+	// 						</div>
+							
+	// 					</div>`).append( apend_div_2 ).insertBefore($('.row.addquestion_2'));
+	// 					i2++;
+	// 					return false;
+	// 			});
+
+	// 		$(document).on('click', 'button.remove2', function( e ) {
+	// 			e.preventDefault();
+	// 			$(this).closest( 'div.row' ).remove();
+	// 			i2--;
+	// 		});
+
+	// 	});
+
+	// 	var i4 = $('.section_four_que').length +1;
+	// 	var apend_div_4 = `<div class="form-group col-md-10">
+	// 							<button class="remove4 btn btn-secondary">Remove</button>
+	// 						</div>
+	// 		`;
+	// 	$(function() {
+	// 		$('#add_que_4').click(function(){
+	// 			$(`<div class="row section_four_que" id="sec4_que_`+ i4 +`">
+	// 						<!--- question one--->
+	// 						<div class="form-group col-md-6">
+	// 							<label for="field" class="">Question `+ i4 +`*</label>
+	// 							<textarea id="sec4_que`+ i4 +`" class="form-control" name="sec4_que`+ i4 +`" placeholder="Enter question"></textarea>
+								
+	// 							<br>
+	// 						</div>
+							
+	// 					</div>`).append( apend_div_4 ).insertBefore($('.row.addquestion_4'));
+						
+	// 					i4++;
+	// 					return false;
+	// 			});
+	// 			$(document).on('click', 'button.remove4', function( e ) {
+	// 				e.preventDefault();
+	// 				$(this).closest( 'div.row' ).remove();
+	// 				i4--;
+	// 			});
+	// 	});
+		
+
+	// 	var i3 = $('.section_three_que').length +1;
+	// 	var apend_div_3 = `<div class="form-group col-md-10">
+	// 							<button class="remove3 btn btn-secondary">Remove</button>
+	// 						</div>
+	// 		`;
+	// 	$(function() {
+	// 		$('#add_que_3').click(function(){
+			
+	// 			$(`<div class="row section_three_que" id="sec3_que_`+ i3 +`">
+	// 						<!--- question one--->
+	// 						<div class="form-group col-md-6">
+	// 							<label for="field" class="">Question `+ i3 +`*</label>
+	// 							<textarea id="sec4_que`+ i3 +`" class="form-control" name="sec3_que`+ i3 +`" value="" placeholder="Enter question"></textarea>
+								
+	// 						</div>
+	// 						<!----end question is blank--->
+	// 					</div>`).append( apend_div_3 ).insertBefore($('.row.addquestion_3'));
+	// 					i3++;
+	// 					return false;
+	// 		});
+
+	// 		$(document).on('click', 'button.remove3', function( e ) {
+	// 			e.preventDefault();
+	// 			$(this).closest( 'div.row' ).remove();
+	// 			i3--;
+	// 		});
+	// 	});
+
+   	// })
+
+</script>
+
 @endpush
