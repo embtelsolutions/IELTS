@@ -12,7 +12,14 @@ class StudentTestController extends Controller
     //
     public function index($id){
         $data=\DB::table('sections')->where('test_id',$id)->orderby('id')->get();
-        return view('student.paper.index',['data'=>$data,'test_id'=>$id]);
+        $module=\DB::table('test_modules')->select('module_type')->where('test_id',$id)->first();
+        if($module->module_type=="Writing")
+        {
+            return view('student.paper.index',['data'=>$data,'test_id'=>$id]);
+        }
+        else{
+            echo "abc";
+        }
     }
     public function submitWritingTest(Request $req)
     {

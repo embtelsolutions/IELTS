@@ -35,12 +35,10 @@ class StudentController extends Controller
         ->where('stud_id', Auth::guard('user')->user()->id)
         ->select('users.*','tests.*','tests.id as testid','submitted_test.*')
         ->get();
-        if(count($submited_test)>0)
-        {
             return view('student.history',['data'=>$submited_test]);
-        }
+        
     }
-    public function modules($testid)
+    public function modules($testid)    
     {
         $module=\DB::table('test_modules')->where('test_id',$testid)->get();
         // dd($module);

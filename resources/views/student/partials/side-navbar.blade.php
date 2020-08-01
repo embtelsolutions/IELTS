@@ -194,6 +194,8 @@
           
               <li class="nav-item @if(request()->path() == 'student/PracticeTest') active @endif">
                 <a href="{{ route('student.PracticeTest') }}" class="nav-link">Parctice Test</a></li>
+                <li class="nav-item @if(request()->path() == 'student/history') active @endif">
+                <a href="{{ route('student.history') }}" class="nav-link">History</a></li>
             {{-- <li class="nav-item @if(request()->path() == 'student/reading') active @endif">
               <a href="{{ route('student.reading') }}" class="nav-link">Parctice Test</a></li> --}}
             {{-- <li class="nav-item @if(request()->path() == 'student/writing') active @endif">
