@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Teachers;
+use App\Mail\teachermail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -116,5 +119,68 @@ class RegisterController extends Controller
         $user->save();
         return response(['success' => 'Account Registered Successfully.']);
         // return redirect()->back();
+    }
+    protected function validatorTeacher(Request $request)
+    {
+        return Validator::make( Input::all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'qualification' => ['required', 'string'],
+            'experience' => ['required', 'integer'],
+            'photo' => ['required'],
+            'subjects' => ['required','string'],
+            'about' => ['required'],
+        
+        ]);
+    }
+
+    public function ShowRegisterTeacher(){
+        return view('admin.registration-teacher');
+    }
+    public function registerTeacher(Request $request){
+        // dd($request->all());
+        $validator = $this->validatorTeacher($request);
+
+        if ($validator->passes()) {
+            // Store your teacher in database
+            $teachers = new Teachers();
+            $teachers->name =  $request->name ;
+            
+            $teachers->qualification = $request->qualification;
+            $teachers->experience = $request->experience;
+            if($files = $request->file('photo')){
+                $name = time().'_'.$files->getClientOriginalName();
+                $target = public_path().'/storage/uploads';
+                $files->move($target, $name);
+                $teachers->photo = $name;
+            }
+            if($files_video = $request->file('video')){
+                $name = time().'_'.$files_video->getClientOriginalName();
+                $target = public_path().'/storage/uploads';
+                $files_video->move($target, $name);
+                
+                $teachers->subjects = $name;
+            }
+            $teachers->experience = $request->experience;
+            $teachers->subjects = $request->subjects;
+            $teachers->about = $request->about;
+            $teachers->contact_no = $request->contact_no;
+            $teachers->email = $request->email;
+
+            // dd($teachers);
+            $teachers->save();
+            $this->sendmail($request->name,$request->email);
+
+            session()->flash('message', "You've Successfully registered");
+            return redirect()->back();
+        }else{
+            // dd($validator->errors());
+            return redirect()->back()->with('errors',$validator->errors());
+
+        }
+
+    }
+    public function sendmail($name ,$email){
+            Mail::to($email)->send(new teachermail($name));
     }
 }

@@ -305,7 +305,6 @@ class TestController extends Controller
         if($file = $req->file('sec1_img')) {
 
             $name = time().$file->getClientOriginalname();
-            
             $target_path = public_path('/public/test');
             
             if($file->move($target_path, $name)) {

@@ -119,6 +119,7 @@
             var showFrom = perPage * (pageNumber - 1);
             var showTo = showFrom + perPage;
             items.hide().slice(showFrom, showTo).show();
+           
         }
     });
     
@@ -129,9 +130,12 @@
             $('.timer_sec_1').startTimer({
                onComplete: function(){
                $('.answer_1').attr('readonly', true) ;
-                  $('.timer_sec_2').startTimer({
-                     onComplete: function(){ $('.answer_2').attr('readonly', true)  }
-                  })
+                  if(parent.location.hash ="#page_2"){
+                     $('.timer_sec_2').startTimer({
+                        onComplete: function(){ $('.answer_2').attr('readonly', true)  }
+                     })
+                  }
+                  
                }
             });
          })

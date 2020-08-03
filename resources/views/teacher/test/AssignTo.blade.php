@@ -96,7 +96,7 @@
                                                 <option value="{{$student->id}}" >{{$student->name}}</option>
                                              @else
                                                 @foreach($assinged as $astu)
-                                                   @if(!$astu->id == $student->id)
+                                                   @if($astu->id != $student->id)
                                                       <option value="{{$student->id}}" >{{$student->name}}</option>
                                                    @endif
                                                 @endforeach

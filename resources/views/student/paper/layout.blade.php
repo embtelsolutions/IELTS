@@ -28,6 +28,8 @@
     <script src="{{asset('ielts-assets/js/jquery.simplePagination.js')}}"  type="text/javascript"></script>
     <script src="{{asset('ielts-assets/js/jquery.simple.timer.js')}}"  type="text/javascript"></script>
     {{-- <script src="{{asset('ielts-assets/js/jquery.js')}}"  type="text/javascript"></script> --}}
+
+    @stack('after-styles')
 </head>
     <div class="header">
 
@@ -63,7 +65,7 @@
             </div>
         </div>
     </div>
-
+  
 <body>
     
     @yield('student-test')
