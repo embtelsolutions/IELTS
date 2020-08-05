@@ -65,10 +65,12 @@
                         <div id="controls">
                            <button id="recordButton" class="btn btn-success">Record</button>
                            <button id="pauseButton" class="btn btn-dark" disabled>Pause</button>
-                           <button id="stopButton" class="btn btn-danger" disabled>Stop</button>
+                           <button id="stopButton" class="btn btn-danger" >Stop</button>
                          </div>
                          <br>
                          <p><strong>Recordings:</strong></p>
+                         <audio id=recordedAudio></audio>
+      
                          <ol id="recordingsList"></ol>
                      </div>
                   </div>
@@ -94,8 +96,8 @@
       
    </div>
    <div class="empty-space"></div>
-   <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-   <script src="{{asset('ielts-assets/recording/js/app.js')}}"></script>
+   {{-- <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+   <script src="{{asset('ielts-assets/recording/js/app.js')}}"></script> --}}
 @endsection
 @push('before-scripts')
 
@@ -132,6 +134,43 @@
             items.hide().slice(showFrom, showTo).show();
         }
     });
+
+    //record audio
+    navigator.mediaDevices.getUserMedia({audio:true})
+      .then(stream => {handlerFunction(stream)})
+            function handlerFunction(stream) {
+            rec = new MediaRecorder(stream);
+            rec.ondataavailable = e => {
+              audioChunks.push(e.data);
+              if (rec.state == "inactive"){
+                let blob = new Blob(audioChunks,{type:'audio/mpeg-3'});
+                recordedAudio.src = URL.createObjectURL(blob);
+                recordedAudio.controls=true;
+                recordedAudio.autoplay=true;
+                sendData(blob)
+              }
+            }
+          }
+      function sendData(data) {}
+        $('#recordButton').click(function(e){
+           var record  = $(this);
+           var stopRecord = $('#stopButton');
+          console.log('I was clicked')
+          record.disabled = true;
+         //  record.style.backgroundColor = "blue"
+          stopRecord.disabled=false;
+          audioChunks = [];
+          rec.start();
+        })
+        $('#stopButton').click(function(e){
+         var record  =$('#recordButton');
+         var stopRecord =   $(this);;
+          console.log("I was clicked")
+          record.disabled = false;
+          stop.disabled=true;
+         //  record.style.backgroundColor = "red"
+          rec.stop();
+        })
    })
 </script>
 @endpush
