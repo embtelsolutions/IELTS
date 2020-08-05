@@ -123,7 +123,7 @@ class TestController extends Controller
     public function assign(Request $request){
 
 
-        $data['packages'] = Test::orderBy('id', 'DESC')->paginate(10);
+        $data['packages'] = Test::join('test_modules','test_modules.test_id','tests.id')->orderBy('tests.id', 'DESC')->paginate(10);
         $data['students'] = user::where('role','Student')->get();
         // dd($data['packages']);
 
@@ -218,7 +218,7 @@ public function PracticeTest(Request $request)
             //                     ->paginate(15);
             // $stest=submittedTest::select('test_id')->where('stud_id',$user)->get();
             // dd($stest['test_id']);
-            $data['packages']= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
+            $data['packages']= \DB::table('tests')->join('test_modules','test_modules.test_id','tests.id')->where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
             // dd($data['packages']);           
             
             return view('student.test.writing',$data);

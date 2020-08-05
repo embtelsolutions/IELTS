@@ -10,11 +10,21 @@
           </div>
        </div>  
        <div class="empty-space"></div>
+       <form method="post" action="{{url('writing/submit')}}">
+       @csrf
+       <input type="hidden" name="test_id" value="{{$test_id}}">
+       @php
+           $t=0;
+       @endphp
+       @foreach($data as $sec)
+       @php
+           $t++;
+       @endphp
        <div id="section_1" class="sections"> 
             <div class="container row">
                <div class="col-md-6">
                   <div class="section-name text-left">
-                     <h2>Section 1: Discussion Topic 1 - 2 </h2>
+                     <h2>{{$sec->name}}</h2>
                   </div>
                </div>
                <div class="col-md-6">
@@ -28,8 +38,14 @@
                   <p class="font-weight-bold">Instruction :</p>
                   <div class="empty-space-20"></div>
                   <ul class="instruction-list container"> 
-                     <li>You should spent about 10 min in this task</li>
-                     <li>Write atleast 150 Word</li>
+                  @if($sec->instruction)
+                    <?php $ins=explode(';',$sec->instruction);?>
+                    @foreach($ins as $inst)
+                    @if($inst)
+                     <li>{{$inst}}</li>
+                    @endif
+                     @endforeach
+                    @endif
                   </ul>
                </div>
             </div>
@@ -37,9 +53,15 @@
                <!--Questions-->
                <div class="row container">
                   <div class="text-left font-weight-normal">
-                     <h5 class="que">Discussion Topic-1: The Two maps below show an island, before and after the construction of some tourist facilities. Summerise the information by selecting and reporting the main features, and make comparisons where relvant</h5>
+                  <?php $que=\DB::table('questions')->where('section_id',$sec->id)->get();$i=0;?>
+                    @foreach($que as $q)
+                    <?php $i++; ?>
+                     <h5 class="que">Discussion Topic-{{$i}}: {{$q->question}}</h5>
+                    @endforeach
+                    <input type="hidden" name="mod" value="{{$sec->module_id}}"> 
                      <div class="answer pt-4">
                         <label class="font-weight-normal">Answer</label>
+                        <input type="hidden" name="que[]" value="{{$q->id}}">
                         <div id="controls">
                            <button id="recordButton" class="btn btn-success">Record</button>
                            <button id="pauseButton" class="btn btn-dark" disabled>Pause</button>
@@ -52,91 +74,14 @@
                   </div>
                </div>
                <div class="empty-space"></div>
-               <div class="row container">
-                  <div class="text-left font-weight-normal">
-                     <h5 class="que">Discussion Topic-2: The Two maps below show an island, before and after the construction of some tourist facilities</h5>
-                     <div class="answer pt-4">
-                        <label class="font-weight-normal">Answer</label>
-                        <div id="controls">
-                           <button id="recordButton" class="btn btn-success">Record</button>
-                           <button id="pauseButton" class="btn btn-dark" disabled>Pause</button>
-                           <button id="stopButton" class="btn btn-danger" disabled>Stop</button>
-                         </div>
-                         <br>
-
-                         <p><strong>Recordings:</strong></p>
-                         <ol id="recordingsList_2"></ol>
-                     </div>
-                  </div>
-               </div>
+               
 
             </div>
        </div>
-       <div id="section_2" class="sections"> 
-         <div class="container row">
-            <div class="col-md-6">
-               <div class="section-name text-left">
-                  <h2>Section 2: Discussion Topic 1 - 2</h2>
-               </div>
-            </div>
-            <div class="col-md-6">
-               <div class="section-timer text-right">
-                     <div id="timer"><p class="timer_sec_2" data-minutes-left="1"></p></div>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="instruction p-3 mt-3 border rounded">
-               <p class="font-weight-bold">Instruction :</p>
-               <div class="empty-space-20"></div>
-               <ul class="instruction-list container"> 
-                  <li>You should spent about 20 min in this task</li>
-                  <li>Write atleast 150 Word</li>
-               </ul>
-            </div>
-         </div>
-         
-         <div class="questions container pt-4">
-            <!--Questions-->
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Discussion Topic-1: The Two maps below show an island, before and after the construction of some tourist facilities. Summerise the information by selecting and reporting the main features, and make comparisons where relvant</h5>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <div id="controls">
-                        <button id="recordButton" class="btn btn-success">Record</button>
-                        <button id="pauseButton" class="btn btn-dark" disabled>Pause</button>
-                        <button id="stopButton" class="btn btn-danger" disabled>Stop</button>
-                      </div>
-                      <br>
-
-                      <p><strong>Recordings:</strong></p>
-                      <ol id="recordingsList_3"></ol>
-                  </div>
-               </div>
-            </div>
-            <div class="empty-space"></div>
-            <div class="row container">
-               <div class="text-left font-weight-normal">
-                  <h5 class="que">Discussion Topic-2: The Two maps below show an island, before and after the construction of some tourist facilities</h5>
-                  <div class="answer pt-4">
-                     <label class="font-weight-normal">Answer</label>
-                     <div id="controls">
-                        <button id="recordButton" class="btn btn-success">Record</button>
-                        <button id="pauseButton" class="btn btn-dark" disabled>Pause</button>
-                        <button id="stopButton" class="btn btn-danger" disabled>Stop</button>
-                      </div>
-                      <br>
-
-                      <p><strong>Recordings:</strong></p>
-                      <ol id="recordingsList_4"></ol>
-                  </div>
-               </div>
-            </div>
-
-         </div>
-      </div>
+       @endforeach
+       
    </div>
+   
    <div class="empty-space"></div>
    <div class="bg-light border container d-block p-2 pagination">
       <div class="row container">

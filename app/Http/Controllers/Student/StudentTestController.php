@@ -17,8 +17,9 @@ class StudentTestController extends Controller
         {
             return view('student.paper.index',['data'=>$data,'test_id'=>$id]);
         }
-        else{
-            echo "abc";
+        else if($module->module_type=="Speaking")
+        {
+            return view('student.paper.speak',['data'=>$data,'test_id'=>$id]);
         }
     }
     public function submitWritingTest(Request $req)

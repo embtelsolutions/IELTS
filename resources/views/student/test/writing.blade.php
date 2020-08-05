@@ -77,7 +77,7 @@
                                     <input type="checkbox" class="bulk-check" data-val="{{$package->id}}">
                                  </td>
                                  <td>{{strlen(convertUtf8($package->title)) > 30 ? convertUtf8(substr($package->title, 0, 30)) . '...' : convertUtf8($package->title)}}</td>
-                                 <td>{{convertUtf8($package->test_type)}}</td>
+                                 <td>{{convertUtf8($package->module_type)}}</td>
                                  <td>
                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$package->id}}"><i class="fas fa-eye"></i> View</button>
                                  </td>
