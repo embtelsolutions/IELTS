@@ -11,12 +11,13 @@ class questions extends Controller
     {
         return \DB::table('questions')->where('section_id',$secid)->get();
     }
-    public static function QueAns($qid)
+    public static function QueAns($qid,$sid)
     {
        return \DB::table('questions')
        ->join('givenans','givenans.que_id','questions.id')
        ->select('questions.*','givenans.*')
        ->where('questions.id',$qid)
+       ->where('givenans.submitted_test_id',$sid)
        ->where('givenans.stud_id',Auth::guard('user')->user()->id)
        ->first();
     }

@@ -39,7 +39,9 @@
                   @if($sec->instruction)
                     <?php $ins=explode(';',$sec->instruction);?>
                     @foreach($ins as $inst)
+                    @if($inst)
                      <li>{{$inst}}</li>
+                    @endif
                      @endforeach
                     @endif
                   </ul>
@@ -161,5 +163,11 @@
          //    });
          // })
    })
+   
+   function callIt(){
+       
+       alert('demo');
+   }
+window.onbeforeunload = callIt();
 </script>
 @endpush

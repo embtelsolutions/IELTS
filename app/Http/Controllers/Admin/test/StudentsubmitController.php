@@ -127,12 +127,12 @@ class StudentsubmitController extends Controller
           ->where('asign_to', Auth::guard('user')->user()->id)
           ->where('test_modules.module_type','writing')
           ->where('submitted_test.isChecked','!=','1')
-          ->select('users.*','users.id as studId','tests.*','tests.id as testId','submitted_test.created_at as date')
+          ->select('users.*','users.id as studId','tests.*','tests.id as testId','submitted_test.id as sid','submitted_test.created_at as date')
           ->get();
           
-        return view('teacher.test.writinganswer',['data'=>$data]); 
+        return view('teacher.test.writinganswer',['data'=>$data]);
       }
-      public function writingCheck($stud,$test)
+      public function writingCheck($stud,$test,$sid)
       {
         $data=\DB::table('submitted_test')
         ->join('sections','sections.test_id','submitted_test.test_id')
@@ -140,8 +140,10 @@ class StudentsubmitController extends Controller
         ->join('givenans','givenans.que_id','questions.id')
         ->where('submitted_test.test_id',$test)
         ->where('givenans.stud_id',$stud)
+        ->where('givenans.submitted_test_id',$sid)
         ->select('sections.*','questions.*','givenans.*','givenans.id as aid','submitted_test.id as sid')
         ->get()->unique('id');
+        // dd($data);
         $test=\DB::table('tests')->where('id',$test)->first();
         
         return view('teacher.test.writing_check',['data'=>$data,'test'=>$test]);

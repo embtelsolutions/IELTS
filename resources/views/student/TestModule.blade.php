@@ -15,7 +15,7 @@
     <tr>
       <th scope="row">{{$i}}</th>
       <td>{{$test->module_type}}</td>
-      <td><a href="sections/{{$test->id}}"><button class="btn btn-primary">View</button></a></td>
+      <td><a href="{{url('sections')}}/{{$test->id}}/{{$sid}}"><button class="btn btn-primary">View</button></a></td>
     </tr>
     @endforeach
   </tbody>

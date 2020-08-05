@@ -37,6 +37,7 @@ class StudentTestController extends Controller
             $gans->stud_id=Auth::guard('user')->user()->id;
             $gans->que_id=$req->que[$i];
             $gans->module_id=$req->mod;
+            $gans->submitted_test_id=$s_test->id;
             $gans->save();
         }
         return redirect()->route('student.index')->with('success','writing Test submitted Succussfully');

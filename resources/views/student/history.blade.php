@@ -20,12 +20,20 @@
     <tr>
       <th scope="row">{{$i++}}</th>
       <td>{{$test->title}}</td>
-      <td>{{$test->test_type}}</td>
+      <td>@if($test->test_type=="Practice")
+            <?php 
+              $mod=\DB::table('test_modules')->select('module_type')->where('test_id',$test->test_id)->first();
+            ?>
+            {{$mod->module_type}}
+          @else
+            {{$test->test_type}}
+          @endif
+      </td>
       <td>{{$test->name}}</td>
       <td>{{$test->marks}}</td>
       <td>{{$test->time_limit}}</td>
       <td>{{$test->taken_time}}</td>
-      <td><a href="history/Modules/{{$test->test_id}}"><button class="btn btn-primary">View</button></a></td>
+      <td><a href="history/Modules/{{$test->test_id}}/{{$test->sid}}"><button class="btn btn-primary">View</button></a></td>
     </tr>
     @endforeach
     @if($i==1)

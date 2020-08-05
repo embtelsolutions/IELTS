@@ -75,7 +75,7 @@
             <td>{{$test->name}}</td>
             <td>{{$test->title}}</td>
             <td>{{date('d-m-Y',strtotime($test->date) )}}</td>
-            <td><a href="{{url('writing_check')}}/{{$test->studId}}/{{$test->testId}}" class="btn btn-primary">View</a></td>
+            <td><a href="{{url('writing_check')}}/{{$test->studId}}/{{$test->testId}}/{{$test->sid}}" class="btn btn-primary">View</a></td>
             
           </tr>
 

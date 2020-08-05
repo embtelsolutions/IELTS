@@ -63,7 +63,7 @@ Route::group(['middleware' => 'setlang'], function() {
 =======================================================*/
 
 Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
-  Route::get('/', 'Admin\LoginController@login')->name('admin.login');
+  Route::get('/', 'Admin\LoginController@login')->name('admin.login'); 
   Route::post('/login', 'Admin\LoginController@authenticate')->name('admin.auth');
 
   Route::get('/mail-form', 'Admin\ForgetController@mailForm')->name('admin.forget.form');
@@ -105,7 +105,7 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
   //writingcheck
   // Route::get('/test/writing/answer/id', 'Admin\test\StudentsubmitController@writingcheck')->name('teacher.test.writing.check');
-  Route::get('/writing_check/{stud}/{testid}', 'Admin\test\StudentsubmitController@writingCheck');
+  Route::get('/writing_check/{stud}/{testid}/{sid}', 'Admin\test\StudentsubmitController@writingCheck');
   Route::post('/submitWritingResult', 'Admin\test\StudentsubmitController@submitWritingResult');
  //upload marks
  Route::post('/upload/marks/', 'Admin\test\StudentsubmitController@marksupload')->name('teacher.marks.update');
@@ -126,8 +126,8 @@ Route::get('/student/PracticeTest', 'Admin\test\TestController@PracticeTest')->n
 Route::get('/student/listening', 'Admin\test\TestController@listening')->name('student.listening');
 Route::get('/student/history', 'Auth\StudentController@history')->name('student.history');
 
-Route::get('/student/history/Modules/{id}','Auth\StudentController@modules')->name('student.modules');
-Route::get('/student/history/Modules/sections/{id}','Auth\StudentController@sections')->name('student.sections');
+Route::get('/student/history/Modules/{id}/{sid}','Auth\StudentController@modules')->name('student.modules');
+Route::get('/sections/{id}/{sid}','Auth\StudentController@sections')->name('student.sections');
 
   //by me
   Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');

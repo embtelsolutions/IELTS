@@ -216,10 +216,9 @@ public function PracticeTest(Request $request)
             //                     ->where('type','=','speaking')
             //                    // ->join('submittests','tests.id','submittests.test_id')
             //                     ->paginate(15);
-            $stest=submittedTest::select('test_id')->where('stud_id',$user)->get();
+            // $stest=submittedTest::select('test_id')->where('stud_id',$user)->get();
             // dd($stest['test_id']);
-            $data['packages']= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->
-            wherenotIN('id',$stest)->paginate(15);
+            $data['packages']= \DB::table('tests')->where([['ins_id',$i_id],['test_type','Practice']])->paginate(15);
             // dd($data['packages']);           
             
             return view('student.test.writing',$data);
@@ -232,7 +231,7 @@ public function reading(Request $request)
             //                     ->get();
             $data['packages'] = Test::whereHas( 'test_users',function ($q) use ($user) {
                                         $q->where('user_id', $user);
-                                        $q->groupBy('user_id');
+                                        $q->groupBy('user_id'); 
                                     })
                                 ->where('type','=','reading')
                                 ->join('test_users','tests.id','test_users.test_id')

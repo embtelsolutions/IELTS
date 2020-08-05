@@ -18,7 +18,7 @@
         </thead>
         <tbody> 
     @foreach($quetions as $quetion)
-    <?php $queAns=App\Http\Controllers\questions::QueAns($quetion->id); ?>
+    <?php $queAns=App\Http\Controllers\questions::QueAns($quetion->id,$sid); ?>
     
         <tr>
             <td scope="row">{{$quetion->question}}</td>
