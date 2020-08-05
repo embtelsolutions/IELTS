@@ -235,8 +235,8 @@ class TestController extends Controller
         }
 
 
-        echo $c;
-        return back()->with('success','Listening Test Created Succussfully');
+        
+        return redirect()->route('admin.dashboard')->with('success','Listening Test Created Succussfully');
 
 
     }
@@ -344,6 +344,107 @@ class TestController extends Controller
         $question->question=$req->sec2_que;
         $question->module_id=$module_id;    
         $question->save();
-        return back()->with('success','writing Test Created Succussfully');
+        return redirect()->route('admin.dashboard')->with('success','writing Test Created Succussfully');
+    }
+    public function newSpeaking(Request $req)
+    {
+        $validatedData = $req->validate([
+            'title'=>'required',
+            'test_time'=>'required|date_format:H:i:s',
+            'inst_test'=>'required',
+            'module_type'=>'required',
+            
+            'sec1_time'=>'required|date_format:H:i:s',
+            'sec2_time'=>'required|date_format:H:i:s',
+            'sec3_time'=>'required|date_format:H:i:s',
+
+            'sec1_dis_topic'=>'required|min:5',
+            'sec2_dis_topic'=>'required|min:5',
+            'sec3_dis_topic'=>'required|min:5',
+            
+            'sec1_inst'=>'required|min:5',
+            'sec2_inst'=>'required|min:5',
+            'sec3_inst'=>'required|min:5',
+
+        ],[
+            'title.required'=>'Please enter test title',
+            'test_time.required'=>'Please enter Test time limit',
+            'test_time.date_format'=>'Time limit should be in (hh:mm:ss) formate',
+            'inst_test.*'=>'Please Enter Test instructions',
+            'sec1_time.*'=>'Please Enter time limit in given formate',
+            'sec2_time.*'=>'Please Enter time limit in given formate',
+            'sec3_time.*'=>'Please Enter time limit in given formate',
+            'sec1_dis_topic.required'=>'Please Enter Discussion Topic',
+            'sec2_dis_topic.required'=>'Please Enter Discussion Topic',
+            'sec3_dis_topic.required'=>'Please Enter Discussion Topic',
+            'sec1_inst.required'=>'Please Enter Instructions for this section',
+            'sec2_inst.required'=>'Please Enter Instructions for this section',
+            'sec3_inst.required'=>'Please Enter Instructions for this section',
+        ]);
+        $test=new Test;
+        $test->title=$req->title;
+        $test->test_type='Practice';
+        $test->time_limit=$req->test_time;
+        $test->instruction=$req->inst_test;
+        $test->ins_id=1;
+        $test->save();
+
+        $test_id=$test->id; 
+        $module = new module;
+        $module->test_id=$test_id;
+        $module->module_type=$req->module_type;
+        $module->save();
+        $module_id=$module->id;
+        
+
+        $section=new test_section;
+        $section->test_id=$test_id;
+        $section->name="Section A";
+        $section->instruction=$req->sec1_inst;
+        $section->module_id=$module_id;
+        $section->time=$req->sec1_time;
+        
+        $section->save();
+        $sec1id=$section->id;
+
+        $question=new question;
+        $question->section_id=$sec1id;
+        $question->question=$req->sec1_dis_topic;
+        $question->module_id=$module_id;    
+        $question->save();
+
+        $section=new test_section;
+        $section->test_id=$test_id;
+        $section->name="Section B";
+        $section->instruction=$req->sec2_inst;
+        $section->module_id=$module_id;
+        $section->time=$req->sec2_time;
+        
+        $section->save();
+        $sec2id=$section->id;
+
+        $question=new question;
+        $question->section_id=$sec2id;
+        $question->question=$req->sec2_dis_topic;
+        $question->module_id=$module_id;    
+        $question->save();
+
+        $section=new test_section;
+        $section->test_id=$test_id;
+        $section->name="Section C";
+        $section->instruction=$req->sec3_inst;
+        $section->module_id=$module_id;
+        $section->time=$req->sec3_time;
+        
+        $section->save();
+        $sec3id=$section->id;
+
+        $question=new question;
+        $question->section_id=$sec3id;
+        $question->question=$req->sec3_dis_topic;
+        $question->module_id=$module_id;    
+        $question->save();
+        
+        return redirect()->route('admin.dashboard')->with('success','Speaking Test Created Succussfully');
     }
 }

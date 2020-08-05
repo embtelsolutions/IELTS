@@ -676,7 +676,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
   Route::get('/cache-clear', 'Admin\CacheController@clear')->name('admin.cache.clear');
 
   Route::get('/create/test','Admin\TestController@index')->name('admin.create.test');
-  Route::post('/newtest','Admin\TestController@newtest')->name('newtest'); 
+  Route::post('/newSpeaking','Admin\TestController@newSpeaking')->name('newSpeaking'); 
   Route::get('/create/test/listening','Admin\TestController@listen')->name('admin.create.listen.test');
   Route::get('/create/test/writing','Admin\TestController@write')->name('admin.create.write.test');
   Route::post('/newtest','Admin\TestController@newtest')->name('newtest');

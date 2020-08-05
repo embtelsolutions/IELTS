@@ -47,22 +47,29 @@ button.remove{
             </div>
         </div>
         <div class="card-body p-body pt-5 pb-4">
-			<form action="" method="post">
+			<form action="{{route('newSpeaking')}}" method="post">
+				@csrf
 				<div class="row">
 					<div class="form-group col-md-4">
 						<label for="">Test Title*</label>
 						<input id="" type="text" class="form-control" name="title" value="" placeholder="Enter title">
-						<p id="err_title" class="mb-0 text-danger em"></p>
+						@error('title')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+						@enderror
 					</div>
 					<div class="form-group col-md-4">
 						<label for="">Time*</label>
-						<input type="text" id="" class="form-control " name="test_time" placeholder="Enter description">
-						<p id="err_test_time" class="mb-0 text-danger em"></p>
+						<input type="text" id="" class="form-control " name="test_time" placeholder="HH:MM:SS">
+						@error('test_time')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+						@enderror
 					</div>
 					<div class="form-group col-md-4">
 						<label for="">Instruction*</label>
 						<textarea id="" class="form-control " name="inst_test" data-height="200" placeholder="Enter instruction" rows="4" cols="50"></textarea>
-						<p id="err_inst_test" class="mb-0 text-danger em"></p>
+						@error('inst_test')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+						@enderror
 					</div>
 				</div>
 
@@ -98,34 +105,14 @@ button.remove{
 					<!---/end Module type-->					
 				</div>
 				
-				<hr style="color: white; background-color:white" />
 
-				<!--practice test form fields--->
-<!---reading form --->
+
+				<!--practice test form fields-->
+<!---reading form -->
 			<div id="speaking_form" >
-				<div class="col-lg-10">
-                    <div class="card-title">Practice Test Speaking</div>
-                </div>
-				<div class="row test_config">
-					<div class="form-group col-md-4">
-						<label for="">Instruction*</label>
-						<textarea id="inst_module" class="form-control " name="inst_module" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
-						{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
-					</div>
-					{{-- <div class="form-group col-md-4">
-						<label for="">Section Type</label>		
-						<select class="form-control mg-10" id="section_type" name="test_type" readonly>
-							<option>Paragraph</option>
-							
-						</select>
-					
-					</div>	 --}}
-							
 				
-							
-				</div>
 			<div class="" id="paragraph">
-				<!--section one--->	
+				<!--section one-->	
 				<div id="section_1" class="">
 					<hr style="color: white; background-color:white" />
 					<div class="row">
@@ -135,18 +122,25 @@ button.remove{
 						</div>
 						<div class="col-lg-2">
 							<div class="card-title">Time 
-								<input type="number" id="section_time" class="form-control " name="section_time	" placeholder="Enter time">
+								<input type="text" id="section_time" class="form-control " name="sec1_time" placeholder="HH:MM:SS">
 							</div>
+							@error('sec1_time')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						<div class="form-group col-md-4">
 							<label for="">Instruction*</label>
-							<textarea id="" class="form-control " name="" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
-							{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
+							<textarea id="" class="form-control " name="sec1_inst" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
+							@error('sec1_inst')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror	
 						</div>
 						<div class="form-group col-md-4">
 							<label for=""> Discussion Topic*</label>
-							<textarea id="" class="form-control " name="" data-height="200" placeholder="Enter Topic" rows="4" cols="50"></textarea>
-							{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
+							<textarea id="" class="form-control " name="sec1_dis_topic" data-height="200" placeholder="Enter Topic" rows="4" cols="50"></textarea>
+							@error('sec1_dis_topic')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						{{-- <div class="form-group col-md-4">
 							<label for="">Image (Optional)</label>
@@ -155,7 +149,7 @@ button.remove{
 						 </div>	 --}}
 					</div>
 					{{-- <div class="row section_one_que" id="sec_que_1">
-						<!--- question one--->
+						<!--- question one-->
 						<div class="form-group col-md-4">
 							<label for="field" class="question_name">Question 1*</label>
 							<input id="" type="text" class="form-control" name="" value="" placeholder="Enter question">
@@ -166,7 +160,7 @@ button.remove{
 								<option>Blank</option>
 							</select>
 						</div>
-						<!--if question is mcq--->
+						<!--if question is mcq-->
 						<div class="form-group col-md-4" id="">
 							<label for="">MCQ *</label>
 							<textarea id="" class="form-control option" name="" data-height="200" placeholder="Enter option" rows="4" cols="50"></textarea>
@@ -177,15 +171,15 @@ button.remove{
 							<input id="" type="text" class="form-control option-ans" name="" value="" placeholder="Enter Answer">
 							
 						</div>
-						<!----end mcq--->
+						<!----end mcq-->
 
-						<!----if question is blank--->
+						<!----if question is blank-->
 						<div class="form-group col-md-4 d-none" id="">
 							<label for="">Answer*</label>
 							<input id="" type="text" class="form-control ans" name="" value="" placeholder="Enter Answer" >
 							
 						</div>
-						<!----end question is blank--->
+						<!----end question is blank-->
 					</div> --}}
 
 					{{-- <div class="row addquestion_1">
@@ -196,8 +190,8 @@ button.remove{
 					</div> --}}
 					
 				</div>
-				<!--end section one--->
-				<!--start section two--->
+				<!--end section one-->
+				<!--start section two-->
 				<div id="section_2" class="">
 					<hr style="color: white; background-color:white" />
 					<div class="row">
@@ -206,25 +200,32 @@ button.remove{
 						</div>
 						<div class="col-lg-2">
 							<div class="card-title">Time 
-								<input type="number" id="section_time" class="form-control " name="section_time	" placeholder="Enter time">
+								<input type="text" id="section_time" class="form-control " name="sec2_time" placeholder="HH:MM:SS">
 							</div>
+							@error('sec2_time')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						<div class="form-group col-md-4">
 							<label for="">Instruction*</label>
-							<textarea id="" class="form-control " name="" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
-							{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
+							<textarea id="" class="form-control " name="sec2_inst" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
+							@error('sec2_inst')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						<div class="form-group col-md-4">
 							<label for="">Discussion Topic*</label>
-							<textarea id="" class="form-control " name="" data-height="200" placeholder="Enter Topic" rows="4" cols="50"></textarea>
-							{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
+							<textarea id="" class="form-control " name="sec2_dis_topic" data-height="200" placeholder="Enter Topic" rows="4" cols="50"></textarea>
+							@error('sec2_dis_topic')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						
 					</div>
 				
 				</div>
-				<!--end section two--->
-				<!--start section three--->
+				<!--end section two-->
+				<!--start section three-->
 				<div id="section_3" class="">
 					<hr style="color: white; background-color:white" />
 					<div class="row">
@@ -233,18 +234,25 @@ button.remove{
 						</div>
 						<div class="col-lg-2">
 							<div class="card-title">Time 
-								<input type="number" id="section_time" class="form-control " name="section_time	" placeholder="Enter time">
+								<input type="text" id="section_time" class="form-control " name="sec3_time" placeholder="HH:MM:SS">
 							</div>
+							@error('sec3_time')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						<div class="form-group col-md-4">
 							<label for="">Instruction*</label>
-							<textarea id="" class="form-control " name="" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
-							{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
+							<textarea id="" class="form-control " name="sec3_inst" data-height="200" placeholder="Enter Instruction" rows="4" cols="50"></textarea>
+							@error('sec3_inst')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						<div class="form-group col-md-4">
 							<label for="">Disscussion Topic*</label>
-							<textarea id="" class="form-control " name="" data-height="200" placeholder="Enter Topic" rows="4" cols="50"></textarea>
-							{{-- <p id="err_inst_module" class="mb-0 text-danger em"></p> --}}
+							<textarea id="" class="form-control " name="sec3_dis_topic" data-height="200" placeholder="Enter Topic" rows="4" cols="50"></textarea>
+							@error('sec3_dis_topic')
+								<p id="err_title" class="mb-0 text-danger em">{{ $message }}</p>
+							@enderror
 						</div>
 						{{-- <div class="form-group col-md-4">
 							<label for="">Image (Optional)</label>
@@ -254,9 +262,9 @@ button.remove{
 					</div>
 				
 				</div>
-				<!--end section three--->
+				<!--end section three-->
 				
-				<!--start section four--->
+				<!--start section four-->
 				{{-- <div id="section_4" class="">
 					<hr style="color: white; background-color:white" />
 					<div class="row">
@@ -265,7 +273,7 @@ button.remove{
 						</div>
 						<div class="col-lg-2">
 							<div class="card-title">Time 
-								<input type="number" id="section_time" class="form-control " name="section_time	" placeholder="Enter time">
+								<input type="text" id="section_time" class="form-control " name="section_time	" placeholder="Enter time">
 							</div>
 						</div>
 						
@@ -283,12 +291,12 @@ button.remove{
 						
 				
 				</div> --}}
-				<!--end section four--->
+				<!--end section four-->
 			</div>
-			<!--end Practice test form fields--->	
+			<!--end Practice test form fields-->	
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary">Cancel</button>
-				<button id="" type="button" class="btn btn-primary">Submit</button>
+				<button id="" type="submit" class="btn btn-primary">Submit</button>
 			 </div>
 			</form>
           </div>
@@ -305,7 +313,7 @@ button.remove{
 		$(function() {
 			$('#add_que_1').click(function(){
 				$(`<div class="row section_one_que" id="sec_que_`+ i +`">
-							<!--- question one--->
+							<!--- question one-->
 							<div class="form-group col-md-4">
 								<label for="field" class="">Question `+ i +`*</label>
 								<input id="sec2_que`+ i +`" type="text" class="form-control" name="sec2_que`+ i +`" value="" placeholder="Enter question">
@@ -316,7 +324,7 @@ button.remove{
 									<option>Blank</option>
 								</select>
 							</div>
-							<!--if question is mcq--->
+							<!--if question is mcq-->
 							<div class="form-group col-md-4" id="sec2_que`+ i +`_option_div">
 								<label for="">MCQ *</label>
 								<textarea id="sec2_que`+ i +`_option" class="form-control " name="sec2_que`+ i +`_option" data-height="200" placeholder="Enter option" rows="4" cols="50"></textarea>
@@ -327,15 +335,15 @@ button.remove{
 								<input id="sec2_que`+ i +`_answer_mcq" type="text" class="form-control" name="sec2_que`+ i +`_answer_mcq" value="" placeholder="Enter Answer">
 								
 							</div>
-							<!----end mcq--->
+							<!----end mcq-->
 
-							<!----if question is blank--->
+							<!----if question is blank-->
 							<div class="form-group col-md-4 d-none" id="sec2_blank_`+ i +`_div">
 								<label for="">Answer*</label>
 								<input id="sec2_que`+ i +`_answer_blank" type="text" class="form-control" name="sec2_que`+ i +`_answer_blank" value="" placeholder="Enter Answer">
 								
 							</div>
-							<!----end question is blank--->
+							<!----end question is blank-->
 						</div>`).append( $('<button/>').addClass( 'remove btn btn-secondary' ).text( 'Remove' ) ).insertBefore($('.row.addquestion_1'));
 						
 						i++;

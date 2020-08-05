@@ -12,17 +12,27 @@
             <tr>
             <th scope="col">Question</th>
             <th scope="col">Given Answer</th>
-            <th scope="col">Right Answer</th>
+            <th scope="col">Marks</th>
+            <th scope="col">Remarks</th>
             </tr>
         </thead>
         <tbody> 
     @foreach($quetions as $quetion)
     <?php $queAns=App\Http\Controllers\questions::QueAns($quetion->id); ?>
-    {{dd($queAns)}}
+    
         <tr>
             <td scope="row">{{$quetion->question}}</td>
             <td>{{$queAns->answer}}</td>
-            <!-- <td>{{$queAns->rightAnswer}} -->
+            @if($queAns->marks)
+                <td>{{$queAns->marks}}</td>
+            @else
+                <td>-</td>
+            @endif
+            @if($queAns->remark)
+                <td>{{$queAns->remark}}</td>
+            @else
+                <td>-</td>
+            @endif
         </tr>
     @endforeach
         </tbody>
