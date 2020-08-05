@@ -48,6 +48,7 @@ Route::group(['middleware' => 'setlang'], function() {
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
 
   Route::get('/student-test/{id}', 'Student\StudentTestController@index');
+  Route::get('/student/test/speaking/', 'Student\StudentTestController@speaking')->name('student.test.speaking');
   Route::post('/writing/submit','Student\StudentTestController@submitWritingTest');
 
 });
@@ -74,6 +75,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'guest:admin'], function () {
 
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
 Route::post('/register-post', 'Auth\RegisterController@register')->name('admin.register.post');
+Route::get('/register/teacher', 'Auth\RegisterController@ShowRegisterTeacher')->name('admin.register.teacher');
+Route::post('/register/teacher/post', 'Auth\RegisterController@registerTeacher')->name('admin.register-techer.post');
+
 
 
 //login routes
