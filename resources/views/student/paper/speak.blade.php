@@ -63,9 +63,9 @@
                         <label class="font-weight-normal">Answer</label>
                         <input type="hidden" name="que[]" value="{{$q->id}}">
                         <div id="controls">
-                           <button id="recordButton" class="btn btn-success">Record</button>
-                           <button id="pauseButton" class="btn btn-dark" disabled>Pause</button>
-                           <button id="stopButton" class="btn btn-danger" >Stop</button>
+                           <button type="button" id="recordButton" class="btn btn-success">Record</button>
+                           <button type="button" id="pauseButton" class="btn btn-dark" disabled>Pause</button>
+                           <button type="button" id="stopButton" class="btn btn-danger" >Stop</button>
                          </div>
                          <br>
                          <p><strong>Recordings:</strong></p>
