@@ -12,7 +12,7 @@
 					<div class="col-lg-10">
 						<div class="card-title">
 							<h2 class="text-white text-center pb-2">
-								Welcome back1, {{Auth::guard('user')->user()->name}} !
+								Welcome back, {{Auth::guard('user')->user()->name}} !
 							</h2>
 						</div>
 					</div>
@@ -20,7 +20,8 @@
 			</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-md-6">
+
+		<div class="col-sm-6 col-md-6 d-none"><!-- apply d-none-->
 			<div class="card card-stats card-primary card-round">
 				<div class="card-body">
 					<div class="row">
@@ -51,7 +52,7 @@
 						<div class="col-7 col-stats">
 							<div class="numbers">
 								<p class="card-category">Answered Test</p>
-								<h4 class="card-title"></h4>
+								<h4 class="card-title">4</h4>
 							</div>
 						</div>
 					</div>

@@ -212,7 +212,6 @@
            var stopRecord = $('#stopButton');
           console.log('I was clicked')
           record.disabled = true;
-         //  record.style.backgroundColor = "blue"
           stopRecord.disabled=false;
           audioChunks = [];
           rec.start();
@@ -223,7 +222,6 @@
           console.log("I was clicked")
           record.disabled = false;
           stop.disabled=true;
-         //  record.style.backgroundColor = "red"
           rec.stop();
         })
    })
