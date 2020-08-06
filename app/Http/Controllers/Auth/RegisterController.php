@@ -124,13 +124,14 @@ class RegisterController extends Controller
     {
         return Validator::make( Input::all(), [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255','unique:users'],
             'qualification' => ['required', 'string'],
             'experience' => ['required', 'integer'],
             'photo' => ['required'],
             'subjects' => ['required','string'],
             'about' => ['required'],
-        
+            'password'=>['required'],
+            'confirm_pass'=>['same:password']
         ]);
     }
 
@@ -143,8 +144,16 @@ class RegisterController extends Controller
 
         if ($validator->passes()) {
             // Store your teacher in database
+            $user = new User;
+            $user->name=$request->name ;
+            $user->email=$request->email;
+            $user->mobile=$request->contact_no;
+            $user->role="Teacher";
+            $user->institute_id=$request->icode;
+            $user->password=bcrypt($request->password);
+            $user->save();
             $teachers = new Teachers();
-            $teachers->name =  $request->name ;
+            $teachers->user_id =  $user->id;
             
             $teachers->qualification = $request->qualification;
             $teachers->experience = $request->experience;
@@ -164,12 +173,10 @@ class RegisterController extends Controller
             $teachers->experience = $request->experience;
             $teachers->subjects = $request->subjects;
             $teachers->about = $request->about;
-            $teachers->contact_no = $request->contact_no;
-            $teachers->email = $request->email;
 
             // dd($teachers);
             $teachers->save();
-            $this->sendmail($request->name,$request->email);
+            // $this->sendmail($request->name,$request->email);
 
             session()->flash('message', "You've Successfully registered");
             return redirect()->back();

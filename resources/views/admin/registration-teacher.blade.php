@@ -34,7 +34,7 @@
             <strong>Oops!</strong> {{session('alert')}}
           </div>
         @endif
-        <form action="{{route('admin.register-techer.post')}}" method="POST" enctype="multipart/form-data">
+        <form onsubmit="return submitFrom()" action="{{route('admin.register-techer.post')}}" method="POST" enctype="multipart/form-data">
           @csrf
            {{-- usernam --}}
            <label for="name" class="text-white">Name</label>
@@ -90,6 +90,27 @@
           <input type="email" name="email" placeholder="example@email.com"/>
           @if ($errors->has('email'))
             <p class="text-danger text-left">{{$errors->first('email')}}</p>
+          @endif
+          
+          <label for="Type" class="text-white">Teacher Type</label>
+          <select onchange="Teachertype()" class="form-control" id="Ttype" name="Type">
+            <option>General</option>
+            <option>Institution</option>
+          </select>
+          <div class="d-none" id="icode">
+          <label for="icode" class="text-white">Institute Code</label>
+          <input type="text" id="Inscode" name="icode" placeholder="Institute code"/>
+          <p class="text-danger text-left" id="erricode"></p>
+          </div>
+          <label for="password" class="text-white">Password</label>
+          <input type="password" name="password" placeholder="Enter Password"/>
+          @if ($errors->has('password'))
+            <p class="text-danger text-left">{{$errors->first('password')}}</p>
+          @endif
+          <label for="confirm_pass" class="text-white">Confirm Password</label>
+          <input type="password" name="confirm_pass" placeholder="Re-enter Password"/>
+          @if ($errors->has('confirm_pass'))
+            <p class="text-danger text-left">{{$errors->first('confirm_pass')}}</p>
           @endif
           <button type="submit">Register</button>
         </form>
@@ -153,6 +174,29 @@
               $(".alert-success").fadeIn(400);
           }, 5000)
       });
+    </script>
+    <script>
+      function Teachertype(){
+        var Ttype=$('#Ttype').val();
+        if(Ttype=="Institution")
+        {
+          $('#icode').removeClass('d-none');
+        }
+        else{
+          $('#icode').addClass('d-none');
+        }
+      }
+      function submitFrom(){
+        var Ttype=$('#Ttype').val();
+        if(Ttype=="Institution")
+        {
+          var icode=$('#Inscode').val();
+          if(icode==""){
+            $('#erricode').html("Please Enter Institution code");
+          }
+         
+        }
+      }
     </script>
   </body>
 </html>

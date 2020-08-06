@@ -141,6 +141,11 @@
                     <span class="sub-item">Writing Answer</span>
                   </a>
                 </li>
+                <li class="@if(request()->path() == 'test/history') active @endif">
+                <a href="{{route('teacher.test.history')}}">
+                    <span class="sub-item">History</span>
+                  </a>
+                </li>
                 {{-- <li class="@if(request()->path() == 'test/writing/answer/id') active @endif">
                   <a href="{{route('teacher.test.writing.check')}}">
                       <span class="sub-item">Writing check</span>

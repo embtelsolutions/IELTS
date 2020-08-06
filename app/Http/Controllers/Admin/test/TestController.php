@@ -287,22 +287,43 @@ public function listening(Request $request)
                                
             // dd($data);           
             return view('student.test.listening',$data);
-}
-
-
-
-
-
-        public function alltest(Request $request)
-        {
-            $data=DB::table('submitted_test')
-                    ->join('users','submitted_test.stud_id','users.id')
-                    ->join('tests','submitted_test.test_id','tests.id')
-                    ->where('stud_id',Auth::guard('user')->user()->id)
-                    ->select('submitted_test.*','users.name','tests.title')
-                    ->get();
-                    
-          return view('student.test.exam',compact('data'));
-                             
-        }
+}   
+    public function alltest(Request $request)
+    {
+        $data=DB::table('submitted_test')
+                ->join('users','submitted_test.stud_id','users.id')
+                ->join('tests','submitted_test.test_id','tests.id')
+                ->where('stud_id',Auth::guard('user')->user()->id)
+                ->select('submitted_test.*','users.name','tests.title')
+                ->get();
+                
+        return view('student.test.exam',compact('data'));
+                            
+    }
+    public function history()
+    {
+        $tid=Auth::guard('user')->user()->id;
+        $Checked=\DB::table('submitted_test')->where([['asign_to',$tid],['isChecked',1]])->count();
+        $assign=\DB::table('test_users')->where('teacher_id',$tid)->count();
+        return view('teacher.test.history',['checked'=>$Checked,'assign'=>$assign]);
+    }
+    public function checked()
+    {
+        $tid=Auth::guard('user')->user()->id;
+        $Checked=\DB::table('submitted_test')
+        ->join('tests','tests.id','submitted_test.test_id')
+        ->join('users','users.id','submitted_test.stud_id')
+        ->where('submitted_test.asign_to',$tid)
+        ->select('users.*','tests.*','tests.id as testid','submitted_test.*','submitted_test.id as sid')
+        ->get();
+        // dd($Checked);
+        return view('teacher.test.checkedTest',['data'=>$Checked]);
+    }
+    public function sectionWise($test_id,$sid,$stud_id)
+    {
+        $section =\DB::table('sections')->where('test_id',$test_id)->get();
+        
+            return view('teacher.test.sectionWise',['data'=>$section,'sid'=>$sid,'stud_id'=>$stud_id]);
+        
+    }
 }

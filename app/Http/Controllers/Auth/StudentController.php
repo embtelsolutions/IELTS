@@ -50,7 +50,7 @@ class StudentController extends Controller
     }
     public function sections($Modid,$sid)
     {
-        $section =\DB::table('sections')->where('module_id',$Modid)->get();
+        $section =\DB::table('sections')->where('test_id',$Modid)->get();
         if(count($section)>0)
         {
             return view('student.sectionWise',['data'=>$section,'sid'=>$sid]);

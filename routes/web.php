@@ -107,6 +107,9 @@ Route::group([ 'middleware' => 'teacher'], function () {
   Route::get('/test/answer', 'Admin\test\StudentsubmitController@answer')->name('teacher.test.answer');
   //writing answer
   Route::get('/test/writing/answer', 'Admin\test\StudentsubmitController@writinganswer')->name('teacher.test.writing');
+  Route::get('/test/writing/history', 'Admin\test\TestController@history')->name('teacher.test.history');
+  Route::get('/test/writing/history/Checked', 'Admin\test\TestController@checked');
+  Route::get('/test/writing/history/sections/{id}/{sid}/{studId}','Admin\test\TestController@sectionWise');
   //writingcheck
   // Route::get('/test/writing/answer/id', 'Admin\test\StudentsubmitController@writingcheck')->name('teacher.test.writing.check');
   Route::get('/writing_check/{stud}/{testid}/{sid}', 'Admin\test\StudentsubmitController@writingCheck');
@@ -132,6 +135,7 @@ Route::get('/student/history', 'Auth\StudentController@history')->name('student.
 
 Route::get('/student/history/Modules/{id}/{sid}','Auth\StudentController@modules')->name('student.modules');
 Route::get('/sections/{id}/{sid}','Auth\StudentController@sections')->name('student.sections');
+
 
   //by me
   Route::post('student/test/update', 'Admin\test\StudentsubmitController@submittest')->name('student.test.update');

@@ -13,12 +13,10 @@ class TeacherController extends Controller
 
     //
     public function index(){
-
-        // $user = Auth::guard('user')->user()->id;
-        // $alltest = Test::where('teacher_id','=',$user)->get();
-        // $submitedtest =DB::table('submittests')  
-        // ->where('teacher_id','=',$user)
-        // ->get();
-        return view('teacher.dashboard');
+        $tid=Auth::guard('user')->user()->id;
+        $pendding=\DB::table('submitted_test')->where([['asign_to',$tid],['isChecked',0]])->count();
+        // dd($pendding);
+        $assign=\DB::table('test_users')->where('teacher_id',$tid)->count();
+        return view('teacher.dashboard',['pendding'=>$pendding,'assign'=>$assign]);
     }
 }

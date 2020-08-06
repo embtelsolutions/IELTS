@@ -180,7 +180,10 @@ class StudentsubmitController extends Controller
 
         //dd($data);
       }
-
+      public function history()
+      {
+        return view('teacher.test.history');
+      }
       // public function writingcheck(){
 
       //   return view('teacher.test.writing_check');
