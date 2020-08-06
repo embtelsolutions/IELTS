@@ -683,3 +683,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
   Route::post('/newtest/writing','Admin\TestController@writing')->name('writing');
   
 });
+Route::get('/lobfile','logfile@create');
