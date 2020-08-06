@@ -29,7 +29,7 @@
          <div class="card-header">
             <div class="row">
                <div class="col-lg-4">
-                  <div class="card-title d-inline-block">All1 Test</div>
+                  <div class="card-title d-inline-block">All Test</div>
                </div>
                <div class="col-lg-3">
                   {{-- @if (!empty($langs))
@@ -41,10 +41,10 @@
                   </select>
                   @endif --}}
                </div>
-               {{-- <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                  <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Test</a>
-                  <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
-               </div> --}}
+               <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
+                  <a href="#" class="btn btn-primary float-lg-right float-left btn-sm"><i class="fas fa-plus"></i> Add Test</a>
+                  {{-- <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.package.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button> --}}
+               </div>
             </div>
          </div>
          <div class="card-body">
